@@ -32,8 +32,9 @@ OBJ_DIR = obj
 REL_DIR = release
 DEB_DIR = debug
 
-# Define o caminho absoluto para o compilador GCC.
-CC = /usr/bin/gcc
+# Usa o GCC disponivel no PATH. Isso funciona no WSL e ainda permite trocar o
+# compilador pela linha de comando, por exemplo: make CC=clang.
+CC = gcc
 
 # Define um conjunto de flags do compilador bem restritivas.
 BASE_CFLAGS = -std=c2x -Wall -Wextra -pedantic -Wshadow -Wformat=2 -Wconversion -Wunreachable-code -fdiagnostics-color=always

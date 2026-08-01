@@ -1,14 +1,4 @@
 /*
-EXERCISE:
-- 1) Um número primo é qualquer inteiro positivo divisível apenas
-    por si próprio e por 1. Escreva uma função que receba um inteiro positivo e,
-    se este número for primo, retorne 1, caso contrário retorne 0.
-- 6) Escreva uma função que receba dia, mês e ano e calcule o dia da semana.
-    Esta função retorna 0 se for domingo, 1 se for segunda-feira, etc...
-    Para calcular o dia da semana use o código a seguir no qual o dia da semana está na variável f:
-- 7) Crie uma função que recebe como parâmetros um dia,
-    um mês e um ano (inteiros) e escreva na tela por extenso o dia da semana.
-
 DATE: 30/07/2026
 */
 
@@ -26,14 +16,14 @@ int main() {
     printf("Inform a number: ");
     scanf("%d", &number);
 
-    printf("This number is prime?: %d", numberIsPrime(number));
+    printf("This number is prime?: %d\n", numberIsPrime(number));
     */
     int day = 0, month = 0, year = 0;
 
     printf("Inform a day inf the format dd/mm/yyyy: ");
     scanf("%d/%d/%d", &day, &month, &year);
 
-    printf("This day is a: %d", dayWeek(day, month, year));
+    printf("This day is a: %d\n", dayWeek(day, month, year));
 
     return 0;
 }
