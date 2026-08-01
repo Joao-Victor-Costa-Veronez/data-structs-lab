@@ -1,5 +1,6 @@
 /*
-DATE: 30/07/2026
+DATE CREATION: 30/07/2026
+LAST UPDATE: 01/08/2026
 */
 
 // Importing libraries
@@ -9,6 +10,7 @@ DATE: 30/07/2026
 
 // Declaring functions
 int numberIsPrime(int number);
+int yearIsLeap(int year);
 int dayWeek(int day, int month, int year);
 void showWeekDay(int day, int month, int year);
 
@@ -25,7 +27,11 @@ int main() {
     printf("Inform a day inf the format dd/mm/yyyy: ");
     scanf("%d/%d/%d", &day, &month, &year);
 
-    printf("This day was/is/is going to be a: \n");
+    printf("This year was/is/is going to be leap? %d\n", yearIsLeap(year));
+
+    printf("This day was/is/is going to be a: %d\n", dayWeek(day, month, year));
+
+    printf("Or, better sayng, was/is/going to be a: ");
     showWeekDay(day, month, year);
 
     return 0;
@@ -51,6 +57,17 @@ int numberIsPrime(int number) {
     if (gotDivided == 1) return 1;
 
     // If it didn't has returned yet, is not prime (return 0)
+    return 0;
+}
+
+// Function that checks if a year is leap
+int yearIsLeap(int year) {
+    /* If the year is (divisible for 4, AND not for 100), OR is divisible for 400;
+    return 1 (is a leap year) */
+    if ((((year % 4) == 0) && ((year % 100) != 100))
+        || ((year % 400) == 0)) return 1;
+
+    // if it didn't has returned yet, is not a leap year (return 0)
     return 0;
 }
 
