@@ -9,34 +9,86 @@ LAST UPDATE: 01/08/2026
 #include <string.h>
 
 // Declaring functions
+void showMainMenu();
 int numberIsPrime(int number);
 int yearIsLeap(int year);
+float celsiusToFahrenheit(float temperature);
 int dayWeek(int day, int month, int year);
 void showWeekDay(int day, int month, int year);
 
 // Main function
 int main() {
+    // Declaring variables
+    int option = 0;
     int number = 0;
     int day = 0, month = 0, year = 0;
+    float temperature = 0.0;
 
-    printf("Inform a number: ");
-    scanf("%d", &number);
+    // Do
+    do {
+        // Showing the menu
+        showMainMenu();
+        // Getting the chose option
+        scanf("%d", &option);
 
-    printf("This number is prime?: %d\n", numberIsPrime(number));
+        // In the case of the option be
+        switch (option) {
+        // 1
+        case 1: // Asking a number
+                printf("Inform a number: ");
+                scanf("%d", &number);
 
-    printf("Inform a day inf the format dd/mm/yyyy: ");
-    scanf("%d/%d/%d", &day, &month, &year);
+                // Results 1
+                printf("This number is prime?: %d\n", numberIsPrime(number));
 
-    printf("This year was/is/is going to be leap? %d\n", yearIsLeap(year));
+                break;
 
-    printf("This day was/is/is going to be a: %d\n", dayWeek(day, month, year));
+        // 2
+        case 2: // Asking a year
+                printf("Inform a year: ");
+                scanf("%d", &year);
 
-    printf("Or, better sayng, was/is/going to be a: ");
-    showWeekDay(day, month, year);
+                // Results 2
+                printf("This year was/is/is going to be leap? %d\n", yearIsLeap(year));
+
+                break;
+
+        // 3
+        case 3: // Asking which convertion the user wants to do
+                printf("");
+        }
+
+        printf("This day was/is/is going to be a: %d\n", dayWeek(day, month, year));
+
+        printf("Or, better sayng, was/is/going to be a: ");
+        showWeekDay(day, month, year);
+
+      // While option is different of 8
+    } while (option != 6);
 
     return 0;
 }
 
+// Funtion that shows the menu
+void showMainMenu() {
+    printf("+=====          FUNCTIONS   -   EXERCISE    1      =====+\n\n");
+    printf("+=======================================================+\n");
+    printf("|           CALCULATIONS AND VERIFICATIONS MENU         |\n");
+    printf("+=======================================================+\n");
+    printf("|   1. Verify if a number is prime.                     |\n");
+    printf("|   2. Verify if a year is leap.                        |\n");
+    printf("|   3. Convert Celsius to Fahrenheit.                   |\n");
+    printf("|   4. Convert Fahrenheit to Celsius and vice versa.    |\n");
+    printf("|   5. Calculate the week day of a date.                |\n");
+    printf("|   6. Leave.                                           |\n");
+    printf("+=======================================================+\n");
+    printf("|   Choose your operation: ");
+}
+
+// Function that shows the temperature convertions menu
+void showTemperatureConvertionsMenu() {
+    
+}
 // Function that checks if a number is prime
 int numberIsPrime(int number) {
     // Declaring variables
@@ -69,6 +121,15 @@ int yearIsLeap(int year) {
 
     // if it didn't has returned yet, is not a leap year (return 0)
     return 0;
+}
+
+// Function that transform Celsius to Fahrenheit
+float celsiusToFahrenheit(float temperature) {
+    // Applying the formula
+    temperature = ((float)temperature * (float)9/5) + 32.0;
+
+    // returning the Fahrenheit temperature
+    return temperature;
 }
 
 // Function that calculates the day of the week
