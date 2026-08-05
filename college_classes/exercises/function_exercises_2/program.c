@@ -12,6 +12,7 @@ void showMainMenu();
 void showVectorsIntegers(int vector[], int length);
 void fillsVectorRandomly(int vector[], int length, int min, int max);
 int hasRepeatedValues(int vector[], int length);
+int checkVectorOrdening(int vector[], int length);
 
 // Main function
 int main() {
@@ -53,18 +54,23 @@ int main() {
 
                 break;
 
-        // 3
-        case 3:
+        // // 3
+        // case 3:
 
         // 6
         case 6: // Verify if the vector has repeated elements
-                printf("\nThe vector has repeated elements?: %d\n", hasRepeatedValues(vector, length));
+                printf("\nThe vector has repeated elements? (0: no / 1: yes): %d\n", hasRepeatedValues(vector, length));
 
                 break;
 
+        // 8
+        case 8: // Checks the order of a vector
+                printf("\nThe vector has wich ordenation? (0: disordered / 1: growing / 2: descending): %d\n", checkVectorOrdening(vector, length));
+
+                break;
         }
       // While option is different of 8
-    } while (option != 8);
+    } while (option != 10);
 
     return 0;
 }
@@ -77,6 +83,7 @@ void showMainMenu() {
     printf("|   1. Show the integers of a vector                    |\n");
     printf("|   2. Randomize the integers of a vector               |\n");
     printf("|   6. Verify if the vector has repeated values         |\n");
+    printf("|   8. Checks the order of a vector                     |\n");
     printf("+=======================================================+\n");
     printf("|   Choose your operation: ");
 }
@@ -116,5 +123,40 @@ int hasRepeatedValues(int vector[], int length) {
     }
 
     // If the function hasn't returned yet, it hasn't repeated elements (return 0)
+    return 0;
+}
+
+// Function that checks the ordening of a vector
+int checkVectorOrdening(int vector[], int length) {
+    // Declaring variables
+    int growing = 1, descending = 1;
+
+    // For each element of the vector
+    for (int i = 0; i < (length - 1); i++) {
+        // If the element is greater than the next
+        if (vector[i] > vector[(i+1)]) {
+            // It's not growing
+            growing = 0;
+        }
+        // If the element is lower than the next
+        if (vector[i] < vector[(i+1)]) {
+            // It's not growing
+            descending = 0;
+        }
+    }
+
+    // If growing yet is true
+    if (growing) {
+        // Return 1 (is growing ordenated)
+        return 1;
+    }
+
+    // If descending yet is true
+    if (descending) {
+        // Return 2 (is descending ordenated)
+        return 2;
+    }
+
+    // Return  (is disordered)
     return 0;
 }
