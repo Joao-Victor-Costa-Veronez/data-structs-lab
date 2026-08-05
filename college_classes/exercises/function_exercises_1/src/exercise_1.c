@@ -24,6 +24,9 @@ int main() {
     int day = 0, month = 0, year = 0;
     float temperature = 0.0;
 
+    // Title
+    printf("+=====          FUNCTIONS   -   EXERCISE    1      =====+\n\n");
+
     // Do
     do {
         // Showing the menu
@@ -71,7 +74,6 @@ int main() {
 
 // Funtion that shows the menu
 void showMainMenu() {
-    printf("+=====          FUNCTIONS   -   EXERCISE    1      =====+\n\n");
     printf("+=======================================================+\n");
     printf("|           CALCULATIONS AND VERIFICATIONS MENU         |\n");
     printf("+=======================================================+\n");
@@ -87,7 +89,17 @@ void showMainMenu() {
 
 // Function that shows the temperature convertions menu
 void showTemperatureConvertionsMenu() {
-    
+    printf("+=======================================================+\n");
+    printf("|           CALCULATIONS AND VERIFICATIONS MENU         |\n");
+    printf("+=======================================================+\n");
+    printf("|   1. Verify if a number is prime.                     |\n");
+    printf("|   2. Verify if a year is leap.                        |\n");
+    printf("|   3. Convert Celsius to Fahrenheit.                   |\n");
+    printf("|   4. Convert Fahrenheit to Celsius and vice versa.    |\n");
+    printf("|   5. Calculate the week day of a date.                |\n");
+    printf("|   6. Leave.                                           |\n");
+    printf("+=======================================================+\n");
+    printf("|   Choose your operation: ");
 }
 // Function that checks if a number is prime
 int numberIsPrime(int number) {
