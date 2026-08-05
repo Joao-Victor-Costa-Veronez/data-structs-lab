@@ -19,7 +19,7 @@ int main() {
     int vector[length];
 
     // Title
-    printf("+=====          FUNCTIONS   -   EXERCISE    2      =====+\n\n");
+    printf("\n+=====          FUNCTIONS   -   EXERCISE    2      =====+\n\n");
 
     // For each element in the vector
     for (int i = 0; i < length; i++) {
@@ -54,24 +54,24 @@ int main() {
 }
 
 // Function that shows the temperature convertions menu
-void showTemperatureConvertionsMenu() {
-    printf("+=======================================================+\n");
+void showMainMenu() {
+    printf("\n+=======================================================+\n");
     printf("|           OPERATIONS AND VERIFICATIONS MENU           |\n");
     printf("+=======================================================+\n");
     printf("|   1. Show the integers of a vector.                   |\n");
-    printf("|   2.                         |\n");
+    printf("|   2.                                                  |\n");
     printf("+=======================================================+\n");
     printf("|   Choose your operation: ");
 }
 
 // Funtion that shows the integers of a vector
 void showVectorIntegers(int vector[], int length) {
-    printf("[");
+    printf("\n[");
     // For each element in the vector
     for (int i = 0; i < (length-1); i++) {
         // Show the number
         printf("%d, ", vector[i]);
     }
     // Show the laste element
-    printf("%d]\n", vector[length-1]);
+    printf("%d]\n\n", vector[length-1]);
 }
