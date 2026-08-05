@@ -11,6 +11,7 @@ DATE: 08/05/2026
 void showMainMenu();
 void showVectorsIntegers(int vector[], int length);
 void fillsVectorRandomly(int vector[], int length, int min, int max);
+int hasRepeatedValues(int vector[], int length);
 
 // Main function
 int main() {
@@ -55,9 +56,15 @@ int main() {
         // 3
         case 3:
 
+        // 6
+        case 6: // Verify if the vector has repeated elements
+                printf("\nThe vector has repeated elements?: %d\n", hasRepeatedValues(vector, length));
+
+                break;
+
         }
       // While option is different of 8
-    } while (option != 6);
+    } while (option != 8);
 
     return 0;
 }
@@ -69,6 +76,7 @@ void showMainMenu() {
     printf("+=======================================================+\n");
     printf("|   1. Show the integers of a vector                    |\n");
     printf("|   2. Randomize the integers of a vector               |\n");
+    printf("|   6. Verify if the vector has repeated values         |\n");
     printf("+=======================================================+\n");
     printf("|   Choose your operation: ");
 }
@@ -85,10 +93,28 @@ void showVectorIntegers(int vector[], int length) {
     printf("%d]\n\n", vector[length-1]);
 }
 
-// Fucntion that fills a vector randomly
+// Function that fills a vector randomly
 void fillsVectorRandomly(int vector[], int length, int min, int max) {
     srand(time(NULL)); // Seed
     for (int i = 0; i < length; i++) {
         vector[i] = (rand() % (max - min + 1)) + min;
     }
+}
+
+// Function that tells if a vector has repeated values
+int hasRepeatedValues(int vector[], int length) {
+    // For each element in the vector
+    for (int i = 0; i < length; i++) {
+        // For each element after the current one
+        for (int j = (i+1); j < length; j++) {
+            // If the current element is equals to other element
+            if (vector[i] == vector[j]) {
+                // Has repeated values (return 1)
+                return 1;
+            }
+        }
+    }
+
+    // If the function hasn't returned yet, it hasn't repeated elements (return 0)
+    return 0;
 }
