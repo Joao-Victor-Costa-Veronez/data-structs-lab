@@ -10,6 +10,7 @@ DATE: 08/05/2026
 // Declaring functions
 void showMainMenu();
 void showVectorsIntegers(int vector[], int length);
+void fillsVectorRandomly(int vector[], int length, int min, int max);
 
 // Main function
 int main() {
@@ -19,7 +20,7 @@ int main() {
     int vector[length];
 
     // Title
-    printf("\n+=====          FUNCTIONS   -   EXERCISE    2      =====+\n\n");
+    printf("\n+=====    FUNCTIONS   -   EXERCISE    2   =====+\n\n");
 
     // For each element in the vector
     for (int i = 0; i < length; i++) {
@@ -44,7 +45,15 @@ int main() {
                 break;
 
         // 2
-        case 2:
+        case 2: // Randomize tge vector
+                fillsVectorRandomly(vector, length, 1, 10);
+                // Show the vector
+                showVectorIntegers(vector, length);
+
+                break;
+
+        // 3
+        case 3:
 
         }
       // While option is different of 8
@@ -55,11 +64,11 @@ int main() {
 
 // Function that shows the temperature convertions menu
 void showMainMenu() {
-    printf("\n+=======================================================+\n");
+    printf("\n+=====================================================+\n");
     printf("|           OPERATIONS AND VERIFICATIONS MENU           |\n");
     printf("+=======================================================+\n");
-    printf("|   1. Show the integers of a vector.                   |\n");
-    printf("|   2.                                                  |\n");
+    printf("|   1. Show the integers of a vector                    |\n");
+    printf("|   2. Randomize the integers of a vector               |\n");
     printf("+=======================================================+\n");
     printf("|   Choose your operation: ");
 }
@@ -74,4 +83,12 @@ void showVectorIntegers(int vector[], int length) {
     }
     // Show the laste element
     printf("%d]\n\n", vector[length-1]);
+}
+
+// Fucntion that fills a vector randomly
+void fillsVectorRandomly(int vector[], int length, int min, int max) {
+    srand(time(NULL)); // Seed
+    for (int i = 0; i < length; i++) {
+        vector[i] = (rand() % (max - min + 1)) + min;
+    }
 }
