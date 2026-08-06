@@ -18,5 +18,6 @@ typedef struct {
 restaurant createRestaurant();
 void readString(char text[], int length);
 int readInteger();
+float readFloat();
 
 #endif

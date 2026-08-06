@@ -25,3 +25,11 @@ int readInteger() {
 
     return atoi(text);
 }
+
+// Function that reads a float
+int readInteger() {
+    char text[255];
+    readInteger(text, 255);
+
+    return atof(text);
+}
