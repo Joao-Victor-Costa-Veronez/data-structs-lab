@@ -33,6 +33,7 @@ int main() {
     printf("%ld\n", sizeof(struct point2D));  // 8
     printf("%ld\n", sizeof(struct point2D[10]));  // 8
     printf("%ld\n", sizeof(struct person));  // 32
+    printf("%ld\n", sizeof(struct person[10]));  // 320
 
     return 0;
 }
