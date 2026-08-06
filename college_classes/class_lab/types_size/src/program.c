@@ -8,18 +8,18 @@ DATE: 06/08/2026
 #include <string.h>
 
 // Declaring structs
-struct point2D {
+typedef struct {
     int x;  // 4
     int y;  // 4
     // Total: 8
-};
+} point2D;
 
-struct person {
+typedef struct {
     char name[25];  // 25
     char gender;    // 1
     int age;    // 4
     // Total: 30 (adding); Real size: 32
-};
+} person;
 
 // Declaring types
 typedef int apple;
@@ -36,17 +36,17 @@ int main() {
     // Showing the sizes of the types
     printf("%ld\n", sizeof(apple)); // 4
     printf("%ld\n", sizeof(orange));    // 1
-    printf("%ld\n", sizeof(banana));    // 4
+    printf("%ld\n", sizeof(banana));    // 4person
     printf("%ld\n", sizeof(int));    // 4
     printf("%ld\n", sizeof(char));   // 1
     printf("%ld\n", sizeof(float));  // 4
     printf("%ld\n", sizeof(int[10]));    // 40
     printf("%ld\n", sizeof(char[10]));   // 10
     printf("%ld\n", sizeof(float[10]));  // 40
-    printf("%ld\n", sizeof(struct point2D));  // 8
-    printf("%ld\n", sizeof(struct point2D[10]));  // 8
-    printf("%ld\n", sizeof(struct person));  // 32
-    printf("%ld\n", sizeof(struct person[10]));  // 320
+    printf("%ld\n", sizeof(point2D));  // 8
+    printf("%ld\n", sizeof(point2D[10]));  // 8
+    printf("%ld\n", sizeof(person));  // 32
+    printf("%ld\n", sizeof(person[10]));  // 320
 
     return 0;
 }
