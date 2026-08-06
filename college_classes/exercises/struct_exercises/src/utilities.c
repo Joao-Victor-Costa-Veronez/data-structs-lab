@@ -27,7 +27,7 @@ int readInteger() {
 }
 
 // Function that reads a float
-int readInteger() {
+float readFloat() {
     char text[255];
     readInteger(text, 255);
 
