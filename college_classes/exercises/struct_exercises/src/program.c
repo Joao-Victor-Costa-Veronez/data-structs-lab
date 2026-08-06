@@ -3,9 +3,7 @@ DATE: 06/08/2026
 */
 
 // Importing libraries
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include "utilities.h"
 
 // Declaring structs
 typedef struct {
@@ -15,6 +13,9 @@ typedef struct {
     char foodType[100];
 } restaurant;
 
+// Declaring functions
+restaurant createRestaurant();
+
 // Main function
 int main() {
     // Declaring variables
@@ -22,3 +23,11 @@ int main() {
 
     return 0;
 }
+
+// Function that create a restaurant
+restaurant createRestaurant() {
+    // Declaring variables
+    restaurant r;
+
+    return r;
+};
