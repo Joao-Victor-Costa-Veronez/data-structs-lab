@@ -21,9 +21,22 @@ struct person {
     // Total: 30 (adding); Real size: 32
 };
 
+// Declaring types
+typedef int apple;
+typedef float banana;
+typedef char orange;
+
 // Main function
 int main() {
+    // Using the new variables
+    apple x = 10;
+    banana y = 13.7;
+    orange z = 'J';
+
     // Showing the sizes of the types
+    printf("%ld\n", sizeof(apple)); // 4
+    printf("%ld\n", sizeof(orange));    // 1
+    printf("%ld\n", sizeof(banana));    // 4
     printf("%ld\n", sizeof(int));    // 4
     printf("%ld\n", sizeof(char));   // 1
     printf("%ld\n", sizeof(float));  // 4
