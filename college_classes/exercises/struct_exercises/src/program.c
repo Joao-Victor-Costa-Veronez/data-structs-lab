@@ -10,5 +10,8 @@ int main() {
     // Declaring variables
     restaurant unitedBurgers;
 
+    // Creating a restaurant
+    unitedBurgers = createRestaurant();
+
     return 0;
 }

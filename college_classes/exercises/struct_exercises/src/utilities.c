@@ -5,6 +5,18 @@ restaurant createRestaurant() {
     // Declaring variables
     restaurant r;
 
+    printf("Inform the name: ");
+    readString(r.name, 255);
+
+    printf("Inform the address: ");
+    readString(r.address, 255);
+
+    printf("Inform the average price: $ ");
+    r.averagePrice = readFloat();
+
+    printf("Inform the food type; ");
+    readString(r.foodType, 255);
+    
     return r;
 }
 
