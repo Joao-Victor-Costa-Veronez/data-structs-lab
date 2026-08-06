@@ -8,6 +8,7 @@ restaurant createRestaurant() {
     return r;
 }
 
+// Function that reads a string
 void readString(char text[], int length) {
     if (fgets(text, length, stdin) != NULL) {
         text[strcspn(text, "\n")] = '\0';
@@ -15,4 +16,12 @@ void readString(char text[], int length) {
         printf("Error reading the string.\n");
         exit(1);
     }
+}
+
+// Function that reads an integer
+int readInteger() {
+    char text[255];
+    readInteger(text, 255);
+
+    return atoi(text);
 }

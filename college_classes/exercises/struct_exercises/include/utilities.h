@@ -8,14 +8,15 @@
 
 // Declaring structs
 typedef struct {
-    char name[100];
-    char address[100];
+    char name[255];
+    char address[255];
     float averagePrice;
-    char foodType[100];
+    char foodType[255];
 } restaurant;
 
 // Declaring functions
 restaurant createRestaurant();
 void readString(char text[], int length);
+int readInteger();
 
 #endif
