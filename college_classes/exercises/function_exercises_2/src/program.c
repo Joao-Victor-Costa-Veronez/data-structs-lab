@@ -11,6 +11,7 @@ DATE: 08/05/2026
 void showMainMenu();
 void showVectorsIntegers(int vector[], int length);
 void fillsVectorRandomly(int vector[], int length, int min, int max);
+float averageVectorValue(int vector[], int length);
 int hasRepeatedValues(int vector[], int length);
 int checkVectorOrdening(int vector[], int length);
 
@@ -47,15 +48,18 @@ int main() {
                 break;
 
         // 2
-        case 2: // Randomize tge vector
+        case 2: // Randomize the vector
                 fillsVectorRandomly(vector, length, 1, 10);
                 // Show the vector
                 showVectorIntegers(vector, length);
 
                 break;
 
-        // // 3
-        // case 3:
+        // 3
+        case 3: // Calculate the average value of the vector
+                printf("\nThe average value of the vector is: %.2f\n", averageVectorValue(vector, length));
+
+                break;
 
         // 6
         case 6: // Verify if the vector has repeated elements
@@ -82,6 +86,7 @@ void showMainMenu() {
     printf("+=======================================================+\n");
     printf("|   1. Show the integers of a vector                    |\n");
     printf("|   2. Randomize the integers of a vector               |\n");
+    printf("|   3. Calculate the average value of a vector          |\n");
     printf("|   6. Verify if the vector has repeated values         |\n");
     printf("|   8. Checks the order of a vector                     |\n");
     printf("+=======================================================+\n");
@@ -106,6 +111,21 @@ void fillsVectorRandomly(int vector[], int length, int min, int max) {
     for (int i = 0; i < length; i++) {
         vector[i] = (rand() % (max - min + 1)) + min;
     }
+}
+
+// Function that return the average value of a vector
+float averageVectorValue(int vector[], int length) {
+    // Declaring variables
+    float sum = 0;
+
+    // For eache value of the vector
+    for (int i = 0; i < length; i++) {
+        // Sum this value
+        sum += (float)vector[i];
+    }
+
+    // Calculating the average
+    return sum / (float)length;
 }
 
 // Function that tells if a vector has repeated values
