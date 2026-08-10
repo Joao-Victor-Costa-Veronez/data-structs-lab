@@ -1,3 +1,4 @@
+// Including libraries
 #include "utilities.h"
 
 // Function that create a restaurant
