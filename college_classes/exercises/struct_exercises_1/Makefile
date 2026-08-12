@@ -1,4 +1,4 @@
-# A ideia deste Makefile é que os ficheiros do projeto podem estar todos no mesmo diretório:
+# A ideia deste Makefile é que os arquivos do projeto podem estar todos no mesmo diretório:
 # programa.c
 # teste.c
 # teste.h
@@ -15,12 +15,12 @@
 #		obj
 #			programa.o
 #			teste.o
-#		programa
+#		programa ou progrma.exe
 #	release
 #		obj
 #			programa.o
 #			teste.o
-#		programa
+#		programa ou programa.exe
 
 # ==========================================
 
@@ -32,8 +32,16 @@ OBJ_DIR = obj
 REL_DIR = release
 DEB_DIR = debug
 
-# Define o caminho absoluto para o compilador GCC.
-CC = /usr/bin/gcc
+# Deteção do Sistema Operacional
+ifeq ($(OS),Windows_NT)
+	CC = gcc
+	EXT = .exe
+	EXEC = $(TARGET_DIR)/$(PROGRAM_NAME)$(EXT)
+else
+	CC = /usr/bin/gcc
+	EXT =
+	EXEC = ./$(TARGET_DIR)/$(PROGRAM_NAME)$(EXT)
+endif
 
 # Define um conjunto de flags do compilador bem restritivas.
 BASE_CFLAGS = -std=c2x -Wall -Wextra -pedantic -Wshadow -Wformat=2 -Wconversion -Wunreachable-code -fdiagnostics-color=always
@@ -53,7 +61,7 @@ else
 endif
 
 OBJ_FILES = $(patsubst %.c, $(TARGET_DIR)/$(OBJ_DIR)/%.o, $(notdir $(SRC_FILES)))
-TARGET = $(TARGET_DIR)/$(PROGRAM_NAME)
+TARGET = $(TARGET_DIR)/$(PROGRAM_NAME)$(EXT)
 
 vpath %.c . $(SRC_DIR)
 
@@ -77,7 +85,7 @@ release: directories $(TARGET)
 
 # Executar (Padrão Debug)
 run: all
-	@./$(TARGET_DIR)/$(PROGRAM_NAME)
+	@$(EXEC)
 
 clean:
 	@rm -rf $(BIN_DIR)

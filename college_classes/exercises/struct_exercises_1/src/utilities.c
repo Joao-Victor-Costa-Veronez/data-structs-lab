@@ -1,26 +1,6 @@
 // Including libraries
 #include "utilities.h"
 
-// Function that create a restaurant
-restaurant createRestaurant() {
-    // Declaring variables
-    restaurant r;
-
-    printf("Inform the name: ");
-    readString(r.name, 255);
-
-    printf("Inform the address: ");
-    readString(r.address, 255);
-
-    printf("Inform the average price: $ ");
-    r.averagePrice = readFloat();
-
-    printf("Inform the food type; ");
-    readString(r.foodType, 255);
-    
-    return r;
-}
-
 // Function that reads a string
 void readString(char text[], int length) {
     if (fgets(text, length, stdin) != NULL) {
@@ -34,7 +14,7 @@ void readString(char text[], int length) {
 // Function that reads an integer
 int readInteger() {
     char text[255];
-    readInteger(text, 255);
+    readString(text, 255);
 
     return atoi(text);
 }
@@ -42,7 +22,7 @@ int readInteger() {
 // Function that reads a float
 float readFloat() {
     char text[255];
-    readInteger(text, 255);
+    readString(text, 255);
 
-    return atof(text);
+    return (float)atof(text);
 }
