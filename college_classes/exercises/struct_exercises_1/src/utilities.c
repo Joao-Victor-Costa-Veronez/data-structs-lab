@@ -26,3 +26,17 @@ float readFloat() {
 
     return (float)atof(text);
 }
+
+void upperCase(char text[])
+{
+    for (int cont = 0; text[cont] != '\0'; cont++) {
+        text[cont] = (char)toupper(text[cont]);
+    }
+}
+
+void lowerCase(char text[])
+{
+    for (int cont = 0; text[cont] != '\0'; cont++) {
+        text[cont] = (char)tolower(text[cont]);
+    }
+}
