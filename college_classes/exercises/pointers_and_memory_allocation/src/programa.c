@@ -8,12 +8,13 @@ DATE: 08/19/2022
 
 float temperatureConversion(float *temperature, int *option);
 void showVector(int *vector, int lenght);
+void randomizeVector(int *vector, int length, int min, int max);
 int main()
 {
     float temperature = 26.0;
     int option = 0;
-    int length = 5;
-    int vector[length];
+    int length = 5, vector[length];
+    int min = 0, max = 100;
 
     temperature = temperatureConversion(&temperature, &option);
     printf("\nTemperature: %.2f\n", temperature);
@@ -28,7 +29,9 @@ int main()
         vector[i] = i;
     }
 
-    showVector(&vector, length);
+    showVector(vector, length);
+
+    randomizeVector(vector, length, min, max);
 
     return 0;
 }
@@ -55,4 +58,12 @@ void showVector(int *vector, int length)
         printf("%d, ", *(vector + i));
     }
     printf("%d]\n\n", *(vector + i));
+}
+
+void randomizeVector(int *vector, int length, int min, int max) {
+    srand(time(NULL));
+    for (int i = 0; i < length; i++) {
+        vector[i] = (rand() % (max - min + 1)) + min;
+    }
+    showVector(vector, length);
 }
