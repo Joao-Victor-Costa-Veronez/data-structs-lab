@@ -11,6 +11,7 @@ void showVector(int *vector, int lenght);
 void randomizeVector(int *vector, int length, int min, int max);
 float averageVectorValue(int *vector, int length);
 int findGreatestVectorValueIndex(int *vector, int length);
+int findLowestVectorValueIndex(int *vector, int length);
 int main()
 {
     float temperature = 26.0;
@@ -38,6 +39,8 @@ int main()
     printf("The average value of the vector is: %.2f\n\n", averageVectorValue(vector, length));
 
     printf("The index of the greatest number of the vector is: %d\n\n", findGreatestVectorValueIndex(vector, length));
+
+    printf("The index of the lowest number of the vector is: %d\n\n", findLowestVectorValueIndex(vector, length));
 
     return 0;
 }
@@ -106,4 +109,23 @@ int findGreatestVectorValueIndex(int *vector, int length)
     }
 
     return greatestValueIndex;
+}
+
+int findLowestVectorValueIndex(int *vector, int length)
+{
+    int lowestValue = *vector, lowestValueIndex = 0;
+    int *pointer;
+
+    pointer = vector;
+
+    for (int i = 0; i < length; i++, pointer++)
+    {
+        if (lowestValue > *pointer)
+        {
+            lowestValue = *pointer;
+            lowestValueIndex = i;
+        }
+    }
+
+    return lowestValueIndex;
 }
