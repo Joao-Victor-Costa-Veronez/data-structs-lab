@@ -40,6 +40,7 @@ int main()
         *(pointer + i) = (rand() % (100 - 1 + 1)) + 1;
     }
 
+    printf("\n");
     showVector(pointer, length);
 
     printf("The average value of the vector is: %.2f\n\n", averageVectorValue(pointer, length));
@@ -66,10 +67,13 @@ int main()
     {
     case 0:
         printf("The vector is disorderly.\n\n");
+        break;
     case 1:
-        printf("The vector is descending.\n\n");
-    case 2:
         printf("The vector is ascending.\n\n");
+        break;
+    case 2:
+        printf("The vector is descending.\n\n");
+        break;
     }
 
     free(pointer);
