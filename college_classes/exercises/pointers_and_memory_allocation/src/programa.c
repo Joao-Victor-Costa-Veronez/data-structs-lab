@@ -10,7 +10,7 @@ float temperatureConversion(float *temperature, int *option);
 void showVector(int *vector, int lenght);
 void randomizeVector(int *vector, int length, int min, int max);
 float averageVectorValue(int *vector, int length);
-int findGreatestVectorValue(int *vector, int length);
+int findGreatestVectorValueIndex(int *vector, int length);
 int main()
 {
     float temperature = 26.0;
@@ -37,7 +37,7 @@ int main()
 
     printf("The average value of the vector is: %.2f\n\n", averageVectorValue(vector, length));
 
-    printf("The greatest number of the vector is: %d\n\n", findGreatestVectorValue(vector, length));
+    printf("The index of the greatest number of the vector is: %d\n\n", findGreatestVectorValueIndex(vector, length));
 
     return 0;
 }
@@ -92,16 +92,18 @@ float averageVectorValue(int *vector, int length)
     return sum / length;
 }
 
-int findGreatestVectorValue(int *vector, int length)
+int findGreatestVectorValueIndex(int *vector, int length)
 {
-    int greatest = *vector;
+    int greatestValue = *vector, greatestValueIndex = 0;
+
     for (int i = 0; i < length; i++)
     {
-        if (greatest < *(vector + i))
+        if (greatestValue < *(vector + i))
         {
-            greatest = *(vector + i);
+            greatestValue = *(vector + i);
+            greatestValueIndex = i;
         }
     }
 
-    return greatest;
+    return greatestValueIndex;
 }
