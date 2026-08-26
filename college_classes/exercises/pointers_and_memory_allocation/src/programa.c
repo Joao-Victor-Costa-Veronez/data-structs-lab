@@ -13,12 +13,14 @@ float averageVectorValue(int *vector, int length);
 int findGreatestVectorValueIndex(int *vector, int length);
 int findLowestVectorValueIndex(int *vector, int length);
 int checkRepeatedValues(int *vector, int length);
+int searchValueInVector(int *vector, int length, int a);
 int main()
 {
     float temperature = 26.0;
     int option = 0;
     int length = 5, vector[length];
-    int min = 0, max = 100;
+    int min = 0, max = 10;
+    int a = 5;
 
     temperature = temperatureConversion(&temperature, &option);
     printf("\nTemperature: %.2f\n", temperature);
@@ -44,6 +46,8 @@ int main()
     printf("The index of the lowest number of the vector is: %d\n\n", findLowestVectorValueIndex(vector, length));
 
     printf("The vector has repeated values? %d\n\n", checkRepeatedValues(vector, length));
+
+    printf("The first index of the number %d in the vector (-1 for does not exist): %d\n\n", a, searchValueInVector(vector, length, a));
 
     return 0;
 }
@@ -147,4 +151,17 @@ int checkRepeatedValues(int *vector, int length)
     }
 
     return 0;
+}
+
+int searchValueInVector(int *vector, int length, int a)
+{
+    for (int i = 0; i < length; i++)
+    {
+        if (a == *(vector + i))
+        {
+            return i;
+        }
+    }
+
+    return -1;
 }
