@@ -41,6 +41,8 @@ int main()
 
     randomizeVector(vector, length, min, max);
 
+    showVector(vector, length);
+
     printf("The average value of the vector is: %.2f\n\n", averageVectorValue(vector, length));
 
     printf("The index of the greatest number of the vector is: %d\n\n", findGreatestVectorValueIndex(vector, length));
@@ -91,17 +93,14 @@ void randomizeVector(int *vector, int length, int min, int max)
 
 float averageVectorValue(int *vector, int length)
 {
-    int *pointVector;
     float sum = 0.0;
 
-    pointVector = vector;
-
-    for (int i = 0; i < length; i++, pointVector++)
+    for (int i = 0; i < length; i++, vector++)
     {
-        sum += *pointVector;
+        sum += (float)*vector;
     }
 
-    return sum / length;
+    return sum / (float)length;
 }
 
 int findGreatestVectorValueIndex(int *vector, int length)
