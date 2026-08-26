@@ -14,6 +14,7 @@ int findGreatestVectorValueIndex(int *vector, int length);
 int findLowestVectorValueIndex(int *vector, int length);
 int checkRepeatedValues(int *vector, int length);
 int searchValueInVector(int *vector, int length, int a);
+int checkOrdination(int *vector, int length);
 int main()
 {
     float temperature = 26.0;
@@ -48,6 +49,8 @@ int main()
     printf("The vector has repeated values? %d\n\n", checkRepeatedValues(vector, length));
 
     printf("The first index of the number %d in the vector (-1 for does not exist): %d\n\n", a, searchValueInVector(vector, length, a));
+
+    printf("The ordination of the vector is (0: disorderly; 1: ascending; 2: descending): %d\n\n", checkOrdination(vector, length));
 
     return 0;
 }
@@ -164,4 +167,38 @@ int searchValueInVector(int *vector, int length, int a)
     }
 
     return -1;
+}
+
+int checkOrdination(int *vector, int length)
+{
+    int *pointer;
+    int ascending = 0;
+    int descending = 0;
+
+    pointer = vector + 1;
+
+    for (int i = 1; i < length; i++, pointer++)
+    {
+        if (*(pointer - 1) < *pointer)
+        {
+            ascending = 1;
+        }
+        else if (*(pointer - 1) > *pointer)
+        {
+            descending = 1;
+        }
+    }
+
+    if ((ascending) && (descending == 0))
+    {
+        return 1;
+    }
+    else if ((ascending == 0) && (descending))
+    {
+        return 2;
+    }
+    else
+    {
+        return 0;
+    }
 }
