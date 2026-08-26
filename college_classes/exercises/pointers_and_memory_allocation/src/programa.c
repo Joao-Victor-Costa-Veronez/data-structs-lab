@@ -5,6 +5,7 @@ DATE: 08/19/2022
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 float temperatureConversion(float *temperature, int *option);
 void showVector(int *vector, int lenght);
@@ -81,13 +82,11 @@ void showVector(int *vector, int length)
 
 void randomizeVector(int *vector, int length, int min, int max)
 {
-    srand(time(NULL));
+    srand((unsigned int)time(NULL));
     for (int i = 0; i < length; i++)
     {
         vector[i] = (rand() % (max - min + 1)) + min;
     }
-
-    showVector(vector, length);
 }
 
 float averageVectorValue(int *vector, int length)
