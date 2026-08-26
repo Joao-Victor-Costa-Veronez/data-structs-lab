@@ -9,6 +9,7 @@ DATE: 08/19/2022
 float temperatureConversion(float *temperature, int *option);
 void showVector(int *vector, int lenght);
 void randomizeVector(int *vector, int length, int min, int max);
+float averageVectorValue(int *vector, int length);
 int main()
 {
     float temperature = 26.0;
@@ -32,6 +33,8 @@ int main()
     showVector(vector, length);
 
     randomizeVector(vector, length, min, max);
+
+    printf("The average value of the vector is: %.2f\n\n", averageVectorValue(vector, length));
 
     return 0;
 }
@@ -60,10 +63,28 @@ void showVector(int *vector, int length)
     printf("%d]\n\n", *(vector + i));
 }
 
-void randomizeVector(int *vector, int length, int min, int max) {
+void randomizeVector(int *vector, int length, int min, int max)
+{
     srand(time(NULL));
-    for (int i = 0; i < length; i++) {
+    for (int i = 0; i < length; i++)
+    {
         vector[i] = (rand() % (max - min + 1)) + min;
     }
+
     showVector(vector, length);
+}
+
+float averageVectorValue(int *vector, int length)
+{
+    int *pointVector;
+    float sum = 0.0;
+
+    pointVector = vector;
+
+    for (int i = 0; i < length; i++, pointVector++)
+    {
+        sum += *pointVector;
+    }
+
+    return sum / length;
 }
