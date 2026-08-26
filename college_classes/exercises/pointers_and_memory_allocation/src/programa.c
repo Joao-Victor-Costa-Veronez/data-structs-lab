@@ -122,15 +122,12 @@ int findGreatestVectorValueIndex(int *vector, int length)
 int findLowestVectorValueIndex(int *vector, int length)
 {
     int lowestValue = *vector, lowestValueIndex = 0;
-    int *pointer;
 
-    pointer = vector;
-
-    for (int i = 0; i < length; i++, pointer++)
+    for (int i = 0; i < length; i++, vector++)
     {
-        if (lowestValue > *pointer)
+        if (lowestValue > *vector)
         {
-            lowestValue = *pointer;
+            lowestValue = *vector;
             lowestValueIndex = i;
         }
     }
