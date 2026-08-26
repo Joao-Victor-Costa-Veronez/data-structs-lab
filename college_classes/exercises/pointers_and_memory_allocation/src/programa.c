@@ -12,6 +12,7 @@ void randomizeVector(int *vector, int length, int min, int max);
 float averageVectorValue(int *vector, int length);
 int findGreatestVectorValueIndex(int *vector, int length);
 int findLowestVectorValueIndex(int *vector, int length);
+int checkRepeatedValues(int *vector, int length);
 int main()
 {
     float temperature = 26.0;
@@ -41,6 +42,8 @@ int main()
     printf("The index of the greatest number of the vector is: %d\n\n", findGreatestVectorValueIndex(vector, length));
 
     printf("The index of the lowest number of the vector is: %d\n\n", findLowestVectorValueIndex(vector, length));
+
+    printf("The vector has repeated values? %d\n\n", checkRepeatedValues(vector, length));
 
     return 0;
 }
@@ -128,4 +131,20 @@ int findLowestVectorValueIndex(int *vector, int length)
     }
 
     return lowestValueIndex;
+}
+
+int checkRepeatedValues(int *vector, int length)
+{
+    for (int i = 0; i < length; i++)
+    {
+        for (int j = i; j < length; j++)
+        {
+            if ((vector[i] == vector[j]) && (i != j))
+            {
+                return 1;
+            }
+        }
+    }
+
+    return 0;
 }
