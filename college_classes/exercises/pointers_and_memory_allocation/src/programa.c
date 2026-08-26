@@ -166,19 +166,15 @@ int searchValueInVector(int *vector, int length, int a)
 
 int checkOrdination(int *vector, int length)
 {
-    int *pointer;
-    int ascending = 0;
-    int descending = 0;
+    int ascending = 0, descending = 0;
 
-    pointer = vector + 1;
-
-    for (int i = 1; i < length; i++, pointer++)
+    for (int i = 1; i < length; i++, vector++)
     {
-        if (*(pointer - 1) < *pointer)
+        if (*(vector - 1) < *vector)
         {
             ascending = 1;
         }
-        else if (*(pointer - 1) > *pointer)
+        else if (*(vector - 1) > *vector)
         {
             descending = 1;
         }
