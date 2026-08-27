@@ -9,4 +9,6 @@ typedef struct simple_list_int
     int length;
 } list_SLL;
 
+list_SLL *create_list_SLL();
+
 #endif
