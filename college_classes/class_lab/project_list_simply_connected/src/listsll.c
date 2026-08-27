@@ -8,3 +8,13 @@ list_SLL *create_list_SLL()
 
     return new;
 }
+
+void insert_end_SLL(int value, list_SLL *list)
+{
+    if (list->length == 0)
+    {
+        node_SLL *new = (value, NULL);
+        list->inicial = new;
+        list->length++;
+    }
+}
