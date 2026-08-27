@@ -1,13 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "listlsc.h"
+
+#include "listsll.h"
 
 int main()
 {
-    node_LSC *new = (node_LSC *)malloc(sizeof(node_LSC));
-    new->value = 0;
-    new->next = NULL;
+    node_SLL * new = create_node_SLL(10, NULL);
 
     return 0;
 }
