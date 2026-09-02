@@ -11,10 +11,27 @@ list_SLL *create_list_SLL()
 
 void insert_end_SLL(int value, list_SLL *list)
 {
+    // Creating a new node
+    node_SLL *new = (value, NULL);
+
+    // If there is justo one element
     if (list->length == 0)
     {
-        node_SLL *new = (value, NULL);
         list->inicial = new;
-        list->length++;
     }
+    // Else
+    else
+    {
+        node_SLL *auxiliar = list->inicial;
+
+        while (auxiliar->next != NULL)
+        {
+            auxiliar = auxiliar->next = new;
+        }
+
+        auxiliar->next = new;
+    }
+
+    // Incrementing the length of the list
+    list->length++;
 }

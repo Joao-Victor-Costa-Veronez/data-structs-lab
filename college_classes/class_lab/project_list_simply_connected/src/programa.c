@@ -1,9 +1,13 @@
+/*
+DATE: 09/30/2026
+*/
+// Importing libraries
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
 #include "listsll.h"
 
+// Main function
 int main()
 {
     list_SLL *list = create_list_SLL();
