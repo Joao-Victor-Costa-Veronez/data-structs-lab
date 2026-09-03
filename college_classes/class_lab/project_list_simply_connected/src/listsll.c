@@ -93,10 +93,10 @@ void insert_begin_SLL(int value, list_SLL *point_list)
 }
 
 // Function that returns the inicial value of the list
-int obtain_inicial_value_SLL(list_SLL *pont_list)
+int obtain_inicial_value_SLL(list_SLL *point_list)
 {
     // If the list is empty
-    if (pont_list->length == 0)
+    if (point_list->length == 0)
     {
         // Advise that the list is empty
         printf("The list is empty, so there isn't an inicial value.\n");
@@ -107,13 +107,43 @@ int obtain_inicial_value_SLL(list_SLL *pont_list)
     // Else
     else
     {
+        // Showing the value
         printf("The incial value of the list is: ");
-        // Return the list's incial node value 
-        return pont_list->inicial->value;
+
+        // Return the list's incial node value
+        return point_list->inicial->value;
     }
 }
 
-int obtain_last_value_SLL(list_SLL *pont_list)
+int obtain_last_value_SLL(list_SLL *point_list)
 {
+    // If the list is empty
+    if (point_list->length == 0)
+    {
+        // Advise that the list is empty
+        printf("The list is empty, so there isn't an inicial value.\n");
 
+        // Return 0
+        return 0;
+    }
+    // Else
+    else
+    {
+        // Declaring a auxiliar pointer of the list
+        node_SLL *pont_auxiliar = point_list->inicial;
+
+        // While the next node of the auxiliar pointer is different than NULL
+        while (pont_auxiliar->next != NULL)
+        {
+            // The pointer goes to the next position
+            pont_auxiliar = pont_auxiliar->next;
+        }
+
+        // Showing the value
+        printf("The last value of the list is: ");
+
+        // When the auxiliar pointer is pointing to the last node,
+        // return the value of this node
+        return pont_auxiliar->value;
+    }
 }

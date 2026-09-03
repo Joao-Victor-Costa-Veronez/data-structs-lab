@@ -38,5 +38,7 @@ int main()
 
     printf("%d\n\n", obtain_inicial_value_SLL(list_1));
 
+    printf("%d\n\n", obtain_last_value_SLL(list_1));
+
     return 0;
 }
