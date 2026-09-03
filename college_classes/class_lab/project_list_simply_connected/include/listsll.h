@@ -20,5 +20,6 @@ void insert_end_SLL(int value, list_SLL *point_list);
 void insert_begin_SLL(int value, list_SLL *point_list);
 int obtain_inicial_value_SLL(list_SLL *point_list);
 int obtain_last_value_SLL(list_SLL *point_list);
+int remove_begin_SLL(list_SLL *point_list);
 
 #endif

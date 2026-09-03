@@ -6,6 +6,11 @@ list_SLL *create_list_SLL()
 {
     // Getting a space in the memory for the node
     list_SLL *new = (list_SLL *)malloc(sizeof(list_SLL));
+    if (new == NULL)
+    {
+        printf("Fatal error: Failed to allocate memory for list_SLL.\n");
+        exit(1);
+    }
 
     // Adding the incial length and inicial pointer
     new->length = 0;
@@ -57,7 +62,7 @@ void insert_end_SLL(int value, list_SLL *point_list)
     // Else
     else
     {
-        // Declaring a auxiliar pointer of the list
+        // Declaring an auxiliar pointer of the list
         node_SLL *pont_auxiliar = point_list->inicial;
 
         // While the next node of the auxiliar pointer is different than NULL
@@ -115,13 +120,14 @@ int obtain_inicial_value_SLL(list_SLL *point_list)
     }
 }
 
+// Function that returns the last value of the list
 int obtain_last_value_SLL(list_SLL *point_list)
 {
     // If the list is empty
     if (point_list->length == 0)
     {
         // Advise that the list is empty
-        printf("The list is empty, so there isn't an inicial value.\n");
+        printf("The list is empty, so there isn't a last value.\n");
 
         // Return 0
         return 0;
@@ -129,7 +135,7 @@ int obtain_last_value_SLL(list_SLL *point_list)
     // Else
     else
     {
-        // Declaring a auxiliar pointer of the list
+        // Declaring an auxiliar pointer of the list
         node_SLL *pont_auxiliar = point_list->inicial;
 
         // While the next node of the auxiliar pointer is different than NULL
@@ -145,5 +151,38 @@ int obtain_last_value_SLL(list_SLL *point_list)
         // When the auxiliar pointer is pointing to the last node,
         // return the value of this node
         return pont_auxiliar->value;
+    }
+}
+
+// Function that remove the list's begging node
+int remove_begin_SLL(list_SLL *point_list)
+{
+    // If the list is empty
+    if (point_list->length == 0)
+    {
+        // Advise that the list is empty
+        printf("The list is empty, so there isn't a node to be removed.\n");
+
+        // Return 0
+        return 0;
+    }
+    // Else
+    else
+    {
+        // Declaring an auxiliar pointer of the list first node
+        node_SLL *pont_auxiliar = point_list->inicial->next;
+
+        // The list's incial node become the second node
+        point_list->inicial = point_list->inicial->next;
+
+        // Gettng free the first node's memory
+        free(pont_auxiliar);
+
+        // Showing the message of success
+        printf("The node was removed.\n");
+
+        // When the auxiliar pointer is pointing to the last node,
+        // return the value of this node
+        return 1;
     }
 }
