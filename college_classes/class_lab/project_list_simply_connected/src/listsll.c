@@ -15,6 +15,33 @@ list_SLL *create_list_SLL()
     return new;
 }
 
+// Function that shows the current list
+void show_list_SLL(list_SLL *point_list)
+{
+    // Showing the size
+    printf("\nLength = %d\n", point_list->length);
+
+    // If the list isn't empty
+    if (point_list->length != 0)
+    {
+        // Declaring a auxiliar pointer of the list
+        node_SLL *point_auxiliar = point_list->inicial;
+
+        // While the auxiliar pointer is different than NULL
+        while (point_auxiliar != NULL)
+        {
+            // Show the value of the node
+            printf("%d -> ", point_auxiliar->value);
+
+            // The pointer goes to the next position
+            point_auxiliar = point_auxiliar->next;
+        }
+    }
+
+    // Showing the end of the list
+    printf("NULL\n\n");
+}
+
 // Function that inserts a value in the end of the list
 void insert_end_SLL(int value, list_SLL *point_list)
 {
@@ -49,39 +76,12 @@ void insert_end_SLL(int value, list_SLL *point_list)
     point_list->length++;
 }
 
-// Function that shows the current list
-void show_list_SLL(list_SLL *point_list)
-{
-    // Showing the size
-    printf("\nLength = %d\n", point_list->length);
-
-    // If the list isn't empty
-    if (point_list->length != 0)
-    {
-        // Declaring a auxiliar pointer of the list
-        node_SLL *point_auxiliar = point_list->inicial;
-
-        // While the auxiliar pointer is different than NULL
-        while (point_auxiliar != NULL)
-        {
-            // Show the value of the node
-            printf("%d -> ", point_auxiliar->value);
-
-            // The pointer goes to the next position
-            point_auxiliar = point_auxiliar->next;
-        }
-    }
-
-    // Showing the end of the list
-    printf("NULL\n\n");
-}
-
 // Function that inserts a value in the end of the list
 void insert_begin_SLL(int value, list_SLL *point_list)
 {
     // Creating a new node
     node_SLL *new = create_node_SLL(value, NULL);
-    
+
     // The next node of the new node, become the current list's inicial node
     new->next = point_list->inicial;
 
@@ -90,4 +90,30 @@ void insert_begin_SLL(int value, list_SLL *point_list)
 
     // Incrementing the length of the list
     point_list->length++;
+}
+
+// Function that returns the inicial value of the list
+int obtain_inicial_value_SLL(list_SLL *pont_list)
+{
+    // If the list is empty
+    if (pont_list->length == 0)
+    {
+        // Advise that the list is empty
+        printf("The list is empty, so there isn't an inicial value.\n");
+
+        // Return 0
+        return 0;
+    }
+    // Else
+    else
+    {
+        printf("The incial value of the list is: ");
+        // Return the list's incial node value 
+        return pont_list->inicial->value;
+    }
+}
+
+int obtain_last_value_SLL(list_SLL *pont_list)
+{
+
 }
