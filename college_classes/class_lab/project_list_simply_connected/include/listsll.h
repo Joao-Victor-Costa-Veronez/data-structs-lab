@@ -1,15 +1,19 @@
 #ifndef LISTSLL_H
 #define LISTSLL_H 1
 
+// Importing libraries
 #include "nodesll.h"
 #include <stdio.h>
 
+// Declaring structs
 typedef struct simple_list_int
 {
+    // Declaring variables
     node_SLL *inicial;
     int length;
 } list_SLL;
 
+// Declaring functions
 list_SLL *create_list_SLL();
 void insert_end_SLL(int value, list_SLL *point_list);
 void show_list_SLL(list_SLL *point_list);
