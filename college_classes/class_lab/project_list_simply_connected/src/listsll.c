@@ -81,22 +81,12 @@ void insert_begin_SLL(int value, list_SLL *point_list)
 {
     // Creating a new node
     node_SLL *new = create_node_SLL(value, NULL);
+    
+    // The next node of the new node, become the current list's inicial node
+    new->next = point_list->inicial;
 
-    // If there is just one element
-    if (point_list->length == 0)
-    {
-        // Make the inicial pointer of the list point to the node
-        point_list->inicial = new;
-    }
-    // Else
-    else
-    {
-        // The next node of the new node, become the current list's inicial node
-        new->next = point_list->inicial;
-
-        // The list's incial node become the new node
-        point_list->inicial = new;
-    }
+    // The list's incial node become the new node
+    point_list->inicial = new;
 
     // Incrementing the length of the list
     point_list->length++;
