@@ -12,6 +12,7 @@ node_SLL *create_node_SLL(int value, node_SLL *next)
         printf("Fatal error: Failed to allocate memory for node_SLL.\n");
         exit(1);
     }
+
     // Addinng the value of the new node
     new->value = value;
 

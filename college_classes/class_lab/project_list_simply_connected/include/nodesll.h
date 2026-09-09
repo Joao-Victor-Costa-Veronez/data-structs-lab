@@ -3,6 +3,7 @@
 
 // Including libraries
 #include <stdlib.h>
+#include <stdio.h>
 
 // Declaring structs
 typedef struct simple_node_int

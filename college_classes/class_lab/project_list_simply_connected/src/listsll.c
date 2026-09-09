@@ -4,8 +4,9 @@
 // Function that create a new list of Simplie Linked List
 list_SLL *create_list_SLL()
 {
-    // Getting a space in the memory for the node
+    // Getting a space in the memory for the list
     list_SLL *new = (list_SLL *)malloc(sizeof(list_SLL));
+
     if (new == NULL)
     {
         printf("Fatal error: Failed to allocate memory for list_SLL.\n");
@@ -170,16 +171,19 @@ int remove_begin_SLL(list_SLL *point_list)
     else
     {
         // Declaring an auxiliar pointer of the list first node
-        node_SLL *pont_auxiliar = point_list->inicial->next;
+        node_SLL *point_auxiliar = point_list->inicial;
 
         // The list's incial node become the second node
-        point_list->inicial = point_list->inicial->next;
+        point_list->inicial = point_auxiliar->next;
 
         // Gettng free the first node's memory
-        free(pont_auxiliar);
+        free(point_auxiliar);
 
         // Showing the message of success
         printf("The node was removed.\n");
+
+        // Decreasing the length of the list
+        point_list->length--;
 
         // When the auxiliar pointer is pointing to the last node,
         // return the value of this node
