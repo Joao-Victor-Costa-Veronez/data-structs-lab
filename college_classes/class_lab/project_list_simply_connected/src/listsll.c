@@ -25,7 +25,7 @@ list_SLL *create_list_SLL()
 void show_list_SLL(list_SLL *point_list)
 {
     // Showing the size
-    printf("\nLength = %d\n", point_list->length);
+    printf("Length = %d\n", point_list->length);
 
     // If the list isn't empty
     if (point_list->length != 0)
@@ -180,7 +180,7 @@ int remove_begin_SLL(list_SLL *point_list)
         free(point_auxiliar);
 
         // Showing the message of success
-        printf("The node was removed.\n");
+        printf("The first node was removed.\n");
 
         // Decreasing the length of the list
         point_list->length--;
@@ -188,5 +188,44 @@ int remove_begin_SLL(list_SLL *point_list)
         // When the auxiliar pointer is pointing to the last node,
         // return the value of this node
         return 1;
+    }
+}
+
+// Function that cleans up a list
+void clean_up_SLL(list_SLL *point_list)
+{
+    // If the list's empty
+    if (point_list->length == 0)
+    {
+        // Inform that the list is already clean
+        printf("The list is alredy clean. Nothing modified.\n");
+    }
+    // Else
+    else
+    {
+        // Declaring variables
+        node_SLL *point_delete = point_list->inicial, *point_next_delete = point_delete->next;
+
+        // While the point next delete is different of NULL
+        while (point_next_delete != NULL)
+        {
+            // Deleting the current point delete
+            free(point_delete);
+
+            // The point delete goes to the point delete next
+            point_delete = point_next_delete;
+
+            // The point delete next goes to the next node
+            point_next_delete = point_next_delete->next;
+        }
+
+        // Cleaning the last node
+        free(point_delete);
+
+        // Updating the length of the list
+        point_list->length = 0;
+
+        // Informing that the list cleaned up
+        printf("The list is cleaned up.\n");
     }
 }

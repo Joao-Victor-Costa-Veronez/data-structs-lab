@@ -42,7 +42,7 @@ int main()
     printf("%d\n\n", obtain_last_value_SLL(list_1));
 
     // Test: Removing from the begging of the list
-    printf("%d\n", remove_begin_SLL(list_1));
+    printf("%d\n\n", remove_begin_SLL(list_1));
     show_list_SLL(list_1);
 
     return 0;
