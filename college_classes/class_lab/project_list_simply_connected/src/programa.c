@@ -43,9 +43,14 @@ int main()
     // Test: Removing from the begging of the list
     printf("%d\n\n", remove_begin_SLL(list_1));
     show_list_SLL(list_1);
-
+    /*
     // Test: Deleting a list
     delete_list_SLL(&list_1);
+    */
+
+    // Test: Removing from the end of the list
+    printf("%d\n\n", remove_last_SLL(list_1));
+    show_list_SLL(list_1);
 
     return 0;
 }

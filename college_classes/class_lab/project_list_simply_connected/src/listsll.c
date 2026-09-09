@@ -176,7 +176,7 @@ int remove_begin_SLL(list_SLL *point_list)
         // The list's incial node become the second node
         point_list->inicial = point_auxiliar->next;
 
-        // Gettng free the first node's memory
+        // Getting free the first node's memory
         free(point_auxiliar);
 
         // Showing the message of success
@@ -243,5 +243,56 @@ void delete_list_SLL(list_SLL **point_point_list)
     *point_point_list = NULL;
 
     // Informing that the deletion was complete
-    printf("The list was deleted successfully.\n");
+    printf("The list was deleted successfully.\n\n");
+}
+
+int remove_last_SLL(list_SLL *point_list)
+{
+    // If the list's empty
+    if (point_list->length == 0)
+    {
+        // Advise that the list is empty
+        printf("The list is empty, so there isn't a node to be removed.\n");
+
+        // Return 0
+        return 0;
+    }
+    // Else if, the list has just one element
+    else if (point_list->length == 1)
+    {
+        // Getting free the node's memory
+        free(point_list->inicial);
+
+        // Making the pointer to the inical value points to NULL
+        point_list->inicial == NULL;
+    }
+    // Else
+    else
+    {
+        // Declaring an auxiliar pointer of the list first node
+        node_SLL *point_auxiliar = point_list->inicial;
+
+        // While the point auxiliar isn't the penultime
+        while (point_auxiliar->next->next != NULL)
+        {
+            // The point auxiliar goes to the next node
+            point_auxiliar = point_auxiliar->next;
+        }
+
+        // Freeing the point auxiliar node's next memory
+        free(point_auxiliar->next);
+
+        // Making the point auxiliar node's points to NULL
+        point_auxiliar->next = NULL;
+    }
+
+    // Showing the message of success
+    printf("The last node was removed.\n");
+
+    // Decreasing the length of the list
+    point_list->length--;
+
+    // When the auxiliar pointer is pointing to the last node,
+    // return the value of this node
+    return 1;
 }
