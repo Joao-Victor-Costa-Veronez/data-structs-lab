@@ -229,3 +229,19 @@ void clean_up_SLL(list_SLL *point_list)
         printf("The list is cleaned up.\n");
     }
 }
+
+// Function that deletes a list
+void delete_list_SLL(list_SLL **point_point_list)
+{
+    // Cleaning the list first
+    clean_up_SLL(*point_point_list);
+
+    // Freeing the memory of the list using the pointer of the pointer of the list
+    free(*point_point_list);
+
+    // Making the pointer of the pointer of the list points to NULL
+    *point_point_list = NULL;
+
+    // Informing that the deletion was complete
+    printf("The list was deleted successfully.\n");
+}

@@ -3,7 +3,6 @@
 
 // Importing libraries
 #include "nodesll.h"
-#include <stdio.h>
 
 // Declaring structs
 typedef struct simple_list_int
@@ -22,5 +21,6 @@ int obtain_inicial_value_SLL(list_SLL *point_list);
 int obtain_last_value_SLL(list_SLL *point_list);
 int remove_begin_SLL(list_SLL *point_list);
 void clean_up_SLL(list_SLL *point_list);
+void delete_list_SLL(list_SLL **point_point_list);
 
 #endif

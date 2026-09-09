@@ -1,9 +1,8 @@
 /*
 DATE: 09/30/2026
 */
+
 // Importing libraries
-#include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 #include "listsll.h"
 
@@ -44,6 +43,9 @@ int main()
     // Test: Removing from the begging of the list
     printf("%d\n\n", remove_begin_SLL(list_1));
     show_list_SLL(list_1);
+
+    // Test: Deleting a list
+    delete_list_SLL(&list_1);
 
     return 0;
 }
