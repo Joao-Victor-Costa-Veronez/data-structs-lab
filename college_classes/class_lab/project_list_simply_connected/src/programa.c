@@ -43,7 +43,11 @@ int main()
     // Test: Removing from the begging of the list
     printf("%d\n\n", remove_begin_SLL(list_1));
     show_list_SLL(list_1);
+
     /*
+    Test: Cleaning up the list
+    clean_up_SLL(list_1);
+
     // Test: Deleting a list
     delete_list_SLL(&list_1);
     */
