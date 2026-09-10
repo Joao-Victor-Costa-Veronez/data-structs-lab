@@ -296,3 +296,29 @@ int remove_last_SLL(list_SLL *point_list)
     // return the value of this node
     return 1;
 }
+
+// Function that changes the first value of a list
+int change_inicial_value_SLL(int value, list_SLL *point_list)
+{
+    // If the list's empty
+    if (point_list->length == 0)
+    {
+        // Inform that the list's empty
+        printf("The list's empty, so it's not possible to chenage it's first value. Nothing modified.\n");
+
+        // Return 0
+        return 0;
+    }
+    // Else
+    else
+    {
+        // Changing the value of the first node
+        point_list->inicial->value = value;
+
+        // Inform that the action successed
+        printf("The inicial value of the list was changed.\n");
+
+        // Return 1
+        return 1;
+    }
+}
