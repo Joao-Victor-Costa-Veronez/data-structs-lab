@@ -322,3 +322,39 @@ int change_inicial_value_SLL(int value, list_SLL *point_list)
         return 1;
     }
 }
+
+// Function that changes the first value of a list
+int change_last_value_SLL(int value, list_SLL *point_list)
+{
+    // If the list's empty
+    if (point_list->length == 0)
+    {
+        // Inform that the list's empty
+        printf("The list's empty, so it's not possible to chenage it's last value. Nothing modified.\n");
+
+        // Return 0
+        return 0;
+    }
+    // Else
+    else
+    {
+        // Decalring an auxiliar pointer that points to the first node
+        node_SLL *point_auxiliar = point_list->inicial;
+
+        // While the next node of the pointer auxiliar is not NULL
+        while (point_auxiliar->next != NULL)
+        {
+            // The auxiliar pointer goes to the next node
+            point_auxiliar = point_auxiliar->next;
+        }
+
+        // Changing the value of the last node
+        point_auxiliar->value = value;
+
+        // Inform that the action successed
+        printf("The last value of the list was changed.\n");
+
+        // Return 1
+        return 1;
+    }
+}

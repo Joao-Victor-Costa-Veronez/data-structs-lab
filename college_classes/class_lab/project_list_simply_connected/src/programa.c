@@ -56,5 +56,13 @@ int main()
     printf("%d\n\n", remove_last_SLL(list_1));
     show_list_SLL(list_1);
 
+    // Test: Changing the list's first value
+    printf("%d\n\n", change_inicial_value_SLL(0, list_1));
+    show_list_SLL(list_1);
+
+    // Test: Changing the list's last value
+    printf("%d\n\n", change_last_value_SLL(100, list_1));
+    show_list_SLL(list_1);
+
     return 0;
 }

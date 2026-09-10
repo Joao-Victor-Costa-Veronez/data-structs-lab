@@ -24,5 +24,6 @@ void clean_up_SLL(list_SLL *point_list);
 void delete_list_SLL(list_SLL **point_point_list);
 int remove_last_SLL(list_SLL *point_list);
 int change_inicial_value_SLL(int value, list_SLL *point_list);
+int change_last_value_SLL(int value, list_SLL *point_list);
 
 #endif
