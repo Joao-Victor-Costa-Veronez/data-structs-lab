@@ -358,3 +358,77 @@ int change_last_value_SLL(int value, list_SLL *point_list)
         return 1;
     }
 }
+
+// Function that inserts a node in any position of the list
+int insert_value_any_position(int value, list_SLL *point_list, int position)
+{
+    // If the list is empty
+    if ((point_list->length == 0) && (position != 0))
+    {
+        // Inform that the list's empty
+        printf("The list's empty, you can't insert on the submitted position.\n");
+
+        // Return 0
+        return 0;
+    }
+    // Else if, the position is negative
+    else if (position < 0)
+    {
+        // Inform that the submitted position is invalid
+        printf("The submitted position is invalid. There isn't negative positions.\n");
+
+        // Return 0
+        return 0;
+    }
+    // Else if, the position is greater than the list's length
+    else if (position > point_list->length)
+    {
+        // Inform that the submitted position is invalid
+        printf("The submitted position is invalid. The list has just %d elements.\n", point_list->length);
+
+        // Return 0
+        return 0;
+    }
+    // Else
+    else
+    {
+        // Declaring a new node
+        node_SLL *new = create_node_SLL(value, NULL);
+
+        // If the position is 0
+        if (position == 0)
+        {
+            // Inserting in the begging of the list
+            insert_begin_SLL(value, point_list);
+
+            // Inform that the action was successed
+            printf("The new node was insert on the first position.\n");
+
+            // Return 1
+            return 1;
+        }
+        // Else if the position is equals the list's length
+        else if (position == point_list->length)
+        {
+            // Inserting in the end of the list
+            insert_end_SLL(value, point_list);
+
+            // Inform that the action was successed
+            printf("The new node was insert on the last position.\n");
+
+            // Return 1
+            return 1;
+        }
+        // Else
+        else
+        {
+            // Declaring an auxiliar point that points to the first node
+            node_SLL *point_auxiliar = point_list->inicial;
+
+            // For the auxiliar pointer is not pointing to the before before the wanted position
+            for (int i = 0; i < (point_list->length - 1); i++)
+            {
+            }
+        }
+    }
+}
