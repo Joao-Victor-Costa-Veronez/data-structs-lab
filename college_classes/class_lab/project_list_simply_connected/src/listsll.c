@@ -246,6 +246,7 @@ void delete_list_SLL(list_SLL **point_point_list)
     printf("The list was deleted successfully.\n\n");
 }
 
+// Function that removes the last value of a list
 int remove_last_SLL(list_SLL *point_list)
 {
     // If the list's empty
@@ -445,5 +446,91 @@ int insert_value_any_position(int value, list_SLL *point_list, int position)
 
         // Return 1
         return 1;
+    }
+}
+
+// Function that removes any position of the list
+int remove_value_any_position(list_SLL *point_list, int position)
+{
+    // If the list's empty
+    if (point_list->length == 0)
+    {
+        // Advise that the list is empty
+        printf("The list is empty, so there isn't a node to be removed.\n");
+
+        // Return 0
+        return 0;
+    }
+    // Else if, the position is negative
+    else if (position < 0)
+    {
+        // Inform that the submitted position is invalid
+        printf("The submitted position is invalid. There isn't negative positions.\n");
+
+        // Return 0
+        return 0;
+    }
+    // Else if, the position is greater than the list's length
+    else if (position > point_list->length)
+    {
+        // Inform that the submitted position is invalid
+        printf("The submitted position is invalid. The list has just %d elements.\n", point_list->length);
+
+        // Return 0
+        return 0;
+    }
+    // Else
+    else
+    {
+
+        // If the position is 0
+        if (position == 0)
+        {
+            // Remove the begin of the list
+            remove_begin_SLL(point_list);
+
+            // Return 1
+            return 1;
+        }
+        // Else if, the position is the length of the list
+        else if (position == (point_list->length - 1))
+        {
+            // Remove the end of the list
+            remove_last_SLL(point_list);
+
+            // Return 1
+            return 1;
+        }
+        // Else
+        else
+        {
+            // Declaring an auxiliar pointer of the list first node
+            node_SLL *point_auxiliar = point_list->inicial;
+
+            // For the point auxiliar isn't the penultime position that is going to be excluded
+            for (int i = 0; i < (position - 1); i++)
+            {
+                // The point auxiliar goes to the next node
+                point_auxiliar = point_auxiliar->next;
+            }
+
+            // Declaring a pointer that saves the node that will be excluded
+            node_SLL *point_delete = point_auxiliar->next;
+
+            // Making the auxiliar pointer's node points to the next next node
+            point_auxiliar->next = point_auxiliar->next->next;
+
+            // Freeing the delete pointer's node memory
+            free(point_delete);
+
+            // Showing the message of success
+            printf("The node was removed.\n");
+
+            // Decreasing the length of the list
+            point_list->length--;
+
+            // Return 1
+            return 1;
+        }
     }
 }
