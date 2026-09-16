@@ -422,13 +422,28 @@ int insert_value_any_position(int value, list_SLL *point_list, int position)
         // Else
         else
         {
-            // Declaring an auxiliar point that points to the first node
+            // Declaring an auxiliar pointer that points to the first node
             node_SLL *point_auxiliar = point_list->inicial;
 
             // For the auxiliar pointer is not pointing to the before before the wanted position
-            for (int i = 0; i < (point_list->length - 1); i++)
+            for (int i = 0; i < (position - 1); i++)
             {
+                // It goes to the next node
+                point_auxiliar = point_auxiliar->next;
             }
+
+            // Inserting the value in the position
+            new->next = point_auxiliar->next;
+            point_auxiliar->next = new;
         }
+
+        // Inserting the valu in the new node
+        new->value = value;
+
+        // Increasing the size of the list
+        point_list->length++;
+
+        // Return 1
+        return 1;
     }
 }

@@ -64,5 +64,9 @@ int main()
     printf("%d\n\n", change_last_value_SLL(100, list_1));
     show_list_SLL(list_1);
 
+    // Test: Inserting a value in any position
+    printf("%d\n\n", insert_value_any_position(66, list_1, -1));
+    show_list_SLL(list_1);
+
     return 0;
 }
