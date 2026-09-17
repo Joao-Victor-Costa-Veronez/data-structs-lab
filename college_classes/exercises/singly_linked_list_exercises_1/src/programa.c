@@ -36,12 +36,13 @@ int main()
     insert_end_sll(60, list_1);
     show_list_sll(list_1);
 
-    /*
-    // Test: Gettimg the inicial and last value of the list
+    // Test: Getting the inicial value of the list
     printf("%d\n\n", obtain_inicial_value_sll(list_1));
-
+    
+    // Test: Getting the last value of the list
     printf("%d\n\n", obtain_last_value_sll(list_1));
-
+    
+    /*
     // Test: Removing from the begging of the list
     printf("%d\n\n", remove_begin_sll(list_1));
     show_list_sll(list_1);
