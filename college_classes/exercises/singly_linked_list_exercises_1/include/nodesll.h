@@ -9,7 +9,7 @@ typedef struct simple_node_int
 {
     // Declaring variables
     int value;
-    struct simple_node_product *next;
+    struct simple_node_int *next;
 } node_sll;
 
 // Declaring functions

@@ -15,16 +15,6 @@ int main()
     // Showing the empty list
     show_list_SLL(list_1);
 
-    // Test: Inserting elements in the list, by the end
-    insert_end_SLL(40, list_1);
-    show_list_SLL(list_1);
-
-    insert_end_SLL(50, list_1);
-    show_list_SLL(list_1);
-
-    insert_end_SLL(60, list_1);
-    show_list_SLL(list_1);
-
     // Test: Inserting elements in the list, by the beggining
     insert_begin_SLL(30, list_1);
     show_list_SLL(list_1);
@@ -33,6 +23,17 @@ int main()
     show_list_SLL(list_1);
 
     insert_begin_SLL(10, list_1);
+    show_list_SLL(list_1);
+
+    /*
+    // Test: Inserting elements in the list, by the end
+    insert_end_SLL(40, list_1);
+    show_list_SLL(list_1);
+
+    insert_end_SLL(50, list_1);
+    show_list_SLL(list_1);
+
+    insert_end_SLL(60, list_1);
     show_list_SLL(list_1);
 
     // Test: Gettimg the inicial and last value of the list
@@ -50,7 +51,7 @@ int main()
 
     // Test: Deleting a list
     delete_list_SLL(&list_1);
-    */
+    (Close comments)
 
     // Test: Removing from the end of the list
     printf("%d\n\n", remove_last_SLL(list_1));
@@ -79,6 +80,7 @@ int main()
     // Test: Obtaining a value from any position
     printf("%d\n\n", obtain_value_any_position_SLL(list_1, 3));
     show_list_SLL(list_1);
+    */
 
     return 0;
 }

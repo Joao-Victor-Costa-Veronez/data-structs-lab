@@ -13,12 +13,12 @@ list_sll *create_list_SLL()
         exit(1);
     }
 
-    // Adding the incial length and inicial pointer
+    // Adding the incial length, inicial and end pointer
     new->length = 0;
     new->inicial = NULL;
     new->end = NULL;
 
-    // Returnng the struct's address of list
+    // Returning the struct's address of list
     return new;
 }
 
@@ -31,7 +31,7 @@ void show_list_sll(list_sll *point_list)
     // If the list isn't empty
     if (point_list->length != 0)
     {
-        // Declaring a auxiliar pointer of the list
+        // Declaring an auxiliar pointer of the list
         node_sll *point_auxiliar = point_list->inicial;
 
         // While the auxiliar pointer is different than NULL
@@ -44,7 +44,7 @@ void show_list_sll(list_sll *point_list)
             point_auxiliar = point_auxiliar->next;
         }
     }
-    
+
     // Showing the end of the list
     printf("NULL\n\n");
 }
@@ -63,7 +63,7 @@ void insert_begin_sll(int value, list_sll *point_list)
         point_list->end = new;
     }
     // Else
-    else 
+    else
     {
         // The new node next's pointer points to the existing node
         new->next = point_list->inicial;
