@@ -2,7 +2,7 @@
 #include "nodesll.h"
 
 // Function that creates a node
-node_sll *create_node_SLL(int value, node_sll *next)
+node_sll *create_node_sll(int value, node_sll *next)
 {
     // Getting a space in the memory for the node
     node_sll *new = (node_sll *)malloc(sizeof(node_sll));

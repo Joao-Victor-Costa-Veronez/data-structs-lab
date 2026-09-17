@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+// Declaring structs
 typedef struct simple_node_int
 {
     // Declaring variables
@@ -13,6 +14,6 @@ typedef struct simple_node_int
 } node_sll;
 
 // Declaring functions
-node_sll *create_node_SLL(int value, node_sll *next);
+node_sll *create_node_sll(int value, node_sll *next);
 
 #endif
