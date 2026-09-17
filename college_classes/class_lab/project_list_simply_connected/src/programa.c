@@ -65,11 +65,19 @@ int main()
     show_list_SLL(list_1);
 
     // Test: Inserting a value in any position
-    printf("%d\n\n", insert_value_any_position(18, list_1, 3));
+    printf("%d\n\n", insert_value_any_position_SLL(18, list_1, 3));
     show_list_SLL(list_1);
 
     // Test: Removing a value in any position
-    printf("%d\n\n", remove_value_any_position(list_1, 3));
+    printf("%d\n\n", remove_value_any_position_SLL(list_1, 3));
+    show_list_SLL(list_1);
+
+    // Test: Changing the value of any position
+    printf("%d\n\n", change_value_any_position_SLL(19, list_1, 3));
+    show_list_SLL(list_1);
+
+    // Test: Obtaining a value from any position
+    printf("%d\n\n", obtain_value_any_position_SLL(list_1, 3));
     show_list_SLL(list_1);
 
     return 0;

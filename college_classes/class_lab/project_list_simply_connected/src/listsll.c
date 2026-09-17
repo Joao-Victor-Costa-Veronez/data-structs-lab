@@ -361,7 +361,7 @@ int change_last_value_SLL(int value, list_SLL *point_list)
 }
 
 // Function that inserts a node in any position of the list
-int insert_value_any_position(int value, list_SLL *point_list, int position)
+int insert_value_any_position_SLL(int value, list_SLL *point_list, int position)
 {
     // If the list is empty
     if ((point_list->length == 0) && (position != 0))
@@ -450,7 +450,7 @@ int insert_value_any_position(int value, list_SLL *point_list, int position)
 }
 
 // Function that removes any position of the list
-int remove_value_any_position(list_SLL *point_list, int position)
+int remove_value_any_position_SLL(list_SLL *point_list, int position)
 {
     // If the list's empty
     if (point_list->length == 0)
@@ -536,7 +536,7 @@ int remove_value_any_position(list_SLL *point_list, int position)
 }
 
 // Function that changes any list's value in any position
-int change_value_any_position(int value, list_SLL *point_list, int position)
+int change_value_any_position_SLL(int value, list_SLL *point_list, int position)
 {
     // If the list's empty
     if (point_list->length == 0)
@@ -612,7 +612,7 @@ int change_value_any_position(int value, list_SLL *point_list, int position)
 }
 
 // Function that obtains any list's value in any position
-int obtain_value_any_position(int value, list_SLL *point_list, int position)
+int obtain_value_any_position_SLL(list_SLL *point_list, int position)
 {
     // If the list's empty
     if (point_list->length == 0)
@@ -647,20 +647,14 @@ int obtain_value_any_position(int value, list_SLL *point_list, int position)
         // If the position is 0
         if (position == 0)
         {
-            // Change the begin of the list
-            obtain_inicial_value_SLL(point_list);
-
-            // Return 1
-            return 1;
+            // Return the begin of the list
+            return obtain_inicial_value_SLL(point_list);
         }
         // Else if, the position is the length of the list
         else if (position == (point_list->length - 1))
         {
-            // Change the end of the list
-            obtain_last_value_SLL(point_list);
-
-            // Return 1
-            return 1;
+            // Retrun the end of the list
+            return obtain_last_value_SLL(point_list);
         }
         // Else
         else

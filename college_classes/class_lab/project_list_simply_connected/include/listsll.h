@@ -28,6 +28,6 @@ int change_last_value_SLL(int value, list_SLL *point_list);
 int insert_value_any_position_SLL(int value, list_SLL *point_list, int position);
 int remove_value_any_position_SLL(list_SLL *point_list, int position);
 int change_value_any_position_SLL(int value, list_SLL *point_list, int position);
-int obtain_value_any_position_SLL(int value, list_SLL *point_list, int position);
+int obtain_value_any_position_SLL(list_SLL *point_list, int position);
 
 #endif
