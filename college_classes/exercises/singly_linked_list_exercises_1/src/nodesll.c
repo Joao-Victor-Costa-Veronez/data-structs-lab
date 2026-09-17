@@ -2,14 +2,14 @@
 #include "nodesll.h"
 
 // Function that creates a node
-node_SLL *create_node_SLL(int value, node_SLL *next)
+node_sll *create_node_SLL(int value, node_sll *next)
 {
     // Getting a space in the memory for the node
-    node_SLL *new = (node_SLL *)malloc(sizeof(node_SLL));
+    node_sll *new = (node_sll *)malloc(sizeof(node_sll));
 
     if (new == NULL)
     {
-        printf("Fatal error: Failed to allocate memory for node_SLL.\n");
+        printf("Fatal error: Failed to allocate memory for node_sll.\n");
         exit(1);
     }
 

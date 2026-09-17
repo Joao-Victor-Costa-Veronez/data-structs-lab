@@ -225,6 +225,9 @@ void clean_up_SLL(list_SLL *point_list)
         // Updating the length of the list
         point_list->length = 0;
 
+        // Updating the list's inicial pointer
+        point_list->inicial = NULL;
+
         // Informing that the list cleaned up
         printf("The list is cleaned up.\n");
     }

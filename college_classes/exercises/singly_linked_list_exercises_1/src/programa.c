@@ -1,5 +1,5 @@
 /*
-DATE: 08/30/2026
+DATE: 09/17/2026
 */
 
 // Importing libraries
@@ -10,7 +10,7 @@ DATE: 08/30/2026
 int main()
 {
     // Declaring variables
-    list_SLL *list_1 = create_list_SLL();
+    list_sll *list_1 = create_list_SLL();
 
     // Showing the empty list
     show_list_SLL(list_1);

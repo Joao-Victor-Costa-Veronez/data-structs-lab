@@ -5,15 +5,14 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-// Declaring structs
 typedef struct simple_node_int
 {
     // Declaring variables
     int value;
-    struct simple_node_int *next;
-} node_SLL;
+    struct simple_node_product *next;
+} node_sll;
 
 // Declaring functions
-node_SLL *create_node_SLL(int value, node_SLL *next);
+node_sll *create_node_SLL(int value, node_sll *next);
 
 #endif
