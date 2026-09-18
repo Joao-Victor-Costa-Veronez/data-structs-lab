@@ -281,23 +281,23 @@ void clean_up_sll(list_sll *point_list)
     }
 }
 
-/*
 // Function that deletes a list
 void delete_list_sll(list_sll **point_point_list)
 {
-// Cleaning the list first
-clean_up_sll(*point_point_list);
+    // Cleaning the list up first
+    clean_up_sll(*point_point_list);
 
-// Freeing the memory of the list using the pointer of the pointer of the list
-free(*point_point_list);
+    // Freeing the memory of the list using the pointer of the pointer of the list
+    free(*point_point_list);
 
-// Making the pointer of the pointer of the list points to NULL
-*point_point_list = NULL;
+    // Making the pointer of the pointer of the list points to NULL
+    *point_point_list = NULL;
 
-// Informing that the deletion was complete
-printf("The list was deleted successfully.\n\n");
+    // Informing that the deletion was complete
+    printf("The list was deleted successfully.\n\n");
 }
 
+/*
 // Function that changes the first value of a list
 int change_inicial_value_sll(int value, list_sll *point_list)
 {
