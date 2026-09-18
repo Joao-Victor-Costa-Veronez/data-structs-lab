@@ -238,7 +238,6 @@ int remove_last_sll(list_sll *point_list)
     return 1;
 }
 
-/*
 // Function that cleans up a list
 void clean_up_sll(list_sll *point_list)
 {
@@ -273,14 +272,16 @@ void clean_up_sll(list_sll *point_list)
         // Updating the length of the list
         point_list->length = 0;
 
-        // Updating the list's inicial pointer
+        // Updating the list's inicial and final pointer
         point_list->inicial = NULL;
+        point_list->final = NULL;
 
         // Informing that the list cleaned up
-        printf("The list is cleaned up.\n");
+        printf("The list is cleaned up.\n\n");
     }
 }
 
+/*
 // Function that deletes a list
 void delete_list_sll(list_sll **point_point_list)
 {

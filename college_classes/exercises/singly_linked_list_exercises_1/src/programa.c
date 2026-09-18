@@ -50,10 +50,8 @@ int main()
     printf("%d\n\n", remove_last_sll(list_1));
     show_list_sll(list_1);
 
-    /*
-    Test: Cleaning up the list
+    //Test: Cleaning up the list
     clean_up_sll(list_1);
-    */
 
     /*
     // Test: Deleting a list
