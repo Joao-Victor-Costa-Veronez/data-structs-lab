@@ -349,96 +349,96 @@ int change_last_value_sll(int value, list_sll *point_list)
     }
 }
 
-/*
 // Function that inserts a node in any position of the list
 int insert_value_any_position_sll(int value, list_sll *point_list, int position)
 {
-// If the list is empty
-if ((point_list->length == 0) && (position != 0))
-{
-// Inform that the list's empty
-printf("The list's empty, you can't insert on the submitted position.\n");
+    // If the list is empty, and the user isn't trying to insert the first value
+    if ((point_list->length == 0) && (position != 0))
+    {
+        // Inform that the list's empty
+        printf("The list's empty, you can't insert on the submitted position.\n");
 
-// Return 0
-return 0;
+        // Return 0
+        return 0;
+    }
+    // Else if, the position is negative
+    else if (position < 0)
+    {
+        // Inform that the submitted position is invalid
+        printf("The submitted position is invalid. There isn't negative positions.\n");
+
+        // Return 0
+        return 0;
+    }
+    // Else if, the position is greater than the list's length
+    else if (position > point_list->length)
+    {
+        // Inform that the submitted position is invalid
+        printf("The submitted position is invalid. The list has just %d elements.\n", point_list->length);
+
+        // Return 0
+        return 0;
+    }
+    // Else
+    else
+    {
+        // Declaring a new node
+        node_sll *new = create_node_sll(value, NULL);
+
+        // If the position is 0
+        if (position == 0)
+        {
+            // Inserting in the begging of the list
+            insert_begin_sll(value, point_list);
+
+            // Inform that the action was successed
+            printf("The new node was insert on the begging of the list.\n");
+
+            // Return 1
+            return 1;
+        }
+        // Else if the position is equals the list's length
+        else if (position == point_list->length)
+        {
+            // Inserting in the end of the list
+            insert_end_sll(value, point_list);
+
+            // Inform that the action was successed
+            printf("The new node was insert on the ending of the list.\n");
+
+            // Return 1
+            return 1;
+        }
+        // Else
+        else
+        {
+            // Declaring an auxiliar pointer that points to the first node
+            node_sll *point_auxiliar = point_list->inicial;
+
+            // For the auxiliar pointer is not pointing to the penultime wanted position
+            for (int i = 0; i < (position - 1); i++)
+            {
+                // It goes to the next node
+                point_auxiliar = point_auxiliar->next;
+            }
+
+            // Inserting the value in the position
+            new->next = point_auxiliar->next;
+            point_auxiliar->next = new;
+        }
+
+        // Inserting the valu in the new node
+        new->value = value;
+
+        // Increasing the size of the list
+        point_list->length++;
+
+        // Return 1
+        return 1;
+    }
 }
-// Else if, the position is negative
-else if (position < 0)
-{
-// Inform that the submitted position is invalid
-printf("The submitted position is invalid. There isn't negative positions.\n");
 
-// Return 0
-return 0;
-}
-// Else if, the position is greater than the list's length
-else if (position > point_list->length)
-{
-// Inform that the submitted position is invalid
-printf("The submitted position is invalid. The list has just %d elements.\n", point_list->length);
-
-// Return 0
-return 0;
-}
-// Else
-else
-{
-// Declaring a new node
-node_sll *new = create_node_sll(value, NULL);
-
-// If the position is 0
-if (position == 0)
-{
-// Inserting in the begging of the list
-insert_begin_sll(value, point_list);
-
-// Inform that the action was successed
-printf("The new node was insert on the first position.\n");
-
-// Return 1
-return 1;
-}
-// Else if the position is equals the list's length
-else if (position == point_list->length)
-{
-// Inserting in the end of the list
-insert_end_sll(value, point_list);
-
-// Inform that the action was successed
-printf("The new node was insert on the last position.\n");
-
-// Return 1
-return 1;
-}
-// Else
-else
-{
-// Declaring an auxiliar pointer that points to the first node
-node_sll *point_auxiliar = point_list->inicial;
-
-// For the auxiliar pointer is not pointing to the before before the wanted position
-for (int i = 0; i < (position - 1); i++)
-{
-// It goes to the next node
-point_auxiliar = point_auxiliar->next;
-}
-
-// Inserting the value in the position
-new->next = point_auxiliar->next;
-point_auxiliar->next = new;
-}
-
-// Inserting the valu in the new node
-new->value = value;
-
-// Increasing the size of the list
-point_list->length++;
-
-// Return 1
-return 1;
-}
-}
-
+/*
 // Function that removes any position of the list
 int remove_value_any_position_sll(list_sll *point_list, int position)
 {

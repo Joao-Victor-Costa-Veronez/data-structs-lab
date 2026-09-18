@@ -66,11 +66,11 @@ int main()
     printf("%d\n\n", change_last_value_sll(100, list_1));
     show_list_sll(list_1);
     
-    /*
     // Test: Inserting a value in any position
-    printf("%d\n\n", insert_value_any_position_sll(18, list_1, 3));
+    printf("%d\n\n", insert_value_any_position_sll(18, list_1, 1));
     show_list_sll(list_1);
-
+    
+    /*
     // Test: Removing a value in any position
     printf("%d\n\n", remove_value_any_position_sll(list_1, 3));
     show_list_sll(list_1);

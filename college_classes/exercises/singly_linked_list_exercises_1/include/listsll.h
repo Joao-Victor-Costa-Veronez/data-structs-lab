@@ -26,8 +26,8 @@ void clean_up_sll(list_sll *point_list);
 void delete_list_sll(list_sll **point_point_list);
 int change_inicial_value_sll(int value, list_sll *point_list);
 int change_last_value_sll(int value, list_sll *point_list);
-/*
 int insert_value_any_position_sll(int value, list_sll *point_list, int position);
+/*
 int remove_value_any_position_sll(list_sll *point_list, int position);
 int change_value_any_position_sll(int value, list_sll *point_list, int position);
 int obtain_value_any_position_sll(list_sll *point_list, int position);
