@@ -38,26 +38,27 @@ int main()
 
     // Test: Getting the inicial value of the list
     printf("%d\n\n", obtain_inicial_value_sll(list_1));
-    
+
     // Test: Getting the last value of the list
     printf("%d\n\n", obtain_last_value_sll(list_1));
-    
-    /*
+
     // Test: Removing from the begging of the list
     printf("%d\n\n", remove_begin_sll(list_1));
+    show_list_sll(list_1);
+
+    // Test: Removing from the end of the list
+    printf("%d\n\n", remove_last_sll(list_1));
     show_list_sll(list_1);
 
     /*
     Test: Cleaning up the list
     clean_up_sll(list_1);
+    */
 
+    /*
     // Test: Deleting a list
     delete_list_sll(&list_1);
     (Close comments)
-
-    // Test: Removing from the end of the list
-    printf("%d\n\n", remove_last_sll(list_1));
-    show_list_sll(list_1);
 
     // Test: Changing the list's first value
     printf("%d\n\n", change_inicial_value_sll(0, list_1));

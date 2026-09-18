@@ -148,83 +148,137 @@ int obtain_last_value_sll(list_sll *point_list)
     }
 }
 
-/*
 // Function that remove the list's begging node
 int remove_begin_sll(list_sll *point_list)
 {
-// If the list is empty
-if (point_list->length == 0)
+    // If the list is empty
+    if (point_list->length == 0)
+    {
+        // Advise that the list is empty
+        printf("The list is empty, so there isn't a node to be removed.\n");
+
+        // Return 0
+        return 0;
+    }
+    // Else
+    else
+    {
+        // Declaring an auxiliar pointer of the list first node
+        node_sll *point_auxiliar = point_list->inicial;
+
+        // The list's incial node become the second node
+        point_list->inicial = point_auxiliar->next;
+
+        // Getting free the first node's memory
+        free(point_auxiliar);
+
+        // Showing the message of success
+        printf("The first node was removed.\n");
+
+        // Decreasing the length of the list
+        point_list->length--;
+
+        // Return 1
+        return 1;
+    }
+}
+
+// Function that removes the last value of a list
+int remove_last_sll(list_sll *point_list)
 {
-// Advise that the list is empty
-printf("The list is empty, so there isn't a node to be removed.\n");
+    // If the list's empty
+    if (point_list->length == 0)
+    {
+        // Advise that the list is empty
+        printf("The list is empty, so there isn't a node to be removed.\n");
 
-// Return 0
-return 0;
+        // Return 0
+        return 0;
+    }
+    // Else if, the list has just one element
+    else if (point_list->length == 1)
+    {
+        // Getting free the node's memory
+        free(point_list->final);
+
+        // Making the list inicial and last pointer's points to NULL
+        point_list->inicial == NULL;
+        point_list->final == NULL;
+    }
+    // Else
+    else
+    {
+        // Declaring an auxiliar pointer
+        node_sll *aux_point = point_list->inicial;
+
+        // While the auxiliar pointer isn't in the penultime element
+        while (aux_point->next != point_list->final)
+        {
+            // It goes to the next element
+            aux_point = aux_point->next;
+        }
+
+        // Getting free the node's memory
+        free(point_list->final);
+
+        // Final pointer receive auxiliar pointer
+        point_list->final = aux_point;
+
+        // The current final node points to NULL
+        aux_point->next = NULL;
+    }
+
+    // Showing the message of success
+    printf("The last node was removed.\n");
+
+    // Decreasing the length of the list
+    point_list->length--;
+
+    // Return 1
+    return 1;
 }
-// Else
-else
-{
-// Declaring an auxiliar pointer of the list first node
-node_sll *point_auxiliar = point_list->inicial;
 
-// The list's incial node become the second node
-point_list->inicial = point_auxiliar->next;
-
-// Getting free the first node's memory
-free(point_auxiliar);
-
-// Showing the message of success
-printf("The first node was removed.\n");
-
-// Decreasing the length of the list
-point_list->length--;
-
-// When the auxiliar pointer is pointing to the last node,
-// return the value of this node
-return 1;
-}
-}
-
+/*
 // Function that cleans up a list
 void clean_up_sll(list_sll *point_list)
 {
-// If the list's empty
-if (point_list->length == 0)
-{
-// Inform that the list is already clean
-printf("The list is alredy clean. Nothing modified.\n");
-}
-// Else
-else
-{
-// Declaring variables
-node_sll *point_delete = point_list->inicial, *point_next_delete = point_delete->next;
+    // If the list's empty
+    if (point_list->length == 0)
+    {
+        // Inform that the list is already clean
+        printf("The list is alredy clean. Nothing modified.\n");
+    }
+    // Else
+    else
+    {
+        // Declaring variables
+        node_sll *point_delete = point_list->inicial, *point_next_delete = point_delete->next;
 
-// While the point next delete is different of NULL
-while (point_next_delete != NULL)
-{
-// Deleting the current point delete
-free(point_delete);
+        // While the point next delete is different of NULL
+        while (point_next_delete != NULL)
+        {
+            // Deleting the current point delete
+            free(point_delete);
 
-// The point delete goes to the point delete next
-point_delete = point_next_delete;
+            // The point delete goes to the point delete next
+            point_delete = point_next_delete;
 
-// The point delete next goes to the next node
-point_next_delete = point_next_delete->next;
-}
+            // The point delete next goes to the next node
+            point_next_delete = point_next_delete->next;
+        }
 
-// Cleaning the last node
-free(point_delete);
+        // Cleaning the last node
+        free(point_delete);
 
-// Updating the length of the list
-point_list->length = 0;
+        // Updating the length of the list
+        point_list->length = 0;
 
-// Updating the list's inicial pointer
-point_list->inicial = NULL;
+        // Updating the list's inicial pointer
+        point_list->inicial = NULL;
 
-// Informing that the list cleaned up
-printf("The list is cleaned up.\n");
-}
+        // Informing that the list cleaned up
+        printf("The list is cleaned up.\n");
+    }
 }
 
 // Function that deletes a list
@@ -241,58 +295,6 @@ free(*point_point_list);
 
 // Informing that the deletion was complete
 printf("The list was deleted successfully.\n\n");
-}
-
-// Function that removes the last value of a list
-int remove_last_sll(list_sll *point_list)
-{
-// If the list's empty
-if (point_list->length == 0)
-{
-// Advise that the list is empty
-printf("The list is empty, so there isn't a node to be removed.\n");
-
-// Return 0
-return 0;
-}
-// Else if, the list has just one element
-else if (point_list->length == 1)
-{
-// Getting free the node's memory
-free(point_list->inicial);
-
-// Making the pointer to the inical value points to NULL
-point_list->inicial == NULL;
-}
-// Else
-else
-{
-// Declaring an auxiliar pointer of the list first node
-node_sll *point_auxiliar = point_list->inicial;
-
-// While the point auxiliar isn't the penultime
-while (point_auxiliar->next->next != NULL)
-{
-// The point auxiliar goes to the next node
-point_auxiliar = point_auxiliar->next;
-}
-
-// Freeing the point auxiliar node's next memory
-free(point_auxiliar->next);
-
-// Making the point auxiliar node's points to NULL
-point_auxiliar->next = NULL;
-}
-
-// Showing the message of success
-printf("The last node was removed.\n");
-
-// Decreasing the length of the list
-point_list->length--;
-
-// When the auxiliar pointer is pointing to the last node,
-// return the value of this node
-return 1;
 }
 
 // Function that changes the first value of a list
