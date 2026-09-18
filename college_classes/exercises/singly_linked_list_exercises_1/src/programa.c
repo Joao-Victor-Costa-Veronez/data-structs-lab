@@ -53,20 +53,20 @@ int main()
     /*
     //Test: Cleaning up the list
     clean_up_sll(list_1);
-    */
-
+    
     // Test: Deleting a list
     delete_list_sll(&list_1);
-
-    /*
+    */
+    
     // Test: Changing the list's first value
     printf("%d\n\n", change_inicial_value_sll(0, list_1));
     show_list_sll(list_1);
-
+    
     // Test: Changing the list's last value
     printf("%d\n\n", change_last_value_sll(100, list_1));
     show_list_sll(list_1);
-
+    
+    /*
     // Test: Inserting a value in any position
     printf("%d\n\n", insert_value_any_position_sll(18, list_1, 3));
     show_list_sll(list_1);

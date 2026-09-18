@@ -297,69 +297,59 @@ void delete_list_sll(list_sll **point_point_list)
     printf("The list was deleted successfully.\n\n");
 }
 
-/*
 // Function that changes the first value of a list
 int change_inicial_value_sll(int value, list_sll *point_list)
 {
-// If the list's empty
-if (point_list->length == 0)
-{
-// Inform that the list's empty
-printf("The list's empty, so it's not possible to chenage it's first value. Nothing modified.\n");
+    // If the list's empty
+    if (point_list->length == 0)
+    {
+        // Inform that the list's empty
+        printf("The list's empty, so it's not possible to chenage it's first value. Nothing modified.\n");
 
-// Return 0
-return 0;
-}
-// Else
-else
-{
-// Changing the value of the first node
-point_list->inicial->value = value;
+        // Return 0
+        return 0;
+    }
+    // Else
+    else
+    {
+        // Changing the value of the first node
+        point_list->inicial->value = value;
 
-// Inform that the action successed
-printf("The inicial value of the list was changed.\n");
+        // Inform that the action successed
+        printf("The inicial value of the list was changed.\n");
 
-// Return 1
-return 1;
-}
+        // Return 1
+        return 1;
+    }
 }
 
 // Function that changes the first value of a list
 int change_last_value_sll(int value, list_sll *point_list)
 {
-// If the list's empty
-if (point_list->length == 0)
-{
-// Inform that the list's empty
-printf("The list's empty, so it's not possible to chenage it's last value. Nothing modified.\n");
+    // If the list's empty
+    if (point_list->length == 0)
+    {
+        // Inform that the list's empty
+        printf("The list's empty, so it's not possible to chenage it's last value. Nothing modified.\n");
 
-// Return 0
-return 0;
-}
-// Else
-else
-{
-// Decalring an auxiliar pointer that points to the first node
-node_sll *point_auxiliar = point_list->inicial;
+        // Return 0
+        return 0;
+    }
+    // Else
+    else
+    {
+        // Changing the value of the first node
+        point_list->final->value = value;
 
-// While the next node of the pointer auxiliar is not NULL
-while (point_auxiliar->next != NULL)
-{
-// The auxiliar pointer goes to the next node
-point_auxiliar = point_auxiliar->next;
-}
+        // Inform that the action successed
+        printf("The last value of the list was changed.\n");
 
-// Changing the value of the last node
-point_auxiliar->value = value;
-
-// Inform that the action successed
-printf("The last value of the list was changed.\n");
-
-// Return 1
-return 1;
-}
+        // Return 1
+        return 1;
+    }
 }
 
+/*
 // Function that inserts a node in any position of the list
 int insert_value_any_position_sll(int value, list_sll *point_list, int position)
 {
