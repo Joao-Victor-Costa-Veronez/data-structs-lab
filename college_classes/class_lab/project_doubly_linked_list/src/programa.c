@@ -45,6 +45,7 @@ int main()
     showList(list1);
     showListBackwards(list1);
     destroyListDLL(&list1);
+    printf("list1 = %p\n", list1);
 
     return 0;
 }
