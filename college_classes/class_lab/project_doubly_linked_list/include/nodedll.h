@@ -7,10 +7,10 @@
 typedef struct intDoublyNode
 {
     int value;
-    struct intDoublyList *previous;
-    struct intDoublyList *next;
+    struct intDoublyNode *previous;
+    struct intDoublyNode *next;
 } nodeDLL;
 
-nodeDLL *createListDLL(int value, nodeDLL *previous, nodeDLL *next);
+nodeDLL *createNodeDLL(int value, nodeDLL *previous, nodeDLL *next);
 
 #endif

@@ -1,5 +1,5 @@
-#ifndef LISTADLL_H
-#define LISTADLL_H 1
+#ifndef LISTDLL_H
+#define LISTDLL_H 1
 
 #include "nodedll.h"
 
@@ -11,5 +11,7 @@ typedef struct intDoublyList
 } listDLL;
 
 listDLL *createListDLL();
+void showList(listDLL *listDLL);
+void insertNodeBegginig(listDLL *listPoint, int value);
 
 #endif

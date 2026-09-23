@@ -1,6 +1,6 @@
 #include "nodedll.h"
 
-nodeDLL *createNewDLL(int value, nodeDLL *previous, nodeDLL *next)
+nodeDLL *createNodeDLL(int value, nodeDLL *previous, nodeDLL *next)
 {
     nodeDLL *new = (nodeDLL *)malloc(sizeof(nodeDLL));
     if (new == NULL)
@@ -9,9 +9,9 @@ nodeDLL *createNewDLL(int value, nodeDLL *previous, nodeDLL *next)
         exit(1);
     }
 
-    new->value = 0;
-    new->previous = NULL;
-    new->next = NULL;
+    new->value = value;
+    new->previous = previous;
+    new->next = next;
 
     return new;
 }
