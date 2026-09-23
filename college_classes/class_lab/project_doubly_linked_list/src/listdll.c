@@ -1,40 +1,58 @@
 // Including libraries
 #include "listdll.h"
 
+// Function that creates a new list
 listDLL *createListDLL()
 {
+    // Creating a new list
     listDLL *new = (listDLL *)malloc(sizeof(listDLL));
+    // Checking if the list was created
     if (new == NULL)
     {
+        // Informing the error and exiting
         printf("Fatal error: Falied to allocate memory for listDLL.\n");
         exit(1);
     }
+
+    // Default configuration of a list
     new->length = 0;
     new->inicial = NULL;
     new->final = NULL;
 
+    // Returning the list's address
     return new;
 }
 
+// Function that shows a list
 void showList(listDLL *listPoint)
 {
+    // Showing the list's length
     printf("Length: %d\n", listPoint->length);
 
+    // If the list's empty
     if (listPoint->length == 0)
     {
+        // Just print NULL
         printf("NULL\n\n");
     }
+    // Else
     else
     {
+        // Creating an auxiliar pointer
         nodeDLL *auxPoint = listPoint->inicial;
 
+        // Showing the first NULL
         printf("NULL <- ");
+        // While the auxiliar pointer isn't at the list's final pointer
         while (auxPoint != listPoint->final)
         {
+            // Show the element
             printf("%d <-> ", auxPoint->value);
 
+            // Go to the next element
             auxPoint = auxPoint->next;
         }
+        // Showing th last element, and the last NULL 
         printf("%d -> NULL\n\n", auxPoint->value);
     }
 }
@@ -112,9 +130,10 @@ void cleanUpListDLL(listDLL *listPoint)
         listPoint->length = 0;
     }
 }
-void destroyListDLL(listDLL *lisPoint)
-{
-    cleanUpListDLL(lisPoint);
 
-    free(lisPoint);
+void destroyListDLL(listDLL **listPointPoint)
+{
+    cleanUpListDLL(*listPointPoint);
+
+    free(*listPointPoint);
 }
