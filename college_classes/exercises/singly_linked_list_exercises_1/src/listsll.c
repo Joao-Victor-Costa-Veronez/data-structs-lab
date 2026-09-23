@@ -1,8 +1,8 @@
 // Importing libraries
 #include "listsll.h"
 
-// Function that create a new list of Simplie Linked List
-list_sll *create_list_SLL()
+// Function that create a new list of Singly Linked List
+list_sll *create_list_sll()
 {
     // Getting a space in the memory for the list
     list_sll *new = (list_sll *)malloc(sizeof(list_sll));
@@ -16,7 +16,7 @@ list_sll *create_list_SLL()
     // Adding the incial length, inicial and end pointer
     new->length = 0;
     new->inicial = NULL;
-    new->end = NULL;
+    new->final = NULL;
 
     // Returning the struct's address of list
     return new;
@@ -53,14 +53,14 @@ void show_list_sll(list_sll *point_list)
 void insert_begin_sll(int value, list_sll *point_list)
 {
     // Creating a new node
-    node_sll *new = create_node_SLL(value, NULL);
+    node_sll *new = create_node_sll(value, NULL);
 
     // If the list's empty
     if (point_list->length == 0)
     {
         // Making the inicial and final pointers of the list point to this node
         point_list->inicial = new;
-        point_list->end = new;
+        point_list->final = new;
     }
     // Else
     else
@@ -77,41 +77,33 @@ void insert_begin_sll(int value, list_sll *point_list)
 }
 
 // Function that inserts a value in the end of the list
-void insert_end_SLL(int value, list_sll *point_list)
+void insert_end_sll(int value, list_sll *point_list)
 {
     // Creating a new node
-    node_sll *new = create_node_SLL(value, NULL);
+    node_sll *new = create_node_sll(value, NULL);
 
-    // If there is just one element
+    // If the list's empty
     if (point_list->length == 0)
     {
-        // Make the inicial pointer of the list point to the node
+        // Making the inicial and final pointers of the list point to this node
         point_list->inicial = new;
     }
     // Else
     else
     {
-        // Declaring an auxiliar pointer of the list
-        node_sll *pont_auxiliar = point_list->inicial;
-
-        // While the next node of the auxiliar pointer is different than NULL
-        while (pont_auxiliar->next != NULL)
-        {
-            // The pointer goes to the next position
-            pont_auxiliar = pont_auxiliar->next;
-        }
-
-        // When the auxiliar pointer is pointing to the last node,
-        // make the next node address be the address of the new node
-        pont_auxiliar->next = new;
+        // Making the old last node points to the new node
+        point_list->final->next = new;
     }
+
+    // Making the list's final pointer points to the new node
+    point_list->final = new;
 
     // Incrementing the length of the list
     point_list->length++;
 }
 
 // Function that returns the inicial value of the list
-int obtain_inicial_value_SLL(list_sll *point_list)
+int obtain_inicial_value_sll(list_sll *point_list)
 {
     // If the list is empty
     if (point_list->length == 0)
@@ -134,7 +126,7 @@ int obtain_inicial_value_SLL(list_sll *point_list)
 }
 
 // Function that returns the last value of the list
-int obtain_last_value_SLL(list_sll *point_list)
+int obtain_last_value_sll(list_sll *point_list)
 {
     // If the list is empty
     if (point_list->length == 0)
@@ -148,27 +140,16 @@ int obtain_last_value_SLL(list_sll *point_list)
     // Else
     else
     {
-        // Declaring an auxiliar pointer of the list
-        node_sll *pont_auxiliar = point_list->inicial;
-
-        // While the next node of the auxiliar pointer is different than NULL
-        while (pont_auxiliar->next != NULL)
-        {
-            // The pointer goes to the next position
-            pont_auxiliar = pont_auxiliar->next;
-        }
-
         // Showing the value
         printf("The last value of the list is: ");
 
-        // When the auxiliar pointer is pointing to the last node,
-        // return the value of this node
-        return pont_auxiliar->value;
+        // Return the list's incial node value
+        return point_list->final->value;
     }
 }
 
 // Function that remove the list's begging node
-int remove_begin_SLL(list_sll *point_list)
+int remove_begin_sll(list_sll *point_list)
 {
     // If the list is empty
     if (point_list->length == 0)
@@ -197,14 +178,68 @@ int remove_begin_SLL(list_sll *point_list)
         // Decreasing the length of the list
         point_list->length--;
 
-        // When the auxiliar pointer is pointing to the last node,
-        // return the value of this node
+        // Return 1
         return 1;
     }
 }
 
+// Function that removes the last value of a list
+int remove_last_sll(list_sll *point_list)
+{
+    // If the list's empty
+    if (point_list->length == 0)
+    {
+        // Advise that the list is empty
+        printf("The list is empty, so there isn't a node to be removed.\n");
+
+        // Return 0
+        return 0;
+    }
+    // Else if, the list has just one element
+    else if (point_list->length == 1)
+    {
+        // Getting free the node's memory
+        free(point_list->final);
+
+        // Making the list inicial and last pointer's points to NULL
+        point_list->inicial == NULL;
+        point_list->final == NULL;
+    }
+    // Else
+    else
+    {
+        // Declaring an auxiliar pointer
+        node_sll *aux_point = point_list->inicial;
+
+        // While the auxiliar pointer isn't in the penultime element
+        while (aux_point->next != point_list->final)
+        {
+            // It goes to the next element
+            aux_point = aux_point->next;
+        }
+
+        // Getting free the node's memory
+        free(point_list->final);
+
+        // Final pointer receive auxiliar pointer
+        point_list->final = aux_point;
+
+        // The current final node points to NULL
+        aux_point->next = NULL;
+    }
+
+    // Showing the message of success
+    printf("The last node was removed.\n");
+
+    // Decreasing the length of the list
+    point_list->length--;
+
+    // Return 1
+    return 1;
+}
+
 // Function that cleans up a list
-void clean_up_SLL(list_sll *point_list)
+void clean_up_sll(list_sll *point_list)
 {
     // If the list's empty
     if (point_list->length == 0)
@@ -237,19 +272,20 @@ void clean_up_SLL(list_sll *point_list)
         // Updating the length of the list
         point_list->length = 0;
 
-        // Updating the list's inicial pointer
+        // Updating the list's inicial and final pointer
         point_list->inicial = NULL;
+        point_list->final = NULL;
 
         // Informing that the list cleaned up
-        printf("The list is cleaned up.\n");
+        printf("The list is cleaned up.\n\n");
     }
 }
 
 // Function that deletes a list
-void delete_list_SLL(list_sll **point_point_list)
+void delete_list_sll(list_sll **point_point_list)
 {
-    // Cleaning the list first
-    clean_up_SLL(*point_point_list);
+    // Cleaning the list up first
+    clean_up_sll(*point_point_list);
 
     // Freeing the memory of the list using the pointer of the pointer of the list
     free(*point_point_list);
@@ -261,60 +297,8 @@ void delete_list_SLL(list_sll **point_point_list)
     printf("The list was deleted successfully.\n\n");
 }
 
-// Function that removes the last value of a list
-int remove_last_SLL(list_sll *point_list)
-{
-    // If the list's empty
-    if (point_list->length == 0)
-    {
-        // Advise that the list is empty
-        printf("The list is empty, so there isn't a node to be removed.\n");
-
-        // Return 0
-        return 0;
-    }
-    // Else if, the list has just one element
-    else if (point_list->length == 1)
-    {
-        // Getting free the node's memory
-        free(point_list->inicial);
-
-        // Making the pointer to the inical value points to NULL
-        point_list->inicial == NULL;
-    }
-    // Else
-    else
-    {
-        // Declaring an auxiliar pointer of the list first node
-        node_sll *point_auxiliar = point_list->inicial;
-
-        // While the point auxiliar isn't the penultime
-        while (point_auxiliar->next->next != NULL)
-        {
-            // The point auxiliar goes to the next node
-            point_auxiliar = point_auxiliar->next;
-        }
-
-        // Freeing the point auxiliar node's next memory
-        free(point_auxiliar->next);
-
-        // Making the point auxiliar node's points to NULL
-        point_auxiliar->next = NULL;
-    }
-
-    // Showing the message of success
-    printf("The last node was removed.\n");
-
-    // Decreasing the length of the list
-    point_list->length--;
-
-    // When the auxiliar pointer is pointing to the last node,
-    // return the value of this node
-    return 1;
-}
-
 // Function that changes the first value of a list
-int change_inicial_value_SLL(int value, list_sll *point_list)
+int change_inicial_value_sll(int value, list_sll *point_list)
 {
     // If the list's empty
     if (point_list->length == 0)
@@ -340,7 +324,7 @@ int change_inicial_value_SLL(int value, list_sll *point_list)
 }
 
 // Function that changes the first value of a list
-int change_last_value_SLL(int value, list_sll *point_list)
+int change_last_value_sll(int value, list_sll *point_list)
 {
     // If the list's empty
     if (point_list->length == 0)
@@ -354,18 +338,8 @@ int change_last_value_SLL(int value, list_sll *point_list)
     // Else
     else
     {
-        // Decalring an auxiliar pointer that points to the first node
-        node_sll *point_auxiliar = point_list->inicial;
-
-        // While the next node of the pointer auxiliar is not NULL
-        while (point_auxiliar->next != NULL)
-        {
-            // The auxiliar pointer goes to the next node
-            point_auxiliar = point_auxiliar->next;
-        }
-
-        // Changing the value of the last node
-        point_auxiliar->value = value;
+        // Changing the value of the first node
+        point_list->final->value = value;
 
         // Inform that the action successed
         printf("The last value of the list was changed.\n");
@@ -376,9 +350,9 @@ int change_last_value_SLL(int value, list_sll *point_list)
 }
 
 // Function that inserts a node in any position of the list
-int insert_value_any_position_SLL(int value, list_sll *point_list, int position)
+int insert_value_any_position_sll(int value, list_sll *point_list, int position)
 {
-    // If the list is empty
+    // If the list is empty, and the user isn't trying to insert the first value
     if ((point_list->length == 0) && (position != 0))
     {
         // Inform that the list's empty
@@ -409,16 +383,16 @@ int insert_value_any_position_SLL(int value, list_sll *point_list, int position)
     else
     {
         // Declaring a new node
-        node_sll *new = create_node_SLL(value, NULL);
+        node_sll *new = create_node_sll(value, NULL);
 
         // If the position is 0
         if (position == 0)
         {
             // Inserting in the begging of the list
-            insert_begin_SLL(value, point_list);
+            insert_begin_sll(value, point_list);
 
             // Inform that the action was successed
-            printf("The new node was insert on the first position.\n");
+            printf("The new node was insert on the begging of the list.\n");
 
             // Return 1
             return 1;
@@ -427,10 +401,10 @@ int insert_value_any_position_SLL(int value, list_sll *point_list, int position)
         else if (position == point_list->length)
         {
             // Inserting in the end of the list
-            insert_end_SLL(value, point_list);
+            insert_end_sll(value, point_list);
 
             // Inform that the action was successed
-            printf("The new node was insert on the last position.\n");
+            printf("The new node was insert on the ending of the list.\n");
 
             // Return 1
             return 1;
@@ -441,7 +415,7 @@ int insert_value_any_position_SLL(int value, list_sll *point_list, int position)
             // Declaring an auxiliar pointer that points to the first node
             node_sll *point_auxiliar = point_list->inicial;
 
-            // For the auxiliar pointer is not pointing to the before before the wanted position
+            // For the auxiliar pointer is not pointing to the penultime wanted position
             for (int i = 0; i < (position - 1); i++)
             {
                 // It goes to the next node
@@ -464,230 +438,232 @@ int insert_value_any_position_SLL(int value, list_sll *point_list, int position)
     }
 }
 
+/*
 // Function that removes any position of the list
-int remove_value_any_position_SLL(list_sll *point_list, int position)
+int remove_value_any_position_sll(list_sll *point_list, int position)
 {
-    // If the list's empty
-    if (point_list->length == 0)
-    {
-        // Advise that the list is empty
-        printf("The list is empty, so there isn't a node to be removed.\n");
+// If the list's empty
+if (point_list->length == 0)
+{
+// Advise that the list is empty
+printf("The list is empty, so there isn't a node to be removed.\n");
 
-        // Return 0
-        return 0;
-    }
-    // Else if, the position is negative
-    else if (position < 0)
-    {
-        // Inform that the submitted position is invalid
-        printf("The submitted position is invalid. There isn't negative positions.\n");
+// Return 0
+return 0;
+}
+// Else if, the position is negative
+else if (position < 0)
+{
+// Inform that the submitted position is invalid
+printf("The submitted position is invalid. There isn't negative positions.\n");
 
-        // Return 0
-        return 0;
-    }
-    // Else if, the position is greater than the list's length
-    else if (position > point_list->length)
-    {
-        // Inform that the submitted position is invalid
-        printf("The submitted position is invalid. The list has just %d elements.\n", point_list->length);
+// Return 0
+return 0;
+}
+// Else if, the position is greater than the list's length
+else if (position > point_list->length)
+{
+// Inform that the submitted position is invalid
+printf("The submitted position is invalid. The list has just %d elements.\n", point_list->length);
 
-        // Return 0
-        return 0;
-    }
-    // Else
-    else
-    {
+// Return 0
+return 0;
+}
+// Else
+else
+{
 
-        // If the position is 0
-        if (position == 0)
-        {
-            // Remove the begin of the list
-            remove_begin_SLL(point_list);
+// If the position is 0
+if (position == 0)
+{
+// Remove the begin of the list
+remove_begin_sll(point_list);
 
-            // Return 1
-            return 1;
-        }
-        // Else if, the position is the length of the list
-        else if (position == (point_list->length - 1))
-        {
-            // Remove the end of the list
-            remove_last_SLL(point_list);
+// Return 1
+return 1;
+}
+// Else if, the position is the length of the list
+else if (position == (point_list->length - 1))
+{
+// Remove the end of the list
+remove_last_sll(point_list);
 
-            // Return 1
-            return 1;
-        }
-        // Else
-        else
-        {
-            // Declaring an auxiliar pointer of the list first node
-            node_sll *point_auxiliar = point_list->inicial;
+// Return 1
+return 1;
+}
+// Else
+else
+{
+// Declaring an auxiliar pointer of the list first node
+node_sll *point_auxiliar = point_list->inicial;
 
-            // For the point auxiliar isn't the penultime position that is going to be excluded
-            for (int i = 0; i < (position - 1); i++)
-            {
-                // The point auxiliar goes to the next node
-                point_auxiliar = point_auxiliar->next;
-            }
+// For the point auxiliar isn't the penultime position that is going to be excluded
+for (int i = 0; i < (position - 1); i++)
+{
+// The point auxiliar goes to the next node
+point_auxiliar = point_auxiliar->next;
+}
 
-            // Declaring a pointer that saves the node that will be excluded
-            node_sll *point_delete = point_auxiliar->next;
+// Declaring a pointer that saves the node that will be excluded
+node_sll *point_delete = point_auxiliar->next;
 
-            // Making the auxiliar pointer's node points to the next next node
-            point_auxiliar->next = point_auxiliar->next->next;
+// Making the auxiliar pointer's node points to the next next node
+point_auxiliar->next = point_auxiliar->next->next;
 
-            // Freeing the delete pointer's node memory
-            free(point_delete);
+// Freeing the delete pointer's node memory
+free(point_delete);
 
-            // Showing the message of success
-            printf("The node was removed.\n");
+// Showing the message of success
+printf("The node was removed.\n");
 
-            // Decreasing the length of the list
-            point_list->length--;
+// Decreasing the length of the list
+point_list->length--;
 
-            // Return 1
-            return 1;
-        }
-    }
+// Return 1
+return 1;
+}
+}
 }
 
 // Function that changes any list's value in any position
-int change_value_any_position_SLL(int value, list_sll *point_list, int position)
+int change_value_any_position_sll(int value, list_sll *point_list, int position)
 {
-    // If the list's empty
-    if (point_list->length == 0)
-    {
-        // Advise that the list is empty
-        printf("The list is empty, so there isn't a node to be changed.\n");
+// If the list's empty
+if (point_list->length == 0)
+{
+// Advise that the list is empty
+printf("The list is empty, so there isn't a node to be changed.\n");
 
-        // Return 0
-        return 0;
-    }
-    // Else if, the position is negative
-    else if (position < 0)
-    {
-        // Inform that the submitted position is invalid
-        printf("The submitted position is invalid. There isn't negative positions.\n");
+// Return 0
+return 0;
+}
+// Else if, the position is negative
+else if (position < 0)
+{
+// Inform that the submitted position is invalid
+printf("The submitted position is invalid. There isn't negative positions.\n");
 
-        // Return 0
-        return 0;
-    }
-    // Else if, the position is greater than the list's length
-    else if (position > point_list->length)
-    {
-        // Inform that the submitted position is invalid
-        printf("The submitted position is invalid. The list has just %d elements.\n", point_list->length);
+// Return 0
+return 0;
+}
+// Else if, the position is greater than the list's length
+else if (position > point_list->length)
+{
+// Inform that the submitted position is invalid
+printf("The submitted position is invalid. The list has just %d elements.\n", point_list->length);
 
-        // Return 0
-        return 0;
-    }
-    // Else
-    else
-    {
-        // If the position is 0
-        if (position == 0)
-        {
-            // Change the begin of the list
-            change_inicial_value_SLL(value, point_list);
+// Return 0
+return 0;
+}
+// Else
+else
+{
+// If the position is 0
+if (position == 0)
+{
+// Change the begin of the list
+change_inicial_value_sll(value, point_list);
 
-            // Return 1
-            return 1;
-        }
-        // Else if, the position is the length of the list
-        else if (position == (point_list->length - 1))
-        {
-            // Change the end of the list
-            change_last_value_SLL(value, point_list);
+// Return 1
+return 1;
+}
+// Else if, the position is the length of the list
+else if (position == (point_list->length - 1))
+{
+// Change the end of the list
+change_last_value_sll(value, point_list);
 
-            // Return 1
-            return 1;
-        }
-        // Else
-        else
-        {
-            // Declaring an auxiliar pointer of the list first node
-            node_sll *point_auxiliar = point_list->inicial;
+// Return 1
+return 1;
+}
+// Else
+else
+{
+// Declaring an auxiliar pointer of the list first node
+node_sll *point_auxiliar = point_list->inicial;
 
-            // For the point auxiliar isn't the position that will have the value changed
-            for (int i = 0; i < position; i++)
-            {
-                // The point auxiliar goes to the next node
-                point_auxiliar = point_auxiliar->next;
-            }
+// For the point auxiliar isn't the position that will have the value changed
+for (int i = 0; i < position; i++)
+{
+// The point auxiliar goes to the next node
+point_auxiliar = point_auxiliar->next;
+}
 
-            // Changing the value of the node
-            point_auxiliar->value = value;
+// Changing the value of the node
+point_auxiliar->value = value;
 
-            // Showing the message of success
-            printf("The node's value was changed.\n");
+// Showing the message of success
+printf("The node's value was changed.\n");
 
-            // Return 1
-            return 1;
-        }
-    }
+// Return 1
+return 1;
+}
+}
 }
 
 // Function that obtains any list's value in any position
-int obtain_value_any_position_SLL(list_sll *point_list, int position)
+int obtain_value_any_position_sll(list_sll *point_list, int position)
 {
-    // If the list's empty
-    if (point_list->length == 0)
-    {
-        // Advise that the list is empty
-        printf("The list is empty, so there isn't a node to be obtained.\n");
+// If the list's empty
+if (point_list->length == 0)
+{
+// Advise that the list is empty
+printf("The list is empty, so there isn't a node to be obtained.\n");
 
-        // Return 0
-        return 0;
-    }
-    // Else if, the position is negative
-    else if (position < 0)
-    {
-        // Inform that the submitted position is invalid
-        printf("The submitted position is invalid. There isn't negative positions.\n");
-
-        // Return 0
-        return 0;
-    }
-    // Else if, the position is greater than the list's length
-    else if (position > point_list->length)
-    {
-        // Inform that the submitted position is invalid
-        printf("The submitted position is invalid. The list has just %d elements.\n", point_list->length);
-
-        // Return 0
-        return 0;
-    }
-    // Else
-    else
-    {
-        // If the position is 0
-        if (position == 0)
-        {
-            // Return the begin of the list
-            return obtain_inicial_value_SLL(point_list);
-        }
-        // Else if, the position is the length of the list
-        else if (position == (point_list->length - 1))
-        {
-            // Retrun the end of the list
-            return obtain_last_value_SLL(point_list);
-        }
-        // Else
-        else
-        {
-            // Declaring an auxiliar pointer of the list first node
-            node_sll *point_auxiliar = point_list->inicial;
-
-            // For the point auxiliar isn't the position that will return the value
-            for (int i = 0; i < position; i++)
-            {
-                // The point auxiliar goes to the next node
-                point_auxiliar = point_auxiliar->next;
-            }
-
-            // Showing the message of success
-            printf("The value in the %d index is: ", position);
-
-            return point_auxiliar->value;
-        }
-    }
+// Return 0
+return 0;
 }
+// Else if, the position is negative
+else if (position < 0)
+{
+// Inform that the submitted position is invalid
+printf("The submitted position is invalid. There isn't negative positions.\n");
+
+// Return 0
+return 0;
+}
+// Else if, the position is greater than the list's length
+else if (position > point_list->length)
+{
+// Inform that the submitted position is invalid
+printf("The submitted position is invalid. The list has just %d elements.\n", point_list->length);
+
+// Return 0
+return 0;
+}
+// Else
+else
+{
+// If the position is 0
+if (position == 0)
+{
+// Return the begin of the list
+return obtain_inicial_value_sll(point_list);
+}
+// Else if, the position is the length of the list
+else if (position == (point_list->length - 1))
+{
+// Retrun the end of the list
+return obtain_last_value_sll(point_list);
+}
+// Else
+else
+{
+// Declaring an auxiliar pointer of the list first node
+node_sll *point_auxiliar = point_list->inicial;
+
+// For the point auxiliar isn't the position that will return the value
+for (int i = 0; i < position; i++)
+{
+// The point auxiliar goes to the next node
+point_auxiliar = point_auxiliar->next;
+}
+
+// Showing the message of success
+printf("The value in the %d index is: ", position);
+
+return point_auxiliar->value;
+}
+}
+}
+*/
