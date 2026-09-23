@@ -12,6 +12,8 @@ typedef struct intDoublyList
 
 listDLL *createListDLL();
 void showList(listDLL *listDLL);
-void insertNodeBegginig(listDLL *listPoint, int value);
+void showListBackwards(listDLL *listPoint);
+void insertNodeBeginnig(listDLL *listPoint, int value);
+void insertingNodeEnd(listDLL *listPoint, int value);
 
 #endif

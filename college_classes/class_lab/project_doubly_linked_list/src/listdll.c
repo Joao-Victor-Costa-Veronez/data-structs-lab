@@ -36,29 +36,32 @@ void showList(listDLL *listPoint)
         }
         printf("%d -> NULL\n\n", auxPoint->value);
     }
-
-    /*
-    printf("Tamanho = %d, NULL", listPoint->length);
-    if (listPoint->length > 0)
-    {
-        printf(" <- ");
-        nodeDLL *aux = listPoint->inicial;
-        while (aux != NULL)
-        {
-            printf("%d", aux->value);
-            aux = aux->next;
-            if (aux != NULL)
-            {
-                printf(" <-> ");
-            }
-        }
-        printf(" -> NULL");
-    }
-    printf("\n");
-    */
 }
 
-void insertNodeBegginig(listDLL *listPoint, int value)
+void showListBackwards(listDLL *listPoint)
+{
+    printf("Length: %d\n", listPoint->length);
+
+    if (listPoint->length == 0)
+    {
+        printf("NULL\n\n");
+    }
+    else
+    {
+        nodeDLL *auxPoint = listPoint->final;
+
+        printf("NULL <- ");
+        while (auxPoint != listPoint->inicial)
+        {
+            printf("%d <-> ", auxPoint->value);
+
+            auxPoint = auxPoint->previous;
+        }
+        printf("%d -> NULL\n\n", auxPoint->value);
+    }
+}
+
+void insertNodeBeginnig(listDLL *listPoint, int value)
 {
     nodeDLL *new = createNodeDLL(value, NULL, listPoint->inicial);
 
@@ -72,5 +75,22 @@ void insertNodeBegginig(listDLL *listPoint, int value)
     }
 
     listPoint->inicial = new;
+    listPoint->length++;
+}
+
+void insertingNodeEnd(listDLL *listPoint, int value)
+{
+    nodeDLL *new = createNodeDLL(value, listPoint->final, NULL);
+
+    if (listPoint->length == 0)
+    {
+        listPoint->inicial = new;
+    }
+    else
+    {
+        listPoint->final->next = new;
+    }
+
+    listPoint->final = new;
     listPoint->length++;
 }
