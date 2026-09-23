@@ -1,3 +1,4 @@
+// Including libraries
 #include "listdll.h"
 
 listDLL *createListDLL()
@@ -93,4 +94,27 @@ void insertingNodeEnd(listDLL *listPoint, int value)
 
     listPoint->final = new;
     listPoint->length++;
+}
+
+void cleanUpListDLL(listDLL *listPoint)
+{
+    if (listPoint->length > 0)
+    {
+        while (listPoint->inicial != listPoint->final)
+        {
+            listPoint->inicial = listPoint->inicial->next;
+            free(listPoint->inicial->previous);
+        }
+        free(listPoint->inicial);
+
+        listPoint->inicial = NULL;
+        listPoint->final = NULL;
+        listPoint->length = 0;
+    }
+}
+void destroyListDLL(listDLL *lisPoint)
+{
+    cleanUpListDLL(lisPoint);
+
+    free(lisPoint);
 }
