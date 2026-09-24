@@ -155,7 +155,7 @@ void cleanUpListDLL(listDLL *listPoint)
             // Making th list's inical goes to the next node
             listPoint->inicial = listPoint->inicial->next;
 
-            // Freeing the list's previous inicial node 
+            // Freeing the list's previous inicial node
             free(listPoint->inicial->previous);
         }
         // Freeing the list's inicial pointer
@@ -182,7 +182,7 @@ void destroyListDLL(listDLL **listPointPoint)
 }
 
 // Function that removes the list's beginning
-int removeNodeBeginnig(listDLL *listPoint)
+int removeNodeBeginnigDLL(listDLL *listPoint)
 {
     // If the list's empty
     if (listPoint->length == 0)
@@ -230,7 +230,7 @@ int removeNodeBeginnig(listDLL *listPoint)
 }
 
 // Function that removes the list's end
-int removeNodeEnd(listDLL *listPoint)
+int removeNodeEndDLL(listDLL *listPoint)
 {
     // If the list's empty
     if (listPoint->length == 0)
@@ -271,6 +271,92 @@ int removeNodeEnd(listDLL *listPoint)
 
         // Reducing the list's length
         listPoint->length--;
+
+        // Return 1
+        return 1;
+    }
+}
+
+// Function that obtains the list's inicial value
+int obtainInicialValueDLL(listDLL *listPoint)
+{
+    // If the list's empty
+    if (listPoint->length == 0)
+    {
+        // Informing the user
+        printf("The list's empty, there isn't a node to be obtained.\n\n");
+
+        // Return 0
+        return 0;
+    }
+    // Else
+    else
+    {
+        // Return the list's inicial value
+        return listPoint->inicial->value;
+    }
+}
+
+// Function that obtains the list's inicial value
+int obtainFinalValueDLL(listDLL *listPoint)
+{
+    // If the list's empty
+    if (listPoint->length == 0)
+    {
+        // Informing the user
+        printf("The list's empty, there isn't a node to be obtained.\n\n");
+
+        // Return 0
+        return 0;
+    }
+    // Else
+    else
+    {
+        // Return the list's final value
+        return listPoint->final->value;
+    }
+}
+
+// Function that changes the list's inicial value
+int changeInicialValueDLL(listDLL *listPoint, int value)
+{
+    // If the list's empty
+    if (listPoint->length == 0)
+    {
+        // Informing the user
+        printf("The list's empty, there isn't a node to be changed. No changes.\n\n");
+
+        // Return 0
+        return 0;
+    }
+    // Else
+    else
+    {
+        // Changing the first's node value
+        listPoint->inicial->value = value;
+
+        // Return 1
+        return 1;
+    }
+}
+
+// Function that changes the list's inicial value
+int changeFinalValueDLL(listDLL *listPoint, int value)
+{
+    // If the list's empty
+    if (listPoint->length == 0)
+    {
+        // Informing the user
+        printf("The list's empty, there isn't a node to be changed. No changes.\n\n");
+
+        // Return 0
+        return 0;
+    }
+    // Else
+    else
+    {
+        // Changing the first's node value
+        listPoint->final->value = value;
 
         // Return 1
         return 1;

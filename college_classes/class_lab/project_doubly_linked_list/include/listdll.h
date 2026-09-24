@@ -23,7 +23,11 @@ void insertNodeBeginnig(listDLL *listPoint, int value);
 void insertingNodeEnd(listDLL *listPoint, int value);
 void cleanUpListDLL(listDLL *listPoint);
 void destroyListDLL(listDLL **listPointPoint);
-int removeNodeBeginnig(listDLL *listPoint);
-int removeNodeEnd(listDLL *listPoint);
+int removeNodeBeginnigDLL(listDLL *listPoint);
+int removeNodeEndDLL(listDLL *listPoint);
+int obtainInicialValueDLL(listDLL *listPoint);
+int obtainFinalValueDLL(listDLL *listPoint);
+int changeInicialValueDLL(listDLL *listPoint, int value);
+int changeFinalValueDLL(listDLL *listPoint, int value);
 
 #endif

@@ -38,15 +38,14 @@ int main()
     insertingNodeEnd(list1, 6);
     showList(list1);
     showListBackwards(list1);
-    
+
     // Test: Cleaning up and destroying a list
     cleanUpListDLL(list1);
     showList(list1);
     showListBackwards(list1);
     destroyListDLL(&list1);
     printf("list1 = %p\n", list1);
-    */
-    
+
     // Test: Removing the first node
     removeNodeBeginnig(list1);
     showList(list1);
@@ -58,6 +57,17 @@ int main()
     showList(list1);
     showListBackwards(list1);
     removeNodeBeginnig(list1);
+    showList(list1);
+    showListBackwards(list1);
+    */
+
+    // Test: Obtaining the list's incial and final value
+    printf("The list's inicial value is: %d\n\n", obtainInicialValueDLL(list1));
+    printf("The list's final value is: %d\n\n", obtainFinalValueDLL(list1));
+
+    // Test: Changing the list's incial and final value
+    changeInicialValueDLL(list1, 0);
+    changeFinalValueDLL(list1, 4);
     showList(list1);
     showListBackwards(list1);
 
