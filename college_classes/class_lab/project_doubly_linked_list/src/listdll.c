@@ -168,12 +168,16 @@ void cleanUpListDLL(listDLL *listPoint)
     }
 }
 
+// Function that destroys a list
 void destroyListDLL(listDLL **listPointPoint)
 {
+    // Cleanning up the list
     cleanUpListDLL(*listPointPoint);
 
+    // Freeing the list's memory
     free(*listPointPoint);
 
+    // Making the list's pointer points to NULL
     *listPointPoint = NULL;
 }
 
