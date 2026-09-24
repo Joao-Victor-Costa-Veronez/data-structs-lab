@@ -113,39 +113,55 @@ void insertNodeBeginnig(listDLL *listPoint, int value)
     // Making the list's inicial pointer points to the new node
     listPoint->inicial = new;
 
-    // Increasing the list's length 
+    // Increasing the list's length
     listPoint->length++;
 }
 
 // Function that inserts in the list's end
 void insertingNodeEnd(listDLL *listPoint, int value)
 {
+    // Creating a new node
     nodeDLL *new = createNodeDLL(value, listPoint->final, NULL);
 
+    // If the list's empty
     if (listPoint->length == 0)
     {
+        // Making the list's inicial pointer points to the new node
         listPoint->inicial = new;
     }
+    // Else
     else
     {
+        // Making the list's next final pointer points to the new node
         listPoint->final->next = new;
     }
 
+    // Making the list's final pointer points to the new node
     listPoint->final = new;
+
+    // Increasing the list's length
     listPoint->length++;
 }
 
+// Function that cleans up a list
 void cleanUpListDLL(listDLL *listPoint)
 {
+    // If the list's empty
     if (listPoint->length > 0)
     {
+        // While the list's inicial pointer isn't the list's final pointer
         while (listPoint->inicial != listPoint->final)
         {
+            // Making th list's inical goes to the next node
             listPoint->inicial = listPoint->inicial->next;
+
+            // Freeing the list's previous inicial node 
             free(listPoint->inicial->previous);
         }
+        // Freeing the list's inicial pointer
         free(listPoint->inicial);
 
+        // Making the list receive it's default values
         listPoint->inicial = NULL;
         listPoint->final = NULL;
         listPoint->length = 0;
@@ -200,6 +216,54 @@ int removeNodeBeginnig(listDLL *listPoint)
 
         // Making the new inicial node's previous point to NULL
         listPoint->inicial->previous = NULL;
+
+        // Reducing the list's length
+        listPoint->length--;
+
+        // Return 1
+        return 1;
+    }
+}
+
+// Function that removes the list's end
+int removeNodeEnd(listDLL *listPoint)
+{
+    // If the list's empty
+    if (listPoint->length == 0)
+    {
+        // Informing the user
+        printf("The list's empty, there isn't a node to be removed. No changes.\n\n");
+
+        // Return 0
+        return 0;
+    }
+    // Else if, the list has just one element
+    else if (listPoint->length == 1)
+    {
+        // Freeing the list's inical node
+        free(listPoint->final);
+
+        // Making the both list's pointers point to NULL
+        listPoint->inicial = NULL;
+        listPoint->final = NULL;
+
+        // Reducing the list's length
+        listPoint->length--;
+
+        // Return 1
+        return 1;
+    }
+    // Else
+    else
+    {
+        // Moving the list's final pointer to the previous node
+        listPoint->final = listPoint->final->previous;
+
+        // Freeing the old final node
+        free(listPoint->final->next);
+
+        // Making the new final node's next point to NULL
+        listPoint->final->next = NULL;
 
         // Reducing the list's length
         listPoint->length--;
