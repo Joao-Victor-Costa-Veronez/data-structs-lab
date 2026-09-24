@@ -38,14 +38,28 @@ int main()
     insertingNodeEnd(list1, 6);
     showList(list1);
     showListBackwards(list1);
-    */
-
+    
     // Test: Cleaning up and destroying a list
     cleanUpListDLL(list1);
     showList(list1);
     showListBackwards(list1);
     destroyListDLL(&list1);
     printf("list1 = %p\n", list1);
+    */
+    
+    // Test: Removing the first node
+    removeNodeBeginnig(list1);
+    showList(list1);
+    showListBackwards(list1);
+    removeNodeBeginnig(list1);
+    showList(list1);
+    showListBackwards(list1);
+    removeNodeBeginnig(list1);
+    showList(list1);
+    showListBackwards(list1);
+    removeNodeBeginnig(list1);
+    showList(list1);
+    showListBackwards(list1);
 
     return 0;
 }
