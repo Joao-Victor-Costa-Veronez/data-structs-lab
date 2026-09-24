@@ -27,7 +27,9 @@ int removeNodeBeginnigDLL(listDLL *listPoint);
 int removeNodeEndDLL(listDLL *listPoint);
 int obtainInicialValueDLL(listDLL *listPoint);
 int obtainFinalValueDLL(listDLL *listPoint);
+int obtainAnyValueDLL(listDLL *listPoint, int position);
 int changeInicialValueDLL(listDLL *listPoint, int value);
 int changeFinalValueDLL(listDLL *listPoint, int value);
+int changeAnyValueDLL(listDLL *listPoint, int value, int position);
 
 #endif

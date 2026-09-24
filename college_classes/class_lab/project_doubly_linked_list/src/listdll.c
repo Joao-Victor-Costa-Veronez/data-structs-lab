@@ -317,6 +317,52 @@ int obtainFinalValueDLL(listDLL *listPoint)
     }
 }
 
+// Function that obtains the list's any value
+int obtainAnyValueDLL(listDLL *listPoint, int position)
+{
+    // If the list's empty
+    if (listPoint->length == 0)
+    {
+        // Informing the user
+        printf("The list's empty, there isn't a node to be obtained.\n\n");
+
+        // Return 0
+        return 0;
+    }
+    // Else if, the position is negative
+    else if (position < 0)
+    {
+        // Informing the user
+        printf("There isn't negative positions.\n\n");
+
+        // Return 0
+        return 0;
+    }
+    // Else if, the position is greater than the list's length
+    else if (position > (listPoint->length - 1))
+    {
+        // Informing the user
+        printf("The list has just %d indexes.\n\n", (listPoint->length - 1));
+
+        // Return 0
+        return 0;
+    }
+    // Else
+    else
+    {
+        // Declaring an auxiliar pointer
+        nodeDLL *auxPoint = listPoint->inicial;
+
+        // For auxiliar pointer isn't at the position requested; It goes to the next node
+        for (int i = 0; i < position; i++, auxPoint = auxPoint->next)
+        {
+        }
+
+        // Returning the auxiliar pointer value
+        return auxPoint->value;
+    }
+}
+
 // Function that changes the list's inicial value
 int changeInicialValueDLL(listDLL *listPoint, int value)
 {
