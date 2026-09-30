@@ -2,9 +2,6 @@
 DATE: 08/19/2022
 */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include <time.h>
 #include "utilidades.h"
 
@@ -239,6 +236,7 @@ int checkOrdination(int *vector, int length)
     // Declaring variables
     int ascending = 0, descending = 0;
 
+    vector++;
     for (int i = 1; i < length; i++, vector++)
     {
         if (*(vector - 1) < *vector)
