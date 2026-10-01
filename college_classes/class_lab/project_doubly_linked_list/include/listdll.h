@@ -21,6 +21,7 @@ void showList(listDLL *listDLL);
 void showListBackwards(listDLL *listPoint);
 void insertNodeBeginnig(listDLL *listPoint, int value);
 void insertingNodeEnd(listDLL *listPoint, int value);
+int insertingNodeAnyPosition(listDLL *listPoint, int value, int position);
 void cleanUpListDLL(listDLL *listPoint);
 void destroyListDLL(listDLL **listPointPoint);
 int removeNodeBeginnigDLL(listDLL *listPoint);

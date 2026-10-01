@@ -143,6 +143,85 @@ void insertingNodeEnd(listDLL *listPoint, int value)
     listPoint->length++;
 }
 
+// Function that inserts in the list's any position
+int insertingNodeAnyPosition(listDLL *listPoint, int value, int position)
+{
+    // If the list's empty, and the position isn't 0
+    if ((listPoint->length == 0) && (position != 0))
+    {
+        // Informing the user
+        printf("The list's empty, the position requested isn't reachable \n\n");
+
+        // Return 0
+        return 0;
+    }
+    // Else if, the position is negative
+    else if (position < 0)
+    {
+        // Informing the user
+        printf("There isn't negative positions.\n\n");
+
+        // Return 0
+        return 0;
+    }
+    // Else if, the position is greater than the list's length
+    else if (position > (listPoint->length + 1))
+    {
+        // Informing the user
+        printf("The list has just %d indexes.\n\n", (listPoint->length - 1));
+
+        // Return 0
+        return 0;
+    }
+    // Else
+    else
+    {
+        // If the position is 0
+        if (position == 0)
+        {
+            // Call the function that inserts in the list's inicial
+            insertNodeBeginnig(listPoint, value);
+
+            // Return 1
+            return 1;
+        }
+        // Else if, the position is the last position of the list
+        else if (position == listPoint->length)
+        {
+            // Call the function that inserts in the end of the list
+            insertingNodeEnd(listPoint, value);
+
+            // Return 1
+            return 1;
+        }
+        // Else
+        else
+        {
+            // Declaring an auxiliar pointer
+            nodeDLL *new = createNodeDLL(value, NULL, NULL), *auxPoint = listPoint->inicial;
+
+            // For auxiliar pointer isn't at the position requested; It goes to the next node
+            for (int i = 0; i < position; i++, auxPoint = auxPoint->next)
+            {
+            }
+
+            // Making the last's next node points to the new node, and new node's previous points to last node
+            auxPoint->previous = new;
+            new->previous = auxPoint->previous;
+
+            // Making the new node next pointer points to the next node, and the next node's previous pointer points to the new node
+            new->next = auxPoint;
+            auxPoint->previous = new;
+
+            // Increasing the list's length
+            listPoint->length++;
+
+            // Return 1
+            return 1;
+        }
+    }
+}
+
 // Function that cleans up a list
 void cleanUpListDLL(listDLL *listPoint)
 {

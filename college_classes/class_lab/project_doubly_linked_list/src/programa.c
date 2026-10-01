@@ -74,8 +74,17 @@ int main()
     changeAnyValueDLL(list1, 6, position);
     showList(list1);
     showListBackwards(list1);
-    /*
-    */
+
+    printf("----------\n\n");
+
+    // Test: Inserting in any position in the list
+    insertingNodeAnyPosition(list1, 10, 0);
+    showList(list1);
+    insertingNodeAnyPosition(list1, 20, 2);
+    showList(list1);
+    insertingNodeAnyPosition(list1, 30, 2);
+    showList(list1);
+    showListBackwards(list1);
 
     // Return 0
     return 0;
