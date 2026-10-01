@@ -61,20 +61,22 @@ int main()
     showListBackwards(list1);
     */
 
-    // Test: Obtaining the list's incial and final value
+    // Test: Obtaining the list's incial, final and (any) value
     showList(list1);
     printf("The list's inicial value is: %d\n\n", obtainInicialValueDLL(list1));
     printf("The list's final value is: %d\n\n", obtainFinalValueDLL(list1));
-    printf("The list's value in the position %d is: %d\n\n", 3, obtainAnyValueDLL(list1, -5));
+    int position = 1;
+    printf("The list's value in the position %d is: %d\n\n", position, obtainAnyValueDLL(list1, position));
 
-    /*
-    // Test: Changing the list's incial and final value
+    // Test: Changing the list's incial, final and (any) value
     changeInicialValueDLL(list1, 0);
     changeFinalValueDLL(list1, 4);
+    changeAnyValueDLL(list1, 6, position);
     showList(list1);
     showListBackwards(list1);
+    /*
     */
-    
+
     // Return 0
     return 0;
 }
