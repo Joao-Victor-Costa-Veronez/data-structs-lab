@@ -17,15 +17,16 @@ typedef struct intDoublyList
 
 // Declaring functions
 listDLL *createListDLL();
-void showList(listDLL *listDLL);
-void showListBackwards(listDLL *listPoint);
-void insertNodeBeginnig(listDLL *listPoint, int value);
-void insertingNodeEnd(listDLL *listPoint, int value);
-int insertingNodeAnyPosition(listDLL *listPoint, int value, int position);
+void showListDLL(listDLL *listDLL);
+void showListBackwardsDLL(listDLL *listPoint);
+void insertNodeBeginnigDLL(listDLL *listPoint, int value);
+void insertingNodeEndDLL(listDLL *listPoint, int value);
+int insertingNodeAnyPositionDLL(listDLL *listPoint, int value, int position);
 void cleanUpListDLL(listDLL *listPoint);
 void destroyListDLL(listDLL **listPointPoint);
 int removeNodeBeginnigDLL(listDLL *listPoint);
 int removeNodeEndDLL(listDLL *listPoint);
+int removeNodeAnyPositionDLL(listDLL *listPoint, int position);
 int obtainInicialValueDLL(listDLL *listPoint);
 int obtainFinalValueDLL(listDLL *listPoint);
 int obtainAnyValueDLL(listDLL *listPoint, int position);

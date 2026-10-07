@@ -24,7 +24,7 @@ listDLL *createListDLL()
 }
 
 // Function that shows a list
-void showList(listDLL *listPoint)
+void showListDLL(listDLL *listPoint)
 {
     // Showing the list's length
     printf("Length: %d\n", listPoint->length);
@@ -58,7 +58,7 @@ void showList(listDLL *listPoint)
 }
 
 // Function that shows a list backwards
-void showListBackwards(listDLL *listPoint)
+void showListBackwardsDLL(listDLL *listPoint)
 {
     // Showing the list's length
     printf("Length: %d\n", listPoint->length);
@@ -92,7 +92,7 @@ void showListBackwards(listDLL *listPoint)
 }
 
 // Function that inserts in the list's beginnig
-void insertNodeBeginnig(listDLL *listPoint, int value)
+void insertNodeBeginnigDLL(listDLL *listPoint, int value)
 {
     // Creating a new node
     nodeDLL *new = createNodeDLL(value, NULL, listPoint->inicial);
@@ -118,7 +118,7 @@ void insertNodeBeginnig(listDLL *listPoint, int value)
 }
 
 // Function that inserts in the list's end
-void insertingNodeEnd(listDLL *listPoint, int value)
+void insertingNodeEndDLL(listDLL *listPoint, int value)
 {
     // Creating a new node
     nodeDLL *new = createNodeDLL(value, listPoint->final, NULL);
@@ -144,13 +144,13 @@ void insertingNodeEnd(listDLL *listPoint, int value)
 }
 
 // Function that inserts in the list's any position
-int insertingNodeAnyPosition(listDLL *listPoint, int value, int position)
+int insertingNodeAnyPositionDLL(listDLL *listPoint, int value, int position)
 {
     // If the list's empty, and the position isn't 0
     if ((listPoint->length == 0) && (position != 0))
     {
         // Informing the user
-        printf("The list's empty, the position requested isn't reachabl.\n\n");
+        printf("The list's empty, the position requested isn't reachable.\n\n");
 
         // Return 0
         return 0;
@@ -180,7 +180,7 @@ int insertingNodeAnyPosition(listDLL *listPoint, int value, int position)
         if (position == 0)
         {
             // Call the function that inserts in the list's inicial
-            insertNodeBeginnig(listPoint, value);
+            insertNodeBeginnigDLL(listPoint, value);
 
             // Return 1
             return 1;
@@ -189,7 +189,7 @@ int insertingNodeAnyPosition(listDLL *listPoint, int value, int position)
         else if (position == listPoint->length)
         {
             // Call the function that inserts in the end of the list
-            insertingNodeEnd(listPoint, value);
+            insertingNodeEndDLL(listPoint, value);
 
             // Return 1
             return 1;
@@ -208,7 +208,7 @@ int insertingNodeAnyPosition(listDLL *listPoint, int value, int position)
             // Making the auxilar pointer previous node, and the new node, points to each other
             auxPoint->previous->next = new;
             new->previous = auxPoint->previous;
-            
+
             // Making the new node and the auxiliar pointer points to each other
             new->next = auxPoint;
             auxPoint->previous = new;
@@ -353,6 +353,84 @@ int removeNodeEndDLL(listDLL *listPoint)
 
         // Return 1
         return 1;
+    }
+}
+
+// Functiom that removes any list node
+int removeNodeAnyPositionDLL(listDLL *listPoint, int position)
+{
+    // If the list's empty, and the position isn't 0
+    if (listPoint->length == 0)
+    {
+        // Informing the user
+        printf("The list's empty, there isn't a node to be removed. No changes.\n\n");
+
+        // Return 0
+        return 0;
+    }
+    // Else if, the position is negative
+    else if (position < 0)
+    {
+        // Informing the user
+        printf("There isn't negative positions.\n\n");
+
+        // Return 0
+        return 0;
+    }
+    // Else if, the position is greater than the list's length
+    else if (position > (listPoint->length - 1))
+    {
+        // Informing the user
+        printf("The list has just %d indexes.\n\n", (listPoint->length - 1));
+
+        // Return 0
+        return 0;
+    }
+    // Else
+    else
+    {
+        // If the position is 0
+        if (position == 0)
+        {
+            // Call the function that inserts in the list's inicial
+            removeNodeBeginnigDLL(listPoint);
+
+            // Return 1
+            return 1;
+        }
+        // Else if, the position is the last position of the list
+        else if (position == (listPoint->length - 1))
+        {
+            // Call the function that inserts in the end of the list
+            removeNodeEndDLL(listPoint);
+
+            // Return 1
+            return 1;
+        }
+        // Else
+        else
+        {
+            // Declaring an auxiliar pointer
+            nodeDLL *auxPoint = listPoint->inicial;
+
+            // For auxiliar pointer isn't at the position requested; It goes to the next node
+            for (int i = 0; i < position; i++, auxPoint = auxPoint->next)
+            {
+            }
+
+            // Making the auxilar pointer previous node, and the auxiliar pointer next node, points to each other
+            auxPoint->previous->next = auxPoint->next;
+            auxPoint->next->previous = auxPoint->previous;
+
+            // Freeing the node's memory
+            free(auxPoint);
+
+            // Cleaning the list's length
+            listPoint->length--;
+
+            // Return 1
+            return 1;
+        }
     }
 }
 

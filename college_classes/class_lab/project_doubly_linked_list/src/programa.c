@@ -13,56 +13,48 @@ int main()
 
     // Show the list
     printf("\n");
-    showList(list1);
-    showListBackwards(list1);
+    showListDLL(list1);
+    showListBackwardsDLL(list1);
 
     // Test: Inserting in the begging of the list
-    insertNodeBeginnig(list1, 3);
-    showList(list1);
-    showListBackwards(list1);
-    insertNodeBeginnig(list1, 2);
-    showList(list1);
-    showListBackwards(list1);
-    insertNodeBeginnig(list1, 1);
-    showList(list1);
-    showListBackwards(list1);
+    insertNodeBeginnigDLL(list1, 3);
+    showListDLL(list1);
+    showListBackwardsDLL(list1);
+    insertNodeBeginnigDLL(list1, 2);
+    showListDLL(list1);
+    showListBackwardsDLL(list1);
+    insertNodeBeginnigDLL(list1, 1);
+    showListDLL(list1);
+    showListBackwardsDLL(list1);
 
     /*
     // Test: Inserting in the list's end
-    insertingNodeEnd(list1, 4);
-    showList(list1);
-    showListBackwards(list1);
-    insertingNodeEnd(list1, 5);
-    showList(list1);
-    showListBackwards(list1);
-    insertingNodeEnd(list1, 6);
-    showList(list1);
-    showListBackwards(list1);
+    insertingNodeEndDLL(list1, 4);
+    showListDLL(list1);
+    showListBackwardsDLL(list1);
+    insertingNodeEndDLL(list1, 5);
+    showListDLL(list1);
+    showListBackwardsDLL(list1);
+    insertingNodeEndDLL(list1, 6);
+    showListDLL(list1);
+    showListBackwardsDLL(list1);
 
     // Test: Cleaning up and destroying a list
     cleanUpListDLL(list1);
-    showList(list1);
-    showListBackwards(list1);
+    showListDLL(list1);
+    showListBackwardsDLL(list1);
     destroyListDLL(&list1);
     printf("list1 = %p\n", list1);
-
-    // Test: Removing the first node
-    removeNodeBeginnig(list1);
-    showList(list1);
-    showListBackwards(list1);
-    removeNodeBeginnig(list1);
-    showList(list1);
-    showListBackwards(list1);
-    removeNodeBeginnig(list1);
-    showList(list1);
-    showListBackwards(list1);
-    removeNodeBeginnig(list1);
-    showList(list1);
-    showListBackwards(list1);
     */
 
+    // Test: Removing the any node in the list
+    removeNodeAnyPositionDLL(list1, 1);
+    showListDLL(list1);
+    showListBackwardsDLL(list1);
+
+    /*
     // Test: Obtaining the list's incial, final and (any) value
-    showList(list1);
+    showListDLL(list1);
     printf("The list's inicial value is: %d\n\n", obtainInicialValueDLL(list1));
     printf("The list's final value is: %d\n\n", obtainFinalValueDLL(list1));
     int position = 1;
@@ -72,19 +64,18 @@ int main()
     changeInicialValueDLL(list1, 0);
     changeFinalValueDLL(list1, 4);
     changeAnyValueDLL(list1, 6, position);
-    showList(list1);
-    showListBackwards(list1);
-
-    printf("----------\n\n");
+    showListDLL(list1);
+    showListBackwardsDLL(list1);
 
     // Test: Inserting in any position in the list
-    insertingNodeAnyPosition(list1, 10, 0);
-    showList(list1);
-    insertingNodeAnyPosition(list1, 20, 2);
-    showList(list1);
-    insertingNodeAnyPosition(list1, 30, 2);
-    showList(list1);
-    showListBackwards(list1);
+    insertingNodeAnyPositionDLL(list1, 10, 0);
+    showListDLL(list1);
+    insertingNodeAnyPositionDLL(list1, 20, 2);
+    showListDLL(list1);
+    insertingNodeAnyPositionDLL(list1, 30, 2);
+    showListDLL(list1);
+    showListBackwardsDLL(list1);
+    */
 
     // Return 0
     return 0;
