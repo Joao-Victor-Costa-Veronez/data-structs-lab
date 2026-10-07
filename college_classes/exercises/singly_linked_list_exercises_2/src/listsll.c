@@ -80,6 +80,9 @@ void insert_end_SLL(int value, list_SLL *point_list)
 
     // Incrementing the length of the list
     point_list->length++;
+
+    // Making the list's final pointer points to the new node
+    point_list->final = new;
 }
 
 // Function that inserts a value in the end of the list
@@ -87,6 +90,13 @@ void insert_begin_SLL(int value, list_SLL *point_list)
 {
     // Creating a new node
     node_SLL *new = create_node_SLL(value, NULL);
+
+    // If the list's empty
+    if (point_list->length == 0)
+    {
+        // Making the list's final pointer points to the new node
+        point_list->final = new;
+    }
 
     // The next node of the new node, become the current list's inicial node
     new->next = point_list->inicial;
@@ -225,8 +235,9 @@ void clean_up_SLL(list_SLL *point_list)
         // Updating the length of the list
         point_list->length = 0;
 
-        // Updating the list's inicial pointer
+        // Updating the list's inicial and final pointer
         point_list->inicial = NULL;
+        point_list->final = NULL;
 
         // Informing that the list cleaned up
         printf("The list is cleaned up.\n");
@@ -299,6 +310,9 @@ int remove_last_SLL(list_SLL *point_list)
     // When the auxiliar pointer is pointing to the last node,
     // return the value of this node
     return 1;
+
+    // Updating the list's final pointer
+    point_list->final = NULL;
 }
 
 // Function that changes the first value of a list
@@ -720,4 +734,34 @@ int count_elements_multiple_five(list_SLL *point_list)
 
     // Returning the odd counting
     return count_multiple_five_numbers;
+}
+
+// Funtion that copies a list
+list_SLL *copy_list(list_SLL *point_list)
+{
+    // Creating a new list
+    list_SLL *new = create_list_SLL();
+
+    // Declaring a auxiliar pointer
+    node_SLL *point_auxiliar = point_list->inicial;
+
+    // For each element, insert in the final
+    while (point_auxiliar != NULL)
+    {
+        // Inserting in the final of the list, a new element in the original node
+        insert_end_SLL(point_auxiliar->value, new);
+
+        // Point auxiliar goes to the next node
+        point_auxiliar = point_auxiliar->next;
+    }
+
+    // Updating the length value
+    new->length = point_list->length;
+
+    // Updating the pointers
+    new->inicial = point_list->inicial;
+    new->final = point_list->final;
+
+    // Returning the list
+    return new;
 }

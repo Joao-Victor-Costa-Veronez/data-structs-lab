@@ -22,11 +22,9 @@ int main()
     insert_begin_SLL(20, list_1);
     show_list_SLL(list_1);
 
-    // Test: Couting odd numbers
-    printf("There are %d odd element(s) in the list.\n\n", count_odd(list_1));
-
-    // Test: Couting multiple by 5 numbers
-    printf("There are %d element(s) multiple by five in the list.\n\n", count_elements_multiple_five(list_1));
+    // Test: Copying a list
+    list_SLL *list_2 = copy_list(list_1);
+    show_list_SLL(list_2);
 
     // Return 0
     return 0;

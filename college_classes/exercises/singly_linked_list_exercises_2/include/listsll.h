@@ -32,5 +32,6 @@ int change_value_any_position_SLL(int value, list_SLL *point_list, int position)
 int obtain_value_any_position_SLL(list_SLL *point_list, int position);
 int count_odd(list_SLL *point_list);
 int count_elements_multiple_five(list_SLL *point_list);
+list_SLL *copy_list(list_SLL *point_list);
 
 #endif
