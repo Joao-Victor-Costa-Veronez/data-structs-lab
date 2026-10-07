@@ -765,3 +765,15 @@ list_SLL *copy_list(list_SLL *point_list)
     // Returning the list
     return new;
 }
+
+// Funtion that concatenates 2 lists
+list_SLL *concatenate_lists(list_SLL *point_list_1, list_SLL *point_list_2)
+{
+    // Copying the first list
+    list_SLL *new = copy_list(point_list_1);
+
+    // Declaring an auxiliar pointer
+    node_SLL *pointer_auxiliar = point_list_1->inicial;
+
+    // Making the first list last's node 
+}
