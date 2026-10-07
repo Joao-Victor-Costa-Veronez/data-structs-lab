@@ -700,3 +700,24 @@ int count_odd(list_SLL *point_list)
     // Returning the odd counting
     return count_odd_numbers;
 }
+
+// Function that checks if a list's elements is multiple by 5
+int count_elements_multiple_five(list_SLL *point_list)
+{
+    // Declaring an auxiliar pointer
+    node_SLL *point_auxiliar = point_list->inicial;
+    int count_multiple_five_numbers = 0;
+
+    for (int i = 0; i < point_list->length; i++, point_auxiliar = point_auxiliar->next)
+    {
+        // If the element is odd
+        if ((point_auxiliar->value % 5) == 0)
+        {
+            // Increassing the odd couting
+            count_multiple_five_numbers++;
+        }
+    }
+
+    // Returning the odd counting
+    return count_multiple_five_numbers;
+}

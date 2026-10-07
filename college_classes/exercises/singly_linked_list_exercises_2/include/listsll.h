@@ -9,6 +9,7 @@ typedef struct simple_list_int
 {
     // Declaring variables
     node_SLL *inicial;
+    node_SLL *final;
     int length;
 } list_SLL;
 
@@ -30,5 +31,6 @@ int remove_value_any_position_SLL(list_SLL *point_list, int position);
 int change_value_any_position_SLL(int value, list_SLL *point_list, int position);
 int obtain_value_any_position_SLL(list_SLL *point_list, int position);
 int count_odd(list_SLL *point_list);
+int count_elements_multiple_five(list_SLL *point_list);
 
 #endif

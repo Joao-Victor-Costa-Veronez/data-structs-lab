@@ -19,11 +19,14 @@ int main()
     insert_begin_SLL(2, list_1);
     show_list_SLL(list_1);
 
-    insert_begin_SLL(1, list_1);
+    insert_begin_SLL(20, list_1);
     show_list_SLL(list_1);
 
     // Test: Couting odd numbers
-    printf("There are %d odd elements in the list.\n\n", count_odd(list_1));
+    printf("There are %d odd element(s) in the list.\n\n", count_odd(list_1));
+
+    // Test: Couting multiple by 5 numbers
+    printf("There are %d element(s) multiple by five in the list.\n\n", count_elements_multiple_five(list_1));
 
     // Return 0
     return 0;
