@@ -679,3 +679,24 @@ int obtain_value_any_position_SLL(list_SLL *point_list, int position)
         }
     }
 }
+
+// Function that counts how many odd elements there are in a list
+int count_odd(list_SLL *point_list)
+{
+    // Declaring an auxiliar pointer
+    node_SLL *point_auxiliar = point_list->inicial;
+    int count_odd_numbers = 0;
+
+    for (int i = 0; i < point_list->length; i++, point_auxiliar = point_auxiliar->next)
+    {
+        // If the element is odd
+        if ((point_auxiliar->value % 2) != 0)
+        {
+            // Increassing the odd couting
+            count_odd_numbers++;
+        }
+    }
+
+    // Returning the odd counting
+    return count_odd_numbers;
+}
