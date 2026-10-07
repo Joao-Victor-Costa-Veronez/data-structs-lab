@@ -150,7 +150,7 @@ int insertingNodeAnyPosition(listDLL *listPoint, int value, int position)
     if ((listPoint->length == 0) && (position != 0))
     {
         // Informing the user
-        printf("The list's empty, the position requested isn't reachable \n\n");
+        printf("The list's empty, the position requested isn't reachabl.\n\n");
 
         // Return 0
         return 0;
@@ -205,11 +205,11 @@ int insertingNodeAnyPosition(listDLL *listPoint, int value, int position)
             {
             }
 
-            // Making the last's next node points to the new node, and new node's previous points to last node
-            auxPoint->previous = new;
+            // Making the auxilar pointer previous node, and the new node, points to each other
+            auxPoint->previous->next = new;
             new->previous = auxPoint->previous;
-
-            // Making the new node next pointer points to the next node, and the next node's previous pointer points to the new node
+            
+            // Making the new node and the auxiliar pointer points to each other
             new->next = auxPoint;
             auxPoint->previous = new;
 
