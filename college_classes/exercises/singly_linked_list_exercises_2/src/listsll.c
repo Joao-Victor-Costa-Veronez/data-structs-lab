@@ -755,13 +755,6 @@ list_SLL *copy_list(list_SLL *point_list)
         point_auxiliar = point_auxiliar->next;
     }
 
-    // Updating the length value
-    new->length = point_list->length;
-
-    // Updating the pointers
-    new->inicial = point_list->inicial;
-    new->final = point_list->final;
-
     // Returning the list
     return new;
 }
@@ -772,8 +765,17 @@ list_SLL *concatenate_lists(list_SLL *point_list_1, list_SLL *point_list_2)
     // Copying the first list
     list_SLL *new = copy_list(point_list_1);
 
-    // Declaring an auxiliar pointer
-    node_SLL *pointer_auxiliar = point_list_1->inicial;
+    // Copying the second list
+    list_SLL *copy_2 = copy_list(point_list_2);
 
-    // Making the first list last's node 
+    // Making the copy first list last's node receive the second list inicial's node
+    new->final->next = copy_2->inicial;
+
+    // Summing up the two lists lentgh
+    new->length = point_list_1->length + copy_2->length;
+
+    new->final = copy_2->final;
+
+    // Returning the list
+    return new;
 }
