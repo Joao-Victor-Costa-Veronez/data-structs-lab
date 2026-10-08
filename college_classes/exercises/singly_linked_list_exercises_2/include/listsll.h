@@ -34,5 +34,6 @@ int count_odd(list_SLL *point_list);
 int count_elements_multiple_five(list_SLL *point_list);
 list_SLL *copy_list(list_SLL *point_list);
 list_SLL *concatenate_lists(list_SLL *point_list_1, list_SLL *point_list_2);
+int check_identical_lists(list_SLL *point_list_1, list_SLL * point_list_2);
 
 #endif

@@ -736,7 +736,7 @@ int count_elements_multiple_five(list_SLL *point_list)
     return count_multiple_five_numbers;
 }
 
-// Funtion that copies a list
+// Function that copies a list
 list_SLL *copy_list(list_SLL *point_list)
 {
     // Creating a new list
@@ -759,7 +759,7 @@ list_SLL *copy_list(list_SLL *point_list)
     return new;
 }
 
-// Funtion that concatenates 2 lists
+// Function that concatenates 2 lists
 list_SLL *concatenate_lists(list_SLL *point_list_1, list_SLL *point_list_2)
 {
     // Copying the first list
@@ -778,4 +778,32 @@ list_SLL *concatenate_lists(list_SLL *point_list_1, list_SLL *point_list_2)
 
     // Returning the list
     return new;
+}
+
+// Function that checks if the lists are the identical
+int check_identical_lists(list_SLL *point_list_1, list_SLL *point_list_2)
+{
+    // Declaring auxiliar pointers
+    node_SLL *point_auxiliar_1 = point_list_1->inicial;
+    node_SLL *point_auxiliar_2 = point_list_2->inicial;
+
+    // If they doesn't have the same length
+    if (point_list_1->length != point_list_2->length)
+    {
+        // They aren't identical
+        return 0;
+    }
+
+    // For each element in the first list
+    for (int i = 0; i < point_list_1->length; i++, point_auxiliar_1 = point_auxiliar_1->next, point_auxiliar_2 = point_auxiliar_2->next)
+    {
+        // If the first list's current element isn't equals the second list's current element
+        if (point_auxiliar_1->value != point_auxiliar_2->value)
+        {
+            return 0;
+        }
+    }
+
+    // If it didn't have returned yet. they're identical; Return 1
+    return 1;
 }

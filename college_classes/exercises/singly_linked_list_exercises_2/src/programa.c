@@ -26,9 +26,8 @@ int main()
     list_SLL *list_2 = copy_list(list_1);
     show_list_SLL(list_2);
 
-    // Test: Concatenating a list
-     list_SLL *list_3  = concatenate_lists(list_1, list_2);
-     show_list_SLL(list_3);
+    // Test: Comparing list's
+    printf("%d\n\n", check_identical_lists(list_1, list_2));
 
     // Return 0
     return 0;
