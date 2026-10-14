@@ -8,7 +8,7 @@
 typedef struct simple_list_int
 {
     // Declaring variables
-    node_SLL *inicial;
+    nodeSLL *inicial;
     int length;
 } list_SLL;
 

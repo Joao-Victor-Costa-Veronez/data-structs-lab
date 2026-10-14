@@ -11,9 +11,9 @@ typedef struct simple_node_int
     // Declaring variables
     int value;
     struct simple_node_int *next;
-} node_SLL;
+} nodeSLL;
 
 // Declaring functions
-node_SLL *create_node_SLL(int value, node_SLL *next);
+nodeSLL *create_node_SLL(int value, nodeSLL *next);
 
 #endif

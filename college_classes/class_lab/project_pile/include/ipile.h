@@ -1,14 +1,24 @@
 #ifndef IPILE_H
 #define IPILE_H 1
 
-# include "nodesll.h"
+// Including libraries
+#include "nodesll.h"
 
+// Defining structs
 typedef struct int_pile
 {
-    node_SLL *top;
+    // Declaring variables
+    nodeSLL *top;
     int length;
 } iPile;
 
-iPile *createIPile ();
+// Declaring functions
+iPile *createIPile();
+void showIPile(iPile *pilePoint);
+int showTopIPile(iPile *pilePoint);
+void stackIPile(int value, iPile *pilePoint);
+int unStackIPile(iPile *pilePoint);
+void cleanUpIPile(iPile *pilePoint);
+void deleteIPile(iPile **pilePointPoint);
 
 #endif
