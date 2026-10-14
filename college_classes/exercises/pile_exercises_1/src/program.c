@@ -7,28 +7,45 @@ DATE: 10/14/2026
 #include "listsll.h"
 #include "ipile.h"
 
+// Declaring functions
+void showBinaryFormat(int value);
+
 // Main function
 int main()
 {
-    // Test: Creating a int pile
-    iPile *pile1 = createIPile();
-
-    // Test: Showing the pile
-    showIPile(pile1);
-
-    // Test: Showing the top's pile
-    showTopIPile(pile1);
-
-    // Test: Adding nodes to the pile
-    stackIPile(3, pile1);
-    showIPile(pile1);
-    printf("%d\n\n", showTopIPile(pile1));
-    stackIPile(2, pile1);
-    showIPile(pile1);
-    printf("%d\n\n", showTopIPile(pile1));
-    stackIPile(1, pile1);
-    showIPile(pile1);
-    printf("%d\n\n", showTopIPile(pile1));
+    // Test: Showing a number on a binary format
+    showBinaryFormat(7);
 
     return 0;
+}
+
+// Function that shows a number on a binary format
+void showBinaryFormat(int value)
+{
+    // Creating a pile
+    iPile *pile = createIPile();
+
+    // While the value is greater than 0
+    while (value > 0)
+    {
+        // Add the rest of the value when divided by 2
+        stackIPile(value % 2, pile);
+
+        // Value now is half of it's the value 
+        value = value / 2;
+    }
+
+    // While pile's length is greater than 0
+    while (pile->length > 0)
+    {
+        // Show the pile's top
+        printf("%d", showTopIPile(pile));
+
+        // Removing the pile's top
+        unStackIPile(pile);
+    }
+    printf("\n");
+
+    // Deleting the pile
+    deleteIPile(&pile);
 }
