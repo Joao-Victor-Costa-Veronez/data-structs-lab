@@ -66,9 +66,6 @@ int showTopIPile(iPile *pilePoint)
     // Else
     else
     {
-        // Showing the value
-        printf("The top value of the pile is: ");
-
         // Return the pile's top node value
         return pilePoint->top->value;
     }

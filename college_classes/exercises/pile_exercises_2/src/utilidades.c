@@ -2,9 +2,12 @@
 
 void lerString(char texto[], int tamanho)
 {
-    if (fgets(texto, tamanho, stdin) != NULL) {
+    if (fgets(texto, tamanho, stdin) != NULL)
+    {
         texto[strcspn(texto, "\n")] = '\0';
-    } else {
+    }
+    else
+    {
         printf("Erro lendo uma String.\n");
         exit(1);
     }
@@ -22,4 +25,4 @@ float lerFloat()
     char texto[255];
     lerString(texto, 255);
     return (float)atof(texto);
-} 
+}
