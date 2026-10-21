@@ -9,7 +9,7 @@ DATE: 10/21/2026
 #include "iqueue.h"
 
 // Declaring functions
-// void invertIQueue(IQueue *queuePoint);
+void invertIQueue(IQueue *queuePoint);
 
 // Main function
 int main()
