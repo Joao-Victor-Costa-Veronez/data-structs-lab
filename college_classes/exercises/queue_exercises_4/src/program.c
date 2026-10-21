@@ -1,34 +1,50 @@
 /*
-DATE: 10/14/2026
+DATE: 10/21/2026
 */
 
 // Importing libraries
 #include <string.h>
 #include "listsll.h"
-#include "ipile.h"
+#include "istack.h"
+#include "iqueue.h"
+
+// Declaring functions
+void invertIQueue(IQueue *queuePoint);
 
 // Main function
 int main()
 {
-    // Test: Creating a int pile
-    iPile *pile1 = createIPile();
+    IQueue *queue1 = createIQueue();
 
-    // Test: Showing the pile
-    showIPile(pile1);
+    showIQueue(queue1);
 
-    // Test: Showing the top's pile
-    showTopIPile(pile1);
+    invertIQueue(queue1);
 
-    // Test: Adding nodes to the pile
-    stackIPile(3, pile1);
-    showIPile(pile1);
-    printf("%d\n\n", showTopIPile(pile1));
-    stackIPile(2, pile1);
-    showIPile(pile1);
-    printf("%d\n\n", showTopIPile(pile1));
-    stackIPile(1, pile1);
-    showIPile(pile1);
-    printf("%d\n\n", showTopIPile(pile1));
+    showIQueue(queue1);
 
     return 0;
+}
+
+// Function that inverts a queue
+void invertIQueue(IQueue *queuePoint)
+{
+    // Declaring variables
+    iStack *stack = createIStack();
+
+    // For each element
+    for (int i = 0; i < queuePoint->length; i++)
+    {
+        // Get the element in the queue, and put in the stack
+        stackIStack(unqueueIQueue(queuePoint), stack);
+    }
+
+    // For each element
+    for (int i = 0; i < stack->length; i++)
+    {
+        // Get the element in the stack, and put in the queue
+        queueIQueue(unStackIStack(stack), queuePoint);
+    }
+
+    // Delete stack
+    deleteIStack(stack);
 }

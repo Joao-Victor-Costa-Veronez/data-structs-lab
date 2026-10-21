@@ -1,16 +1,16 @@
-#include "ipile.h"
+#include "istack.h"
 
 // Function that creats an int pile
-iPile *createIPile()
+iStack *createiStack()
 {
     // Getting a space in the memory for the pile
-    iPile *new = (iPile *)malloc(sizeof(iPile));
+    iStack *new = (iStack *)malloc(sizeof(iStack));
 
     // If there wasn't enough memory
     if (new == NULL)
     {
         // Inform the user
-        printf("Fatal error: Failed to allocate memory for iPile.\n");
+        printf("Fatal error: Failed to allocate memory for iStack.\n");
 
         // Exit the function
         exit(1);
@@ -25,7 +25,7 @@ iPile *createIPile()
 }
 
 // Function that shows the current pile
-void showIPile(iPile *pilePoint)
+void showiStack(iStack *pilePoint)
 {
     // Showing the size
     printf("Length = %d\n", pilePoint->length);
@@ -52,7 +52,7 @@ void showIPile(iPile *pilePoint)
 }
 
 // Function that returns the top value of the pile
-int showTopIPile(iPile *pilePoint)
+int showTopiStack(iStack *pilePoint)
 {
     // If the pile is empty
     if (pilePoint->length == 0)
@@ -75,7 +75,7 @@ int showTopIPile(iPile *pilePoint)
 }
 
 // Function that inserts a value in the top of the pile
-void stackIPile(int value, iPile *pilePoint)
+void stackiStack(int value, iStack *pilePoint)
 {
     // Creating a new node
     nodeSLL *new = create_node_SLL(value, NULL);
@@ -91,7 +91,7 @@ void stackIPile(int value, iPile *pilePoint)
 }
 
 // Function that remove the pile's begging node
-int unStackIPile(iPile *pilePoint)
+int unStackiStack(iStack *pilePoint)
 {
     // If the pile is empty
     if (pilePoint->length == 0)
@@ -127,7 +127,7 @@ int unStackIPile(iPile *pilePoint)
 }
 
 // Function that cleans up a pile
-void cleanUpIPile(iPile *pilePoint)
+void cleanUpiStack(iStack *pilePoint)
 {
     // If the pile's empty
     if (pilePoint->length == 0)
@@ -169,10 +169,10 @@ void cleanUpIPile(iPile *pilePoint)
 }
 
 // Function that deletes a pile
-void deleteIPile(iPile **pilePointPoint)
+void deleteiStack(iStack **pilePointPoint)
 {
     // Cleaning the list first
-    cleanUpIPile(*pilePointPoint);
+    cleanUpiStack(*pilePointPoint);
 
     // Freeing the memory of the pile using the pointer of the pointer of the pile
     free(*pilePointPoint);
