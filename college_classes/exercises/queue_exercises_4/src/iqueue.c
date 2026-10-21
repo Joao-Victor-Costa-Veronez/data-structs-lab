@@ -38,14 +38,14 @@ void cleanUpIQueue(IQueue *queuePoint)
     }
 }
 
-void destruirIQueue(IQueue **pontqueuePoint)
+void deleteIQueue(IQueue **queuePointPoint)
 {
-    limparLSLI(*pontqueuePoint);
-    free(*pontqueuePoint);
-    *pontqueuePoint = NULL;
+    clean_up_SLL(*queuePointPoint);
+    free(*queuePointPoint);
+    *queuePointPoint = NULL;
 }
 
-void mostrarIQueue(IQueue *queuePoint)
+void showIQueue(IQueue *queuePoint)
 {
     printf("length da Fila = %d\n", queuePoint->length); // SEMPRE MOSTRAR O length
 
@@ -73,9 +73,9 @@ void mostrarIQueue(IQueue *queuePoint)
     }
 }
 
-void enfileirarI(int value, IQueue *queuePoint)
+void queueIQueue(int value, IQueue *queuePoint)
 {
-    nodeSLL *novo = criarnodeSLL(value, NULL); // A mesmo passo para todas as opções
+    nodeSLL *novo = create_node_SLL(value, NULL); // A mesmo passo para todas as opções
 
     // VAZIA
     if (queuePoint->inicial == NULL) // serve os dois: (fila->length == 0) ou (fila->inicial == NULL)
@@ -97,7 +97,7 @@ void enfileirarI(int value, IQueue *queuePoint)
     queuePoint->length++; // C mesmo passo para todas opções
 }
 
-int desinfileirarI(IQueue *queuePoint)
+int unqueueIQueue(IQueue *queuePoint)
 {
     // VAZIA
     if (queuePoint->inicial == NULL)
@@ -121,7 +121,7 @@ int desinfileirarI(IQueue *queuePoint)
     }
 }
 
-int nextI(IQueue *queuePoint)
+int nextIQueue(IQueue *queuePoint)
 {
     // VAZIA
     if (queuePoint->inicial == NULL)

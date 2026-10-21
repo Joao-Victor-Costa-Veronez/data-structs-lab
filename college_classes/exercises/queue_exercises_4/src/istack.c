@@ -1,7 +1,7 @@
 #include "istack.h"
 
 // Function that creats an int pile
-iStack *createiStack()
+iStack *createIStack()
 {
     // Getting a space in the memory for the pile
     iStack *new = (iStack *)malloc(sizeof(iStack));
@@ -25,16 +25,16 @@ iStack *createiStack()
 }
 
 // Function that shows the current pile
-void showiStack(iStack *pilePoint)
+void showIStack(iStack *stackPoint)
 {
     // Showing the size
-    printf("Length = %d\n", pilePoint->length);
+    printf("Length = %d\n", stackPoint->length);
 
     // If the list isn't empty
-    if (pilePoint->length != 0)
+    if (stackPoint->length != 0)
     {
         // Declaring a auxiliar pointer of the list
-        nodeSLL *auxPoint = pilePoint->top;
+        nodeSLL *auxPoint = stackPoint->top;
 
         // While the auxiliar pointer is different than NULL
         while (auxPoint != NULL)
@@ -52,10 +52,10 @@ void showiStack(iStack *pilePoint)
 }
 
 // Function that returns the top value of the pile
-int showTopiStack(iStack *pilePoint)
+int showTopIStack(iStack *stackPoint)
 {
     // If the pile is empty
-    if (pilePoint->length == 0)
+    if (stackPoint->length == 0)
     {
         // Advise that the pile is empty
         printf("The pile is empty, so there isn't a top value.\n\n");
@@ -70,31 +70,31 @@ int showTopiStack(iStack *pilePoint)
         printf("The top value of the pile is: ");
 
         // Return the pile's top node value
-        return pilePoint->top->value;
+        return stackPoint->top->value;
     }
 }
 
 // Function that inserts a value in the top of the pile
-void stackiStack(int value, iStack *pilePoint)
+void stackIStack(int value, iStack *stackPoint)
 {
     // Creating a new node
     nodeSLL *new = create_node_SLL(value, NULL);
 
     // The next node of the new node, become the current piles's top node
-    new->next = pilePoint->top;
+    new->next = stackPoint->top;
 
     // The piles's incial node become the new node
-    pilePoint->top = new;
+    stackPoint->top = new;
 
     // Incrementing the length of the pile
-    pilePoint->length++;
+    stackPoint->length++;
 }
 
 // Function that remove the pile's begging node
-int unStackiStack(iStack *pilePoint)
+int unstackIStack(iStack *stackPoint)
 {
     // If the pile is empty
-    if (pilePoint->length == 0)
+    if (stackPoint->length == 0)
     {
         // Advise that the pile is empty
         printf("The pile is empty, so there isn't a node to be removed.\n");
@@ -106,10 +106,10 @@ int unStackiStack(iStack *pilePoint)
     else
     {
         // Declaring an auxiliar pointer of the pile first node
-        nodeSLL *auxPoint = pilePoint->top;
+        nodeSLL *auxPoint = stackPoint->top;
 
         // The pile's top node become the second node
-        pilePoint->top = auxPoint->next;
+        stackPoint->top = auxPoint->next;
 
         // Getting free the first node's memory
         free(auxPoint);
@@ -118,7 +118,7 @@ int unStackiStack(iStack *pilePoint)
         printf("The first node was removed.\n");
 
         // Decreasing the length of the pile
-        pilePoint->length--;
+        stackPoint->length--;
 
         // When the auxiliar pointer is pointing to the last node,
         // return the value of this node
@@ -127,10 +127,10 @@ int unStackiStack(iStack *pilePoint)
 }
 
 // Function that cleans up a pile
-void cleanUpiStack(iStack *pilePoint)
+void cleanUpIStack(iStack *stackPoint)
 {
     // If the pile's empty
-    if (pilePoint->length == 0)
+    if (stackPoint->length == 0)
     {
         // Inform that the pile is already clean
         printf("The pile is alredy clean. Nothing modified.\n");
@@ -139,7 +139,7 @@ void cleanUpiStack(iStack *pilePoint)
     else
     {
         // Declaring variables
-        nodeSLL *deletePoint = pilePoint->top, *deleteNextPoint = deletePoint->next;
+        nodeSLL *deletePoint = stackPoint->top, *deleteNextPoint = deletePoint->next;
 
         // While the point next delete is different of NULL
         while (deleteNextPoint != NULL)
@@ -158,10 +158,10 @@ void cleanUpiStack(iStack *pilePoint)
         free(deletePoint);
 
         // Updating the length of the pile
-        pilePoint->length = 0;
+        stackPoint->length = 0;
 
         // Updating the pile's inicial pointer
-        pilePoint->top = NULL;
+        stackPoint->top = NULL;
 
         // Informing that the pile cleaned up
         printf("The pile is cleaned up.\n");
@@ -169,16 +169,16 @@ void cleanUpiStack(iStack *pilePoint)
 }
 
 // Function that deletes a pile
-void deleteiStack(iStack **pilePointPoint)
+void deleteIStack(iStack **stackPointPoint)
 {
     // Cleaning the list first
-    cleanUpiStack(*pilePointPoint);
+    cleanUpIStack(*stackPointPoint);
 
     // Freeing the memory of the pile using the pointer of the pointer of the pile
-    free(*pilePointPoint);
+    free(*stackPointPoint);
 
     // Making the pointer of the pointer of the pile points to NULL
-    *pilePointPoint = NULL;
+    *stackPointPoint = NULL;
 
     // Informing that the deletion was complete
     printf("The pile was deleted successfully.\n\n");

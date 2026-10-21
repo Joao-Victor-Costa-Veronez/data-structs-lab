@@ -17,7 +17,7 @@ iStack *createIStack();
 void showIStack(iStack *stackPoint);
 int showTopIStack(iStack *stackPoint);
 void stackIStack(int value, iStack *stackPoint);
-int unStackIStack(iStack *stackPoint);
+int unstackIStack(iStack *stackPoint);
 void cleanUpIStack(iStack *stackPoint);
 void deleteIStack(iStack **stackPointPoint);
 

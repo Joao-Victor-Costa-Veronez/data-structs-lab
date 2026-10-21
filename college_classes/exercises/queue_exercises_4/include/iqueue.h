@@ -2,6 +2,7 @@
 #define IQUEUE_H 1
 
 #include "nodesll.h"
+#include "listsll.h"
 
 typedef struct int_queue
 {
@@ -10,13 +11,13 @@ typedef struct int_queue
     int length;
 } IQueue;
 
-IQueue * createIQueue();
+IQueue *createIQueue();
 
 void cleanUpIQueue(IQueue *queuePoint);
-void deleteIQueue(IQueue **pontqueuePoint);
+void deleteIQueue(IQueue **queuePointPoint);
 void showIQueue(IQueue *queuePoint);
 
-void queueIQueue(int valor, IQueue *queuePoint);
+void queueIQueue(int value, IQueue *queuePoint);
 int unqueueIQueue(IQueue *queuePoint);
 int nextIQueue(IQueue *queuePoint);
 

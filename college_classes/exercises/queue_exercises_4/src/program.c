@@ -9,18 +9,24 @@ DATE: 10/21/2026
 #include "iqueue.h"
 
 // Declaring functions
-void invertIQueue(IQueue *queuePoint);
+// void invertIQueue(IQueue *queuePoint);
 
 // Main function
 int main()
 {
     IQueue *queue1 = createIQueue();
 
+    queueIQueue(1, queue1);
+    queueIQueue(2, queue1);
+    queueIQueue(3, queue1);
+
     showIQueue(queue1);
 
     invertIQueue(queue1);
 
     showIQueue(queue1);
+
+    deleteIQueue(&queue1);
 
     return 0;
 }
@@ -32,19 +38,21 @@ void invertIQueue(IQueue *queuePoint)
     iStack *stack = createIStack();
 
     // For each element
-    for (int i = 0; i < queuePoint->length; i++)
+    while (queuePoint->length > 0)
     {
         // Get the element in the queue, and put in the stack
-        stackIStack(unqueueIQueue(queuePoint), stack);
+        stackIStack(nextIQueue(queuePoint), stack);
+        unqueueIQueue(queuePoint);
     }
 
     // For each element
-    for (int i = 0; i < stack->length; i++)
+    while (stack->length > 0)
     {
         // Get the element in the stack, and put in the queue
-        queueIQueue(unStackIStack(stack), queuePoint);
+        queueIQueue(showTopIStack(stack), queuePoint);
+        unstackIStack(stack);
     }
 
     // Delete stack
-    deleteIStack(stack);
+    deleteIStack(&stack);
 }
