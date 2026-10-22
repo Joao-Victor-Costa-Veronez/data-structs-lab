@@ -3,7 +3,6 @@
 
 #include "noSLI.h"
 
-
 typedef struct listasimples_int
 {
     NoSLI *inicio;
@@ -33,9 +32,5 @@ void destruirLSLI(ListaSLI **pontPontLista);
 int trocarValorInicioLSLI(int valor, ListaSLI *pontLista);
 int trocarValorFimLSLI(int valor, ListaSLI *pontLista);
 int trocarPosicaoLSLI(int valor, int posicao, ListaSLI *pontLista);
-
-
-
-
 
 #endif

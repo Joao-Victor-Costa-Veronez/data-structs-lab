@@ -1,13 +1,13 @@
 #ifndef IQUEUE_H
 #define IQUEUE_H 1
 
-#include "nodesll.h"
-#include "listsll.h"
+#include "noSLI.h"
+#include "listaSLI.h"
 
 typedef struct int_queue
 {
-    nodeSLL *inicial;
-    nodeSLL *final;
+    NoSLI *inicial;
+    NoSLI *final;
     int length;
 } IQueue;
 

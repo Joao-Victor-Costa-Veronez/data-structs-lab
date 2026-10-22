@@ -20,15 +20,15 @@ void cleanUpIQueue(IQueue *queuePoint)
     // 1 ou + DE 1 ELEMENTO
     else
     {
-        nodeSLL *pontAux = queuePoint->inicial; // guarda o endereço do primeiro nó
+        NoSLI *pontAux = queuePoint->inicial; // guarda o endereço do primeiro nó
 
-        nodeSLL *pontAux2 = pontAux->next; // guarda o endereço do próximo nó
+        NoSLI *pontAux2 = pontAux->proximo; // guarda o endereço do próximo nó
 
         while (pontAux2 != NULL)
         {
-            free(pontAux);             // limpou o primeiro nó
-            pontAux = pontAux2;        // fez o primeiro apontar para o next
-            pontAux2 = pontAux2->next; // fez o próximo apontar para o outro próximo
+            free(pontAux);                // limpou o primeiro nó
+            pontAux = pontAux2;           // fez o primeiro apontar para o proximo
+            pontAux2 = pontAux2->proximo; // fez o próximo apontar para o outro próximo
         }
         free(pontAux); // limpou o último que ficou
 
@@ -59,23 +59,23 @@ void showIQueue(IQueue *queuePoint)
     // 1 OU + ELEMENTOS
     else
     {
-        nodeSLL *pontAux = queuePoint->inicial;
+        NoSLI *pontAux = queuePoint->inicial;
 
-        printf("%d(P) -> ", pontAux->value);
-        pontAux = pontAux->next;
+        printf("%d(P) -> ", pontAux->valor);
+        pontAux = pontAux->proximo;
 
         while (pontAux != NULL)
         {
-            printf("%d -> ", pontAux->value);
-            pontAux = pontAux->next;
+            printf("%d -> ", pontAux->valor);
+            pontAux = pontAux->proximo;
         }
         printf("NULL\n");
     }
 }
 
-void queueIQueue(int value, IQueue *queuePoint)
+void queueIQueue(int valor, IQueue *queuePoint)
 {
-    nodeSLL *novo = create_node_SLL(value, NULL); // A mesmo passo para todas as opções
+    NoSLI *novo = create_node_SLL(valor, NULL); // A mesmo passo para todas as opções
 
     // VAZIA
     if (queuePoint->inicial == NULL) // serve os dois: (fila->length == 0) ou (fila->inicial == NULL)
@@ -86,12 +86,12 @@ void queueIQueue(int value, IQueue *queuePoint)
     // 1 ou + DE 1 ELEMENTO
     else
     {
-        nodeSLL *pontAux = queuePoint->inicial;
-        while (pontAux->next != NULL) // Andar o ponteiro na fila
+        NoSLI *pontAux = queuePoint->inicial;
+        while (pontAux->proximo != NULL) // Andar o ponteiro na fila
         {
-            pontAux = pontAux->next;
+            pontAux = pontAux->proximo;
         }
-        pontAux->next = novo; // B
+        pontAux->proximo = novo; // B
     }
 
     queuePoint->length++; // C mesmo passo para todas opções
@@ -109,9 +109,9 @@ int unqueueIQueue(IQueue *queuePoint)
     // 1 ou + DE 1 ELEMENTO
     else
     {
-        nodeSLL *pontAux = queuePoint->inicial; // guarda o endereço do primeiro nó
+        NoSLI *pontAux = queuePoint->inicial; // guarda o endereço do primeiro nó
 
-        queuePoint->inicial = pontAux->next; // faz o inicial da fila apontar para o segundo nó
+        queuePoint->inicial = pontAux->proximo; // faz o inicial da fila apontar para o segundo nó
 
         free(pontAux); // remove o antigo primeiro nó da memória
 
@@ -121,7 +121,7 @@ int unqueueIQueue(IQueue *queuePoint)
     }
 }
 
-int nextIQueue(IQueue *queuePoint)
+int proximoIQueue(IQueue *queuePoint)
 {
     // VAZIA
     if (queuePoint->inicial == NULL)
@@ -133,6 +133,6 @@ int nextIQueue(IQueue *queuePoint)
     // 1 OU + DE 1 ELEMENTO
     else
     {
-        return queuePoint->inicial->value;
+        return queuePoint->inicial->valor;
     }
 }

@@ -1,21 +1,18 @@
 #include "listaSLI.h"
 
-
 ListaSLI *criarListaSLI()
 {
-    ListaSLI *nova = (ListaSLI *) malloc(sizeof(ListaSLI));
+    ListaSLI *nova = (ListaSLI *)malloc(sizeof(ListaSLI));
     nova->tamanho = 0;
     nova->inicio = NULL;
     return nova;
 }
 
-
-
 void mostrarListaSLI(ListaSLI *pontLista)
 {
     printf("Tamanho da Lista = %d\n", pontLista->tamanho); // SEMPRE MOSTRAR O TAMANHO
-    
-    //VAZIA
+
+    // VAZIA
 
     if (pontLista->tamanho == 0)
     {
@@ -23,7 +20,7 @@ void mostrarListaSLI(ListaSLI *pontLista)
     }
 
     // 1 OU + ELEMENTOS
-    
+
     else
     {
         NoSLI *pontAux = pontLista->inicio;
@@ -36,8 +33,6 @@ void mostrarListaSLI(ListaSLI *pontLista)
     }
 }
 
-
-
 void inserirFimSLI(int valor, ListaSLI *pontLista)
 {
     NoSLI *novo = criarNoSLI(valor, NULL); // A mesmo passo para todas as opções
@@ -45,25 +40,22 @@ void inserirFimSLI(int valor, ListaSLI *pontLista)
     // VAZIA
     if (pontLista->inicio == NULL) // serve os dois: (lista->tamanho == 0) ou (lista->inicio == NULL)
     {
-        pontLista->inicio = novo; //B
+        pontLista->inicio = novo; // B
     }
 
     // 1 ou + DE 1 ELEMENTO
     else
     {
         NoSLI *pontAux = pontLista->inicio;
-        while (pontAux->proximo != NULL) //Andar o ponteiro na lista
+        while (pontAux->proximo != NULL) // Andar o ponteiro na lista
         {
             pontAux = pontAux->proximo;
         }
-        pontAux->proximo = novo; //B
+        pontAux->proximo = novo; // B
     }
 
-    pontLista->tamanho++; // C mesmo passo para todas opções 
-
+    pontLista->tamanho++; // C mesmo passo para todas opções
 }
-
-
 
 void InserirInicioSLI(int valor, ListaSLI *pontLista)
 {
@@ -72,21 +64,19 @@ void InserirInicioSLI(int valor, ListaSLI *pontLista)
     // VAZIA
     if (pontLista->inicio == NULL) // serve os dois: (lista->tamanho == 0) ou (lista->inicio == NULL)
     {
-        pontLista->inicio = novo; //B
+        pontLista->inicio = novo; // B
     }
 
     // 1 ou + DE 1 ELEMENTO
 
     else
-    {   
+    {
         novo->proximo = pontLista->inicio;
-        pontLista->inicio = novo; //B
+        pontLista->inicio = novo; // B
     }
 
-    pontLista->tamanho++; //C mesmo passo para todas opções 
-
+    pontLista->tamanho++; // C mesmo passo para todas opções
 }
-
 
 int inserirPosicaoLSLI(int valor, int posicao, ListaSLI *pontLista)
 {
@@ -110,7 +100,7 @@ int inserirPosicaoLSLI(int valor, int posicao, ListaSLI *pontLista)
     {
         NoSLI *novo = criarNoSLI(valor, NULL);
 
-        //1 ELEMENTO
+        // 1 ELEMENTO
         if (pontLista->tamanho == 1)
         {
             InserirInicioSLI(valor, pontLista);
@@ -125,19 +115,19 @@ int inserirPosicaoLSLI(int valor, int posicao, ListaSLI *pontLista)
                 InserirInicioSLI(valor, pontLista);
                 return 1;
             }
-            
+
             else
             {
                 NoSLI *pontAux = pontLista->inicio;
-                            
+
                 int contador = 0;
 
                 while (contador != (posicao - 1))
-                    {
-                        pontAux = pontAux->proximo;
-                        contador++;
-                    }
-                            
+                {
+                    pontAux = pontAux->proximo;
+                    contador++;
+                }
+
                 novo->proximo = pontAux->proximo;
 
                 pontAux->proximo = novo;
@@ -150,8 +140,6 @@ int inserirPosicaoLSLI(int valor, int posicao, ListaSLI *pontLista)
         }
     }
 }
-
-
 
 int obterValorInicioSLI(ListaSLI *pontLista)
 {
@@ -167,14 +155,11 @@ int obterValorInicioSLI(ListaSLI *pontLista)
     {
         return pontLista->inicio->valor;
     }
-
-
 }
-
 
 int obterValorFimSLI(ListaSLI *pontLista)
 {
-    //VAZIA
+    // VAZIA
     if (pontLista->inicio == NULL)
     {
         printf("Lista Vazia! ");
@@ -211,21 +196,21 @@ int obterValorPosicaoSLI(int posicao, ListaSLI *pontLista)
         printf("Não é possível obter o valor de elementos em uma posição maior que o tamanho da lista!\n");
         return 0;
     }
-    else 
-    {   
+    else
+    {
         // 1 ELEMENTO
         if (pontLista->tamanho == 1)
         {
             return pontLista->inicio->valor;
         }
-        
+
         else
         {
             NoSLI *pontAux = pontLista->inicio;
 
             int contador = 0;
 
-            while(contador < posicao)
+            while (contador < posicao)
             {
                 pontAux = pontAux->proximo;
                 contador++;
@@ -236,12 +221,11 @@ int obterValorPosicaoSLI(int posicao, ListaSLI *pontLista)
     }
 }
 
-
 // 0 -  NÃO REMOVEU
 // 1 - REMOVEU
 int removerInicioLSLI(ListaSLI *pontLista)
 {
-    //VAZIA
+    // VAZIA
     if (pontLista->inicio == NULL)
     {
         printf("Lista Vazia! ");
@@ -251,13 +235,13 @@ int removerInicioLSLI(ListaSLI *pontLista)
     // 1 ou + DE 1 ELEMENTO
     else
     {
-        NoSLI *pontAux = pontLista->inicio; //guarda o endereço do primeiro nó
+        NoSLI *pontAux = pontLista->inicio; // guarda o endereço do primeiro nó
 
-        pontLista->inicio = pontAux->proximo; //faz o inicio da lista apontar para o segundo nó
+        pontLista->inicio = pontAux->proximo; // faz o inicio da lista apontar para o segundo nó
 
-        free(pontAux); //remove o antigo primeiro nó da memória
+        free(pontAux); // remove o antigo primeiro nó da memória
 
-        pontLista->tamanho--; //diminuindo o tamanho da lista
+        pontLista->tamanho--; // diminuindo o tamanho da lista
 
         return 1;
     }
@@ -267,7 +251,7 @@ int removerInicioLSLI(ListaSLI *pontLista)
 // 1 - REMOVEU
 int removerFimLSLI(ListaSLI *pontLista)
 {
-    //VAZIA
+    // VAZIA
     if (pontLista->inicio == NULL)
     {
         printf("Lista Vazia! ");
@@ -289,7 +273,6 @@ int removerFimLSLI(ListaSLI *pontLista)
     }
 }
 
-
 int removerPosicaoLSLI(int posicao, ListaSLI *pontLista)
 {
     if (posicao < 0)
@@ -309,21 +292,21 @@ int removerPosicaoLSLI(int posicao, ListaSLI *pontLista)
         return 0;
     }
     else
-    {   
+    {
         // 1 ELEMEMENTO
         if (pontLista->tamanho == 1)
         {
             removerInicioLSLI(pontLista);
             return 1;
         }
-        
+
         // + DE 1 ELEMENTOS QUERENDO REMOVER O PRIMEIRO
         else if (posicao == 0)
         {
             removerInicioLSLI(pontLista);
             return 1;
         }
-        
+
         // + DE 1 ELEMENTOS QUERENDO REMOVER O ÚLTIMO
         else if (posicao == ((pontLista->tamanho) - 1))
         {
@@ -336,15 +319,15 @@ int removerPosicaoLSLI(int posicao, ListaSLI *pontLista)
         {
             NoSLI *pontAux = pontLista->inicio;
             NoSLI *pontAux2 = pontLista->inicio;
-                            
+
             int contador = 0;
 
             while (contador != (posicao - 1))
-                {
-                    pontAux = pontAux->proximo;
-                    contador++;
-                }
-            
+            {
+                pontAux = pontAux->proximo;
+                contador++;
+            }
+
             pontAux2 = pontAux->proximo;
             pontAux->proximo = pontAux2->proximo;
 
@@ -355,35 +338,33 @@ int removerPosicaoLSLI(int posicao, ListaSLI *pontLista)
     }
 }
 
-
 void limparLSLI(ListaSLI *pontLista)
 {
-    //VAZIA
+    // VAZIA
     if (pontLista->tamanho == 0)
     {
         printf("Lista Vazia!");
     }
 
-    //1 ou + DE 1 ELEMENTO
+    // 1 ou + DE 1 ELEMENTO
     else
-    {   
-        NoSLI *pontAux = pontLista->inicio; //guarda o endereço do primeiro nó
+    {
+        NoSLI *pontAux = pontLista->inicio; // guarda o endereço do primeiro nó
 
-        NoSLI *pontAux2 = pontAux->proximo; //guarda o endereço do próximo nó
+        NoSLI *pontAux2 = pontAux->proximo; // guarda o endereço do próximo nó
 
         while (pontAux2 != NULL)
         {
-            free(pontAux); //limpou o primeiro nó
-            pontAux = pontAux2; //fez o primeiro apontar para o proximo
-            pontAux2 = pontAux2->proximo; //fez o próximo apontar para o outro próximo
+            free(pontAux);                // limpou o primeiro nó
+            pontAux = pontAux2;           // fez o primeiro apontar para o proximo
+            pontAux2 = pontAux2->proximo; // fez o próximo apontar para o outro próximo
         }
-        free(pontAux); //limpou o último que ficou
+        free(pontAux); // limpou o último que ficou
 
-        pontLista->tamanho = 0; //diminuiu o tamanho pra 0
+        pontLista->tamanho = 0; // diminuiu o tamanho pra 0
         pontLista->inicio = NULL;
     }
 }
-
 
 void destruirLSLI(ListaSLI **pontPontLista)
 {
@@ -394,7 +375,7 @@ void destruirLSLI(ListaSLI **pontPontLista)
 
 int trocarValorInicioLSLI(int valor, ListaSLI *pontLista)
 {
-    //VAZIA
+    // VAZIA
     if (pontLista->tamanho == 0)
     {
         printf("Impossível Trocar o Valor de uma Lista Vazia!");
@@ -410,7 +391,7 @@ int trocarValorInicioLSLI(int valor, ListaSLI *pontLista)
 
 int trocarValorFimLSLI(int valor, ListaSLI *pontLista)
 {
-    //VAZIA
+    // VAZIA
     if (pontLista->tamanho == 0)
     {
         printf("Impossível Trocar o Valor de uma Lista Vazia!");
@@ -419,7 +400,7 @@ int trocarValorFimLSLI(int valor, ListaSLI *pontLista)
     // 1 ou + DE 1 ELEMENTO
     else
     {
-        NoSLI *pontAux = pontLista->inicio; //guarda o endereço do primeiro nó
+        NoSLI *pontAux = pontLista->inicio; // guarda o endereço do primeiro nó
 
         while (pontAux->proximo != NULL)
         {
@@ -450,22 +431,22 @@ int trocarPosicaoLSLI(int valor, int posicao, ListaSLI *pontLista)
         printf("Não é possível trocar o elemento em uma posição maior que o tamanho da lista!\n");
         return 0;
     }
-    else 
-    {   
+    else
+    {
         // 1 ELEMENTO
         if (pontLista->tamanho == 1)
         {
             pontLista->inicio->valor = valor;
             return 1;
         }
-        
+
         else
         {
             NoSLI *pontAux = pontLista->inicio;
 
             int contador = 0;
 
-            while(contador < posicao)
+            while (contador < posicao)
             {
                 pontAux = pontAux->proximo;
                 contador++;
@@ -476,4 +457,3 @@ int trocarPosicaoLSLI(int valor, int posicao, ListaSLI *pontLista)
         }
     }
 }
-
