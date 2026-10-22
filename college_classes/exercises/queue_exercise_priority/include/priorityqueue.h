@@ -13,8 +13,8 @@ typedef struct priorityQueue
 
 priorityQueue *createpriorityQueue();
 void showPriorityQueue(priorityQueue *queuePoint);
-int unqueuePriorityQueue(priorityQueue *queuePoint);
 void queuePriorityQueue(int value, priorityQueue *queuePoint);
+int unqueuePriorityQueue(priorityQueue *queuePoint);
 int nextPriorityQueue(priorityQueue *queuePoint);
 void cleanUpPriorityQueue(priorityQueue *queuePoint);
 void deletePriorityQueue(priorityQueue **queuePointPoint);

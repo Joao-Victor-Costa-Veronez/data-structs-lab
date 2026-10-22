@@ -1,11 +1,12 @@
 #include "priorityqueue.h"
 
-// Function that creates a new list
+// Function that creates a new priority queue
 priorityQueue *createPriorityQueue()
 {
-    // Creating a new list
+    // Creating a new priority queue
     priorityQueue *new = (priorityQueue *)malloc(sizeof(priorityQueue));
-    // Checking if the list was created
+
+    // Checking if the priority queue was created
     if (new == NULL)
     {
         // Informing the error and exiting
@@ -13,60 +14,60 @@ priorityQueue *createPriorityQueue()
         exit(1);
     }
 
-    // Default configuration of a list
+    // Default configuration of a priority queue
     new->length = 0;
     new->inicial = NULL;
     new->final = NULL;
 
-    // Returning the list's address
+    // Returning the priority queue's address
     return new;
 }
 
-// Function that cleans up a list
+// Function that cleans up a priority queue
 void cleanUpPriorityQueue(priorityQueue *queuePoint)
 {
-    // If the list's empty
+    // If the priority queue's empty
     if (queuePoint->length > 0)
     {
-        // While the list's inicial pointer isn't the list's final pointer
+        // While the priority queue's inicial pointer isn't the priority queue's final pointer
         while (queuePoint->inicial != queuePoint->final)
         {
-            // Making th list's inical goes to the next node
+            // Making th priority queue's inical goes to the next node
             queuePoint->inicial = queuePoint->inicial->next;
 
-            // Freeing the list's previous inicial node
+            // Freeing the priority queue's previous inicial node
             free(queuePoint->inicial->previous);
         }
-        // Freeing the list's inicial pointer
+        // Freeing the priority queue's inicial pointer
         free(queuePoint->inicial);
 
-        // Making the list receive it's default values
+        // Making the priority queue receive it's default values
         queuePoint->inicial = NULL;
         queuePoint->final = NULL;
         queuePoint->length = 0;
     }
 }
 
-// Function that destroys a list
+// Function that destroys a priority queue
 void destroyPriorityQueue(priorityQueue **queuePointPoint)
 {
-    // Cleanning up the list
+    // Cleanning up the priority queue
     cleanUpPriorityQueue(*queuePointPoint);
 
-    // Freeing the list's memory
+    // Freeing the priority queue's memory
     free(*queuePointPoint);
 
-    // Making the list's pointer points to NULL
+    // Making the priority queue's pointer points to NULL
     *queuePointPoint = NULL;
 }
 
-// Function that shows a list
+// Function that shows a priority queue
 void showPriorityQueue(priorityQueue *queuePoint)
 {
-    // Showing the list's length
+    // Showing the priority queue's length
     printf("Length: %d\n", queuePoint->length);
 
-    // If the list's empty
+    // If the priority queue's empty
     if (queuePoint->length == 0)
     {
         // Just print NULL
@@ -76,11 +77,11 @@ void showPriorityQueue(priorityQueue *queuePoint)
     else
     {
         // Creating an auxiliar pointer
-        nodeDLL *auxPoint = queuePoint->inicial;
+        nodePriority *auxPoint = queuePoint->inicial;
 
         // Showing the first NULL
-        printf("NULL <- ");
-        // While the auxiliar pointer isn't at the list's final pointer
+        printf("NULL <- (Next)%d", nextPriorityQueue(queuePoint));
+        // While the auxiliar pointer isn't at the priority queue's final pointer
         while (auxPoint != queuePoint->final)
         {
             // Show the element
@@ -94,55 +95,55 @@ void showPriorityQueue(priorityQueue *queuePoint)
     }
 }
 
-// Function that inserts in the list's end
-void insertingNodeEndDLL(priorityQueue *queuePoint, int value)
+// Function that inserts in the priority queue's end
+void queuePriorityQueue(char *value, priorityQueue *queuePoint)
 {
     // Creating a new node
-    nodeDLL *new = createNodeDLL(value, queuePoint->final, NULL);
+    nodePriority *new = createNodePriority(value, queuePoint->final, NULL);
 
-    // If the list's empty
+    // If the priority queue's empty
     if (queuePoint->length == 0)
     {
-        // Making the list's inicial pointer points to the new node
+        // Making the priority queue's inicial pointer points to the new node
         queuePoint->inicial = new;
     }
     // Else
     else
     {
-        // Making the list's next final pointer points to the new node
+        // Making the priority queue's next final pointer points to the new node
         queuePoint->final->next = new;
     }
 
-    // Making the list's final pointer points to the new node
+    // Making the priority queue's final pointer points to the new node
     queuePoint->final = new;
 
-    // Increasing the list's length
+    // Increasing the priority queue's length
     queuePoint->length++;
 }
 
-// Function that removes the list's beginning
-int removeNodeBeginnigDLL(priorityQueue *queuePoint)
+// Function that removes the priority queue's beginning
+int unqueuePriorityQueue(priorityQueue *queuePoint)
 {
-    // If the list's empty
+    // If the priority queue's empty
     if (queuePoint->length == 0)
     {
         // Informing the user
-        printf("The list's empty, there isn't a node to be removed. No changes.\n\n");
+        printf("The priority queue's empty, there isn't a node to be removed. No changes.\n\n");
 
         // Return 0
         return 0;
     }
-    // Else if, the list has just one element
+    // Else if, the priority queue has just one element
     else if (queuePoint->length == 1)
     {
-        // Freeing the list's inical node
+        // Freeing the priority queue's inical node
         free(queuePoint->inicial);
 
-        // Making the both list's pointers point to NULL
+        // Making the both priority queue's pointers point to NULL
         queuePoint->inicial = NULL;
         queuePoint->final = NULL;
 
-        // Reducing the list's length
+        // Reducing the priority queue's length
         queuePoint->length--;
 
         // Return 1
@@ -151,7 +152,7 @@ int removeNodeBeginnigDLL(priorityQueue *queuePoint)
     // Else
     else
     {
-        // Moving the list's inicial pointer to the next node
+        // Moving the priority queue's inicial pointer to the next node
         queuePoint->inicial = queuePoint->inicial->next;
 
         // Freeing the old inicial node
@@ -160,7 +161,7 @@ int removeNodeBeginnigDLL(priorityQueue *queuePoint)
         // Making the new inicial node's previous point to NULL
         queuePoint->inicial->previous = NULL;
 
-        // Reducing the list's length
+        // Reducing the priority queue's length
         queuePoint->length--;
 
         // Return 1
@@ -168,14 +169,14 @@ int removeNodeBeginnigDLL(priorityQueue *queuePoint)
     }
 }
 
-// Function that obtains the list's inicial value
-int obtainFinalValueDLL(priorityQueue *queuePoint)
+// Function that obtains the queuePoint's inicial value
+int nextPriorityQueue(priorityQueue *queuePoint)
 {
-    // If the list's empty
+    // If the queuePoint's empty
     if (queuePoint->length == 0)
     {
         // Informing the user
-        printf("The list's empty, there isn't a node to be obtained.\n\n");
+        printf("The queue's empty, there isn't a node to be obtained.\n\n");
 
         // Return 0
         return 0;
@@ -183,7 +184,7 @@ int obtainFinalValueDLL(priorityQueue *queuePoint)
     // Else
     else
     {
-        // Return the list's final value
-        return queuePoint->final->value;
+        // Return the queuePoint's inicial value
+        return queuePoint->inicial->value;
     }
 }

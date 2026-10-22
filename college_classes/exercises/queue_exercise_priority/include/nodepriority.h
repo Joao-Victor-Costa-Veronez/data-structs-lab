@@ -6,7 +6,7 @@
 
 typedef struct priorityNode
 {
-    char value;
+    char value[255];
     int priority;
     struct priorityNode *next;
 } nodePriority;
