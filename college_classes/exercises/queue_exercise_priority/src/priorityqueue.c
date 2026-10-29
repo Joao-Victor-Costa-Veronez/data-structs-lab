@@ -80,26 +80,28 @@ void showPriorityQueue(priorityQueue *queuePoint)
         nodePriority *auxPoint = queuePoint->inicial;
 
         // Showing the first NULL
-        printf("NULL <- (Next)%d", nextPriorityQueue(queuePoint));
+        printf("NULL <- (Next) %c", nextPriorityQueue(queuePoint));
         // While the auxiliar pointer isn't at the priority queue's final pointer
         while (auxPoint != queuePoint->final)
         {
-            // Show the element
-            printf("%d <-> ", auxPoint->value);
+            for (int i = 0; i < (strlen(auxPoint->value) - 1); i++)
+            {
+                printf(" <-> %c <->", auxPoint->value[i]);
+            }
 
             // Go to the next element
             auxPoint = auxPoint->next;
         }
         // Showing the last element, and the last NULL
-        printf("%d -> NULL\n\n", auxPoint->value);
+        printf(" %c -> NULL\n\n", auxPoint->value[strlen(auxPoint->value)]);
     }
 }
 
 // Function that inserts in the priority queue's end
-void queuePriorityQueue(char *value, priorityQueue *queuePoint)
+void queuePriorityQueue(char *value, int priority, priorityQueue *queuePoint)
 {
     // Creating a new node
-    nodePriority *new = createNodePriority(value, queuePoint->final, NULL);
+    nodePriority *new = createNodePriority(value, priority, NULL, queuePoint->final);
 
     // If the priority queue's empty
     if (queuePoint->length == 0)
@@ -170,7 +172,7 @@ int unqueuePriorityQueue(priorityQueue *queuePoint)
 }
 
 // Function that obtains the queuePoint's inicial value
-int nextPriorityQueue(priorityQueue *queuePoint)
+char nextPriorityQueue(priorityQueue *queuePoint)
 {
     // If the queuePoint's empty
     if (queuePoint->length == 0)
@@ -185,6 +187,6 @@ int nextPriorityQueue(priorityQueue *queuePoint)
     else
     {
         // Return the queuePoint's inicial value
-        return queuePoint->inicial->value;
+        return *queuePoint->inicial->value;
     }
 }
