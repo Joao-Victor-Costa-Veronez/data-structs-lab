@@ -13,5 +13,6 @@ typedef struct BST
 
 // Declarign functions
 BST *createTreeBST();
+void insertBST(int key, BST *BSTPoint);
 
 #endif

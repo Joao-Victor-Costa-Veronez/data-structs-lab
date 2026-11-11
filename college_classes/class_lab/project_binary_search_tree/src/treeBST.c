@@ -23,7 +23,7 @@ BST *createTreeBST()
 }
 
 // Function that inserts a value in the BST
-void insertBST(int key, BST *BSTpoint)
+void insertBST(int key, BST *BSTPoint)
 {
 
 }
