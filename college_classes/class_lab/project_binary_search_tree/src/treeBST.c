@@ -85,3 +85,57 @@ void insertBST(int key, BST *BSTPoint)
     // Increasing the quantity
     BSTPoint->nodesQuantity++;
 }
+
+// Function that visits a node in the BST
+void visitBST(nodeBST *node)
+{
+    // Show the node
+    printf("%d, ", node->key);
+}
+
+// Function that shows a BST in the Pre-Order way
+void preRecOrderBST(BST *BSTPoint)
+{
+    // Recursive
+    preAuxRecOrderBST(BSTPoint->root);
+}
+
+void preAuxRecOrderBST(nodeBST *nodePoint)
+{
+    if (nodePoint != NULL)
+    {
+        visitBST(nodePoint);
+        preAuxRecOrderBST(nodePoint->leftChild);
+        preAuxRecOrderBST(nodePoint->rightChild);
+    }
+}
+
+void inRecOrderBST(BST *BSTPoint)
+{
+    inAuxRecOrderBST(BSTPoint->root);
+}
+
+void inAuxRecOrderBST(nodeBST *nodePoint)
+{
+    if (nodePoint != NULL)
+    {
+        inAuxRecOrderBST(nodePoint->leftChild);
+        visitBST(nodePoint);
+        inAuxRecOrderBST(nodePoint->rightChild);
+    }
+}
+
+void posRecOrderBST(BST *BSTPoint)
+{
+    posAuxRecOrderBST(BSTPoint->root);
+}
+
+void posAuxRecOrderBST(nodeBST *nodePoint)
+{
+    if (nodePoint != NULL)
+    {
+        posAuxRecOrderBST(nodePoint->leftChild);
+        posAuxRecOrderBST(nodePoint->rightChild);
+        visitBST(nodePoint);
+    }
+}
