@@ -8,6 +8,16 @@ int main()
 {
     BST *tree1 = createTreeBST();
 
+    nodeBST *response = searchBST(25, tree1);
+    if (response == NULL)
+    {
+        printf("Didn't find %d or the BST is empty\n", 25);
+    }
+    else
+    {
+        printf("Found %d in BST\n", response->key);
+    }
+
     insertBST(45, tree1);
     insertBST(25, tree1);
     insertBST(65, tree1);
@@ -28,6 +38,16 @@ int main()
     printf("Width:\n");
     widthBST(tree1);
     printf("\n\n");
+
+    response = searchBST(25, tree1);
+    if (response == NULL)
+    {
+        printf("Didn't find %d or the BST is empty\n", 25);
+    }
+    else
+    {
+        printf("Found %d in BST\n", response->key);
+    }
 
     return 0;
 }

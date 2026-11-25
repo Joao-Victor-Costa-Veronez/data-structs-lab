@@ -22,5 +22,8 @@ void inAuxRecOrderBST(nodeBST *nodePoint);
 void posRecOrderBST(BST *BSTPoint);
 void posAuxRecOrderBST(nodeBST *nodePoint);
 void widthBST(BST *nodePoint);
+nodeBST *searchBST(int key, BST *BSTPoint);
+void cleanBST(BST *BSTPoint);
+void destroyBST(BST **BSTPoint);
 
 #endif

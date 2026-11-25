@@ -168,3 +168,38 @@ void widthBST(BST *nodePoint)
         destroyQueueBST(&queue);
     }
 }
+
+nodeBST *searchBST(int key, BST *BSTPoint)
+{
+    if (BSTPoint->nodesQuantity == 0)
+    {
+        printf("It's impossible to search a key in an empty BST\n");
+        return NULL;
+    }
+
+    nodeBST *auxPoint = BSTPoint->root;
+
+    while (auxPoint != NULL && auxPoint->key != key)
+    {
+        if (key < auxPoint->key)
+        {
+            auxPoint = auxPoint->leftChild;
+        }
+        else
+        {
+            auxPoint = auxPoint->rightChild;
+        }
+    }
+
+    return auxPoint;
+}
+
+void cleanBST(BST *BSTPoint)
+{
+
+}
+
+void destroyBST(BST **BSTPoint)
+{
+
+}
