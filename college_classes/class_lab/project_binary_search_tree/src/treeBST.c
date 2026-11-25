@@ -194,30 +194,67 @@ nodeBST *searchBST(int key, BST *BSTPoint)
     return auxPoint;
 }
 
-void cleanBST(BST *BSTPoint)
+void cleansUpBST(BST *BSTPoint)
 {
     if (BSTPoint->nodesQuantity != 0)
     {
-        cleanRecBST(BSTPoint->root);
+        cleansUpRecBST(BSTPoint->root);
 
         BSTPoint->nodesQuantity = 0;
         BSTPoint->root = NULL;
     }
 }
 
-void cleanRecBST(nodeBST *nodePoint)
+void cleansUpRecBST(nodeBST *nodePoint)
 {
     if (nodePoint != NULL)
     {
-        cleanRecBST(nodePoint->leftChild);
-        cleanRecBST(nodePoint->rightChild);
+        cleansUpRecBST(nodePoint->leftChild);
+        cleansUpRecBST(nodePoint->rightChild);
         free(nodePoint);
     }
 }
 
 void destroyBST(BST **BSTPointPoint)
 {
-    cleanBST(*BSTPointPoint);
+    cleansUpBST(*BSTPointPoint);
     free(*BSTPointPoint);
     *BSTPointPoint = NULL;
+}
+
+int removeFusionBST(int key, BST *BSTPoint)
+{
+    if (BSTPoint->nodesQuantity == 0)
+    {
+        printf("It's impossible to remove a node from an empty BST\n");
+        return 0;
+    }
+
+    if (key == BSTPoint->root->key)
+    {
+        nodeBST *auxPoint = BSTPoint->root;
+        
+        if (BSTPoint->root->leftChild != NULL)
+        {
+            auxPoint=auxPoint->leftChild;
+
+            while (auxPoint->rightChild != NULL)
+            {
+                auxPoint = auxPoint->rightChild;
+            }
+            
+            auxPoint->rightChild = BSTPoint->root->rightChild;
+            
+            auxPoint = BSTPoint->root;
+
+            BSTPoint->root = BSTPoint->root->leftChild;
+
+            free(auxPoint);
+        }
+        
+    }
+}
+int removeCopyBST(int key, BST *BSTPoint)
+{
+
 }

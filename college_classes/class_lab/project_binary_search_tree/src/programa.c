@@ -49,7 +49,7 @@ int main()
         printf("Found %d in BST\n", response->key);
     }
 
-    cleanBST(tree1);
+    cleansUpBST(tree1);
 
     printf("\n");
     printf("Pre-Order:\n");

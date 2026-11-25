@@ -23,8 +23,12 @@ void posRecOrderBST(BST *BSTPoint);
 void posAuxRecOrderBST(nodeBST *nodePoint);
 void widthBST(BST *nodePoint);
 nodeBST *searchBST(int key, BST *BSTPoint);
-void cleanBST(BST *BSTPoint);
-void cleanRecBST(nodeBST *nodePoint);
+void cleansUpBST(BST *BSTPoint);
+void cleansUpRecBST(nodeBST *nodePoint);
 void destroyBST(BST **BSTPointPoint);
+int removeFusionBST(int key, BST *BSTPoint);
+int removeCopyBST(int key, BST *BSTPoint);
+void predecessorBST(nodeBST *nodeBSTPoint);
+void successorBST(nodeBST *nodeBSTPoint);
 
 #endif
