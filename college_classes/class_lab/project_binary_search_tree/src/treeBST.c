@@ -1,6 +1,6 @@
 // Importing libraries
 #include "treeBST.h"
-#include "filanoabbi.h"
+#include "queueBST.h"
 
 // Function that creates a new BST
 BST *createTreeBST()
@@ -145,26 +145,26 @@ void widthBST(BST *nodePoint)
 {
     if (nodePoint->nodesQuantity == 0)
     {
-        printf("ABBI vazia");
+        printf("Empty BST");
     }
     else
     {
-        FilaNoABBI *queue = criarFilaNoABBI();
-        enfileirarNoABBI(nodePoint->root, queue);
-        while (queue->tamanho > 0)
+        QueueBST *queue = createQueueBST();
+        enqueueQueueBST(nodePoint->root, queue);
+        while (queue->size > 0)
         {
-            nodeBST *node = proximoNoABBI(queue);
-            desinfileirarNoABBI(queue);
+            nodeBST *node = peekQueueBST(queue);
+            dequeueQueueBST(queue);
             visitBST(node);
             if (node->leftChild != NULL)
             {
-                enfileirarNoABBI(node->leftChild, queue);
+                enqueueQueueBST(node->leftChild, queue);
             }
             if (node->rightChild != NULL)
             {
-                enfileirarNoABBI(node->rightChild, queue);
+                enqueueQueueBST(node->rightChild, queue);
             }
         }
-        destruirFilaNoABBI(&queue);
+        destroyQueueBST(&queue);
     }
 }
