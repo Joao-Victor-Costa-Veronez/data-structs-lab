@@ -163,7 +163,7 @@ int alterarPrioridadePrio(char nome[], int novaPrioridade, FilaPrio *pontFila)
         }
         else
         {
-            arquivoDiferente == 0;
+            arquivoDiferente = 0;
         }
 
         pontAux = pontAux->proximo;
