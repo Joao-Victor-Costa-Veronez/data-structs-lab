@@ -196,10 +196,28 @@ nodeBST *searchBST(int key, BST *BSTPoint)
 
 void cleanBST(BST *BSTPoint)
 {
+    if (BSTPoint->nodesQuantity != 0)
+    {
+        cleanRecBST(BSTPoint->root);
 
+        BSTPoint->nodesQuantity = 0;
+        BSTPoint->root = NULL;
+    }
 }
 
-void destroyBST(BST **BSTPoint)
+void cleanRecBST(nodeBST *nodePoint)
 {
+    if (nodePoint != NULL)
+    {
+        cleanRecBST(nodePoint->leftChild);
+        cleanRecBST(nodePoint->rightChild);
+        free(nodePoint);
+    }
+}
 
+void destroyBST(BST **BSTPointPoint)
+{
+    cleanBST(*BSTPointPoint);
+    free(*BSTPointPoint);
+    *BSTPointPoint = NULL;
 }

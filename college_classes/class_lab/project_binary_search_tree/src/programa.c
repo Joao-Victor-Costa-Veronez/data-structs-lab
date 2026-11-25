@@ -49,5 +49,27 @@ int main()
         printf("Found %d in BST\n", response->key);
     }
 
+    cleanBST(tree1);
+
+    printf("\n");
+    printf("Pre-Order:\n");
+    preRecOrderBST(tree1);
+    printf("\n\n");
+
+    printf("In-Order:\n");
+    inRecOrderBST(tree1);
+    printf("\n\n");
+
+    printf("Pos-Order:\n");
+    posRecOrderBST(tree1);
+    printf("\n\n");
+
+    printf("Width:\n");
+    widthBST(tree1);
+    printf("\n\n");
+
+    destroyBST(&tree1);
+    printf("%p\n", tree1);
+
     return 0;
 }
