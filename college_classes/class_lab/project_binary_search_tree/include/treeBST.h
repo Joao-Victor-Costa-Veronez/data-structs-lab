@@ -21,5 +21,6 @@ void inRecOrderBST(BST *BSTPoint);
 void inAuxRecOrderBST(nodeBST *nodePoint);
 void posRecOrderBST(BST *BSTPoint);
 void posAuxRecOrderBST(nodeBST *nodePoint);
+void widthBST(BST *nodePoint);
 
 #endif

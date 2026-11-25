@@ -25,5 +25,9 @@ int main()
     posRecOrderBST(tree1);
     printf("\n\n");
 
+    printf("Width:\n");
+    widthBST(tree1);
+    printf("\n\n");
+
     return 0;
 }
