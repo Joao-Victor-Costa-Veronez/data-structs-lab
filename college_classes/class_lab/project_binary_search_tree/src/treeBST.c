@@ -332,6 +332,7 @@ int removeFusionBST(int key, BST *BSTPoint)
         auxPoint->rightChild = NULL;
     }
 
+    /*
     if (key == BSTPoint->root->key)
     {
         nodeBST *auxPoint = BSTPoint->root;
@@ -349,6 +350,7 @@ int removeFusionBST(int key, BST *BSTPoint)
             free(auxPoint);
         }
     }
+    */
 
     free(auxPoint);
 
