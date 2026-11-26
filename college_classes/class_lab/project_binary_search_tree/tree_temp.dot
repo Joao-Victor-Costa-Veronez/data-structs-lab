@@ -1,0 +1,5 @@
+digraph BST {
+    node [shape=circle, fontname="Arial"];
+    45 -> 25;
+    45 -> 65;
+}

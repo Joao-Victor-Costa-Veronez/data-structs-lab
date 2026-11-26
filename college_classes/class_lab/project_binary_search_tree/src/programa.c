@@ -22,6 +22,8 @@ int main()
     insertBST(25, tree1);
     insertBST(65, tree1);
 
+    drawBST(tree1, "BST-Graphic.png");
+
     printf("\n");
     printf("Pre-Order:\n");
     preRecOrderBST(tree1);
